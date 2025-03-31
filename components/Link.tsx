@@ -1,5 +1,5 @@
 import { Link } from "expo-router";
-import { StyleSheet, Text, View } from "react-native";
+import { Text, View } from "react-native";
 
 type Props = {
   label: string;
@@ -9,34 +9,16 @@ type Props = {
 
 export default function ThemedLink({ label, url, primaryColor }: Props) {
   return (
-    <Link href={url} style={styles.link}>
+    <Link href={url} className="w-4/5">
       <View
-        style={[
-          styles.view,
-          { backgroundColor: primaryColor ? "#2e3954" : "#00fefa" },
-        ]}
+        className={`h-20 w-screen items-center justify-center rounded-md ${primaryColor ? "bg-primary" : "bg-secondary"}`}
       >
-        <Text style={[styles.label, { color: primaryColor ? "#fff" : "#000" }]}>
+        <Text
+          className={`text-lg ${primaryColor ? "color-slate-100" : "color-slate-900"}`}
+        >
           {label}
         </Text>
       </View>
     </Link>
   );
 }
-
-const styles = StyleSheet.create({
-  link: {
-    width: "80%",
-  },
-  view: {
-    height: 80,
-    width: "100%",
-    borderRadius: 10,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  label: {
-    color: "#fff",
-    fontSize: 16,
-  },
-});

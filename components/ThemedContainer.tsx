@@ -6,7 +6,7 @@ type Props = {
 
 export default function ThemedContainer({ children }: Props) {
   return (
-    <SafeAreaView className="flex flex-1 items-center bg-primary/50">
+    <SafeAreaView className="flex flex-1 items-center justify-evenly bg-primary/10">
       {children}
     </SafeAreaView>
   );

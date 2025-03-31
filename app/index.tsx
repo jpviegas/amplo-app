@@ -1,12 +1,12 @@
 import logo from "@/assets/images/splash.png";
-import Container from "@/components/Container";
 import ImageViewer from "@/components/ImageViewer";
 import ThemedLink from "@/components/Link";
+import ThemedContainer from "@/components/ThemedContainer";
 import { Text, TextInput, View } from "react-native";
 
 export default function HomeScreen() {
   return (
-    <Container>
+    <ThemedContainer>
       <ImageViewer imgSource={logo} />
       <View className="w-screen items-center">
         <Text>Email:</Text>
@@ -15,6 +15,6 @@ export default function HomeScreen() {
         <TextInput placeholder="digite sua senha" />
         <ThemedLink label="Entrar" url="/perfil" primaryColor />
       </View>
-    </Container>
+    </ThemedContainer>
   );
 }

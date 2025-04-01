@@ -51,18 +51,20 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
-      <StatusBar style={isDarkColorScheme ? "light" : "dark"} />
+      <StatusBar style={"auto"} />
       <Stack>
         <Stack.Screen
           name="index"
           options={{
+            headerBackVisible: false,
             headerTitle: () => false,
             headerTransparent: true,
-            statusBarBackgroundColor: "#000",
+            statusBarBackgroundColor: "transparent",
             headerRight: () => <ThemeToggle />,
           }}
         />
-        <Stack.Screen name="perfil/(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="perfil" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
       <PortalHost />

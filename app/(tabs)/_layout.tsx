@@ -1,7 +1,6 @@
 import { HapticTab } from "@/components/HapticTab";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import TabBarBackground from "@/components/ui/TabBarBackground";
-import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { Tabs } from "expo-router";
 import React from "react";
@@ -14,7 +13,7 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
+        // tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
@@ -30,7 +29,7 @@ export default function TabLayout() {
         name="perfil"
         options={{
           title: "Perfil",
-          tabBarActiveTintColor: "#2e3954",
+          // tabBarActiveTintColor: "--background",
           tabBarIcon: ({ color }) => (
             <IconSymbol size={28} name="house.fill" color={color} />
           ),
@@ -40,17 +39,17 @@ export default function TabLayout() {
         name="baterponto"
         options={{
           title: "Bater Ponto",
-          tabBarActiveTintColor: "#2e3954",
+          // tabBarActiveTintColor: "#2e3954",
           tabBarIcon: ({ color }) => (
             <IconSymbol size={28} name="location.fill" color={color} />
           ),
         }}
       />
       <Tabs.Screen
-        name="documentos"
+        name="dadospessoais"
         options={{
-          title: "Documentos",
-          tabBarActiveTintColor: "#2e3954",
+          title: "Dados Pessoais",
+          // tabBarActiveTintColor: "bg-primary",
           tabBarIcon: ({ color }) => (
             <IconSymbol size={28} name="paperplane.fill" color={color} />
           ),

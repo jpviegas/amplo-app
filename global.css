@@ -3,6 +3,18 @@
 @tailwind utilities;
 
 @layer base {
+  @font-face {
+    font-family: "Quicksand";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(/assets/fonts/Quicksand-Regular.ttf) format("ttf");
+  }
+
+  html {
+    font-family: "Quicksand", system-ui, sans-serif;
+  }
+
   :root {
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;

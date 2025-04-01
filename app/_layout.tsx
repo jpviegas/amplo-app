@@ -1,43 +1,76 @@
-import { useColorScheme } from "@/hooks/useColorScheme";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import "@/global.css";
+
+import { setAndroidNavigationBar } from "@/lib/android-navigation-bar";
+import { NAV_THEME } from "@/lib/constants";
+import { useColorScheme } from "@/lib/useColorScheme";
 import {
   DarkTheme,
   DefaultTheme,
+  Theme,
   ThemeProvider,
 } from "@react-navigation/native";
-import { useFonts } from "expo-font";
+import { PortalHost } from "@rn-primitives/portal";
 import { Stack } from "expo-router";
-import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
-import { useEffect } from "react";
-import "react-native-reanimated";
-import "./global.css";
+import * as React from "react";
+import { Platform } from "react-native";
 
-SplashScreen.preventAutoHideAsync();
+const LIGHT_THEME: Theme = {
+  ...DefaultTheme,
+  colors: NAV_THEME.light,
+};
+const DARK_THEME: Theme = {
+  ...DarkTheme,
+  colors: NAV_THEME.dark,
+};
+
+export { ErrorBoundary } from "expo-router";
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    Quicksand: require("../assets/fonts/Quicksand-Regular.ttf"),
-  });
+  const hasMounted = React.useRef(false);
+  const { colorScheme, isDarkColorScheme } = useColorScheme();
+  const [isColorSchemeLoaded, setIsColorSchemeLoaded] = React.useState(false);
 
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
+  useIsomorphicLayoutEffect(() => {
+    if (hasMounted.current) {
+      return;
     }
-  }, [loaded]);
 
-  if (!loaded) {
+    if (Platform.OS === "web") {
+      document.documentElement.classList.add("bg-background");
+    }
+    setAndroidNavigationBar(colorScheme);
+    setIsColorSchemeLoaded(true);
+    hasMounted.current = true;
+  }, []);
+
+  if (!isColorSchemeLoaded) {
     return null;
   }
 
   return (
-    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+    <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
+      <StatusBar style={isDarkColorScheme ? "light" : "dark"} />
       <Stack>
-        <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="index"
+          options={{
+            headerTitle: () => false,
+            headerTransparent: true,
+            statusBarBackgroundColor: "#000",
+            headerRight: () => <ThemeToggle />,
+          }}
+        />
         <Stack.Screen name="perfil/(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
-      <StatusBar style="auto" />
+      <PortalHost />
     </ThemeProvider>
   );
 }
+
+const useIsomorphicLayoutEffect =
+  Platform.OS === "web" && typeof window === "undefined"
+    ? React.useEffect
+    : React.useLayoutEffect;

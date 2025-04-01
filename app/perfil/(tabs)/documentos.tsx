@@ -1,14 +1,12 @@
-import Container from "@/components/Container";
-import { Link } from "expo-router";
-import { Pressable, Text } from "react-native";
+import ThemedLink from "@/components/Link";
+import ThemedContainer from "@/components/ThemedContainer";
+import { Text } from "react-native";
 
 export default function Documentos() {
   return (
-    <Container>
+    <ThemedContainer>
       <Text className="color-primary">Documentos</Text>
-      <Pressable>
-        <Link href="/">Sair</Link>
-      </Pressable>
-    </Container>
+      <ThemedLink label="Sair" url="/" primaryColor={false} />
+    </ThemedContainer>
   );
 }

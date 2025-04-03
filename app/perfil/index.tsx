@@ -29,7 +29,7 @@ export default function Perfil() {
           </Button>
         </Link>
         <Link asChild href="/" replace>
-          <Button size={"full"} variant="secondary">
+          <Button size={"full"} variant="destructive">
             <Text>Sair</Text>
           </Button>
         </Link>

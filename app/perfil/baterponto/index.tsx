@@ -13,19 +13,19 @@ export default function BaterPonto() {
           <CardHeader>
             <CardTitle>Registro do ponto</CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="gap-4">
             <Text>Ative a localização para registrar o ponto.</Text>
             <Button size={"full"}>
               <Text>Bater Ponto</Text>
             </Button>
           </CardContent>
         </Card>
-        <Link asChild href="/perfil/baterponto/registro" replace>
+        <Link asChild href="/perfil/baterponto/registro">
           <Button size={"full"}>
             <Text>Registro do ponto</Text>
           </Button>
         </Link>
-        <Link asChild href="/perfil/baterponto/registro" replace>
+        <Link asChild href="/perfil/baterponto/registro">
           <Button size={"full"}>
             <Text>Incluir solicitação</Text>
           </Button>

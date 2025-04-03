@@ -1,6 +1,8 @@
 import { HapticTab } from "@/components/HapticTab";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { Tabs } from "expo-router";
+import { Button } from "@/components/ui/button";
+import { Text } from "@/components/ui/text";
+import { Link, Tabs } from "expo-router";
 import { Home, MapPin, User } from "lucide-react-native";
 import { Platform } from "react-native";
 
@@ -9,6 +11,13 @@ export default function PerfilLayout() {
     <Tabs
       screenOptions={{
         headerTitle: "",
+        headerLeft: () => (
+          <Link href={".."} className="left-12" asChild>
+            <Button size="sm">
+              <Text>Voltar</Text>
+            </Button>
+          </Link>
+        ),
         headerRight: () => <ThemeToggle />,
         tabBarButton: HapticTab,
         tabBarStyle: Platform.select({

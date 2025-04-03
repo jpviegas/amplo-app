@@ -13,7 +13,7 @@ export default function Folha() {
             <Text>Voltar</Text>
           </Button>
         </Link>
-        <Text className="color-primary">Folha de Pagamento</Text>
+        <Text>Folha de Pagamento</Text>
       </View>
     </ThemedContainer>
   );

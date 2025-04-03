@@ -1,8 +1,7 @@
 import { HapticTab } from "@/components/HapticTab";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { IconSymbol } from "@/components/ui/IconSymbol";
 import { Tabs } from "expo-router";
-import { MapPin } from "lucide-react-native";
+import { Home, MapPin, User } from "lucide-react-native";
 import { Platform } from "react-native";
 
 export default function PerfilLayout() {
@@ -24,8 +23,8 @@ export default function PerfilLayout() {
         name="index"
         options={{
           title: "Perfil",
-          tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="house.fill" color={color} />
+          tabBarIcon: ({ color, focused }) => (
+            <Home size={28} color={color} strokeWidth={focused ? 2 : 1} />
           ),
         }}
       />
@@ -33,15 +32,17 @@ export default function PerfilLayout() {
         name="baterponto"
         options={{
           title: "Bater Ponto",
-          tabBarIcon: ({ color }) => <MapPin color={color} />,
+          tabBarIcon: ({ color, focused }) => (
+            <MapPin size={28} color={color} strokeWidth={focused ? 2 : 1} />
+          ),
         }}
       />
       <Tabs.Screen
         name="dadospessoais"
         options={{
           title: "Dados Pessoais",
-          tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="paperplane.fill" color={color} />
+          tabBarIcon: ({ color, focused }) => (
+            <User size={28} color={color} strokeWidth={focused ? 2 : 1} />
           ),
         }}
       />

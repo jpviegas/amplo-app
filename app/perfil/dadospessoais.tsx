@@ -13,8 +13,8 @@ export default function DadosPessoais() {
             <Text>Voltar</Text>
           </Button>
         </Link>
-        <Text className="color-primary">Nome do funcionario</Text>
-        <Text className="color-primary">mais informações...</Text>
+        <Text>Nome do funcionario</Text>
+        <Text>mais informações...</Text>
       </View>
     </ThemedContainer>
   );

@@ -8,7 +8,7 @@ export default function Perfil() {
   return (
     <ThemedContainer>
       <View className="h-full w-4/5 justify-evenly">
-        <Link asChild href="/dadospessoais">
+        <Link asChild href="/perfil/dadospessoais">
           <Button size={"full"}>
             <Text>Dados Pessoais</Text>
           </Button>
@@ -23,7 +23,7 @@ export default function Perfil() {
             <Text>Documentos</Text>
           </Button>
         </Link>
-        <Link asChild href="/baterponto">
+        <Link asChild href="/perfil/baterponto">
           <Button size={"full"}>
             <Text>Bater Ponto</Text>
           </Button>

@@ -1,43 +1,62 @@
-import { setAndroidNavigationBar } from "@/lib/android-navigation-bar";
-import { useColorScheme } from "@/lib/useColorScheme";
-import { Stack } from "expo-router";
-import * as React from "react";
+import { HapticTab } from "@/components/HapticTab";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { IconSymbol } from "@/components/ui/IconSymbol";
+import { Tabs } from "expo-router";
+import { MapPin } from "lucide-react-native";
 import { Platform } from "react-native";
 
-export { ErrorBoundary } from "expo-router";
-
-export default function RootLayout() {
-  const hasMounted = React.useRef(false);
-  const { colorScheme, isDarkColorScheme } = useColorScheme();
-  const [isColorSchemeLoaded, setIsColorSchemeLoaded] = React.useState(false);
-
-  useIsomorphicLayoutEffect(() => {
-    if (hasMounted.current) {
-      return;
-    }
-
-    if (Platform.OS === "web") {
-      document.documentElement.classList.add("bg-background");
-    }
-    setAndroidNavigationBar(colorScheme);
-    setIsColorSchemeLoaded(true);
-    hasMounted.current = true;
-  }, []);
-
-  if (!isColorSchemeLoaded) {
-    return null;
-  }
-
+export default function PerfilLayout() {
   return (
-    <Stack>
-      <Stack.Screen name="index" options={{ headerShown: false }} />
-      <Stack.Screen name="documentos" options={{ headerShown: false }} />
-      <Stack.Screen name="folha" options={{ headerShown: false }} />
-    </Stack>
+    <Tabs
+      screenOptions={{
+        headerTitle: "",
+        headerRight: () => <ThemeToggle />,
+        tabBarButton: HapticTab,
+        tabBarStyle: Platform.select({
+          ios: {
+            position: "absolute",
+          },
+          default: {},
+        }),
+      }}
+    >
+      <Tabs.Screen
+        name="index"
+        options={{
+          title: "Perfil",
+          tabBarIcon: ({ color }) => (
+            <IconSymbol size={28} name="house.fill" color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="baterponto"
+        options={{
+          title: "Bater Ponto",
+          tabBarIcon: ({ color }) => <MapPin color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="dadospessoais"
+        options={{
+          title: "Dados Pessoais",
+          tabBarIcon: ({ color }) => (
+            <IconSymbol size={28} name="paperplane.fill" color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="folha"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="documentos"
+        options={{
+          href: null,
+        }}
+      />
+    </Tabs>
   );
 }
-
-const useIsomorphicLayoutEffect =
-  Platform.OS === "web" && typeof window === "undefined"
-    ? React.useEffect
-    : React.useLayoutEffect;

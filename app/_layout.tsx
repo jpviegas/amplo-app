@@ -59,11 +59,9 @@ export default function RootLayout() {
             headerBackVisible: false,
             headerTitle: () => false,
             headerTransparent: true,
-            statusBarBackgroundColor: "transparent",
             headerRight: () => <ThemeToggle />,
           }}
         />
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="perfil" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>

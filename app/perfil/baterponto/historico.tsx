@@ -2,7 +2,7 @@ import ThemedContainer from "@/components/ThemedContainer";
 import { Text } from "@/components/ui/text";
 import { View } from "react-native";
 
-export default function Registro() {
+export default function Historico() {
   return (
     <ThemedContainer>
       <View className="h-full w-4/5 justify-evenly">

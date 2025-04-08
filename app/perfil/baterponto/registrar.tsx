@@ -1,95 +1,97 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Text } from "@/components/ui/text";
+import * as Device from "expo-device";
 import * as Location from "expo-location";
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { Platform, StyleSheet, View } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 
 export default function Registrar() {
   const [location, setLocation] = useState({ latitude: 0, longitude: 0 });
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+
   useEffect(() => {
     async function getCurrentLocation() {
+      if (Platform.OS === "android" && !Device.isDevice) {
+        setErrorMsg(
+          "Oops, this will not work on Snack in an Android Emulator. Try it on your device!",
+        );
+        return;
+      }
       let { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== "granted") {
-        setErrorMsg("Permission to access location was denied");
+        setErrorMsg("Permissão para acessar a localização foi negada.");
         return;
       }
 
       let { coords } = await Location.getCurrentPositionAsync();
-
       if (coords) {
-        console.log("coords:", coords);
         setLocation({
           latitude: coords.latitude,
           longitude: coords.longitude,
         });
-        let response = await Location.reverseGeocodeAsync({
-          latitude: coords.latitude,
-          longitude: coords.longitude,
-        });
-        console.log("response:", response);
       }
     }
 
     getCurrentLocation();
   }, []);
 
+  let text = "Aguarde...";
+  if (errorMsg) {
+    text = errorMsg;
+  } else if (location) {
+    text = JSON.stringify(location);
+  }
+
   function handlePoint() {
     console.log(location);
   }
 
   return (
-    <View style={styles.container}>
-      <MapView
-        region={{
-          latitude: location.latitude,
-          longitude: location.longitude,
-          latitudeDelta: 0.005,
-          longitudeDelta: 0.005,
-        }}
-        initialRegion={{
-          latitude: location.latitude,
-          longitude: location.longitude,
-          latitudeDelta: 0.005,
-          longitudeDelta: 0.005,
-        }}
-        style={StyleSheet.absoluteFill}
-      >
-        <Marker
-          coordinate={{
+    <View className="flex-1 items-center justify-center">
+      {location.latitude === 0 ? (
+        <Text>Ative a localização para registrar o ponto.</Text>
+      ) : (
+        <MapView
+          region={{
             latitude: location.latitude,
             longitude: location.longitude,
+            latitudeDelta: 0.005,
+            longitudeDelta: 0.005,
           }}
-        />
-      </MapView>
+          initialRegion={{
+            latitude: location.latitude,
+            longitude: location.longitude,
+            latitudeDelta: 0.005,
+            longitudeDelta: 0.005,
+          }}
+          className="object-cover"
+          style={StyleSheet.absoluteFill}
+        >
+          <Marker
+            coordinate={{
+              latitude: location.latitude,
+              longitude: location.longitude,
+            }}
+          />
+        </MapView>
+      )}
       <Card className="absolute bottom-0 w-full">
         <CardHeader>
           <CardTitle>Registro do ponto</CardTitle>
         </CardHeader>
         <CardContent className="gap-4">
-          <Text>Ative a localização para registrar o ponto.</Text>
+          <Text>{location.latitude === 0 ? "Aguarde..." : errorMsg}</Text>
           <Button
             size={"full"}
-            disabled={location ? false : true}
+            disabled={location.latitude === 0 ? true : false}
             onPress={() => handlePoint()}
           >
             <Text>Bater Ponto</Text>
           </Button>
-          {errorMsg && <Text>{errorMsg}</Text>}
         </CardContent>
       </Card>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  map: {
-    width: "100%",
-    height: "75%",
-  },
-});

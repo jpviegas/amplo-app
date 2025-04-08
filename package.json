@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "expo start -c",
     "dev:web": "expo start -c --web",
-    "dev:android": "expo start -c --android",
+    "dev:android": "expo start --go -c --android",
     "android": "expo start -c --android",
     "ios": "expo start -c --ios",
     "web": "expo start -c --web",
@@ -50,7 +50,9 @@
     "tailwind-merge": "^2.2.1",
     "tailwindcss": "3.3.5",
     "tailwindcss-animate": "^1.0.7",
-    "zustand": "^4.4.7"
+    "zustand": "^4.4.7",
+    "expo-device": "~7.0.3",
+    "react-native-maps": "1.18.0"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",

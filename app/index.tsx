@@ -12,7 +12,7 @@ import { View } from "react-native";
 export default function HomeScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { user, addUser } = useUserStore();
+  const { addUser } = useUserStore();
   const router = useRouter();
 
   function handleLogin({ email }: { email: string }) {
@@ -44,7 +44,11 @@ export default function HomeScreen() {
             onChangeText={(e) => setPassword(e)}
           />
           <Link asChild href="/perfil">
-            <Button size={"full"} onPress={() => handleLogin({ email })}>
+            <Button
+              size={"full"}
+              onPress={() => handleLogin({ email })}
+              disabled={email.length < 2 ? true : false}
+            >
               <Text>Entrar</Text>
             </Button>
           </Link>

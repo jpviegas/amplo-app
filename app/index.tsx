@@ -1,4 +1,3 @@
-import logo from "@/assets/images/splash.png";
 import ImageViewer from "@/components/ImageViewer";
 import ThemedContainer from "@/components/ThemedContainer";
 import { Button } from "@/components/ui/button";
@@ -33,7 +32,7 @@ export default function HomeScreen() {
   return (
     <ThemedContainer>
       <View className="h-4/5 justify-around">
-        <ImageViewer imgSource={logo} />
+        <ImageViewer imgSource={require("@/assets/images/splash.png")} />
         <View className="gap-4">
           <Text>Email:</Text>
           <Input

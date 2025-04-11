@@ -5,7 +5,7 @@ import * as Device from "expo-device";
 import * as Location from "expo-location";
 import React, { useEffect, useState } from "react";
 import { Platform, StyleSheet, View } from "react-native";
-import MapView, { Marker } from "react-native-maps";
+import Map, { Marker } from "react-native-maps";
 
 export default function Registrar() {
   const [location, setLocation] = useState({ latitude: 0, longitude: 0 });
@@ -50,20 +50,15 @@ export default function Registrar() {
 
   return (
     <View className="flex-1 items-center justify-center">
-      <MapView
+      <Map
         region={{
           latitude: location.latitude,
           longitude: location.longitude,
           latitudeDelta: 0.005,
           longitudeDelta: 0.005,
         }}
-        initialRegion={{
-          latitude: location.latitude,
-          longitude: location.longitude,
-          latitudeDelta: 0.005,
-          longitudeDelta: 0.005,
-        }}
         className="object-cover"
+        showsUserLocation
         style={StyleSheet.absoluteFill}
       >
         <Marker
@@ -72,7 +67,7 @@ export default function Registrar() {
             longitude: location.longitude,
           }}
         />
-      </MapView>
+      </Map>
       <Card className="absolute bottom-0 w-full">
         <CardHeader>
           <CardTitle>Registro do ponto</CardTitle>

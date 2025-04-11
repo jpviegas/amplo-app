@@ -5,19 +5,26 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Text } from "@/components/ui/text";
 import { useUserStore } from "@/store/userStore";
-import { Link, useRouter } from "expo-router";
+import { useRouter } from "expo-router";
 import { useState } from "react";
 import { View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import Toast from "react-native-toast-message";
 
 export default function HomeScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { addUser } = useUserStore();
   const router = useRouter();
+  const insets = useSafeAreaInsets();
 
   function handleLogin({ email }: { email: string }) {
     addUser(email);
-
+    Toast.show({
+      type: "success",
+      text1: "Login com sucesso!",
+      topOffset: insets.top === 0 ? 12 : insets.top,
+    });
     if (email.length > 1) {
       router.push("/perfil");
     }
@@ -43,15 +50,13 @@ export default function HomeScreen() {
             secureTextEntry
             onChangeText={(e) => setPassword(e)}
           />
-          <Link asChild href="/perfil">
-            <Button
-              size={"full"}
-              onPress={() => handleLogin({ email })}
-              disabled={email.length < 2 ? true : false}
-            >
-              <Text>Entrar</Text>
-            </Button>
-          </Link>
+          <Button
+            size={"full"}
+            onPress={() => handleLogin({ email })}
+            disabled={email.length < 2 ? true : false}
+          >
+            <Text>Entrar</Text>
+          </Button>
         </View>
       </View>
     </ThemedContainer>

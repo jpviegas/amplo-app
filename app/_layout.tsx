@@ -16,6 +16,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Platform } from "react-native";
+import Toast from "react-native-toast-message";
 
 const LIGHT_THEME: Theme = {
   ...DefaultTheme,
@@ -73,6 +74,7 @@ export default function RootLayout() {
         <Stack.Screen name="+not-found" />
       </Stack>
       <PortalHost />
+      <Toast position="top" />
     </ThemeProvider>
   );
 }

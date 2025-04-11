@@ -50,33 +50,29 @@ export default function Registrar() {
 
   return (
     <View className="flex-1 items-center justify-center">
-      {location.latitude === 0 ? (
-        <Text>Ative a localização para registrar o ponto.</Text>
-      ) : (
-        <MapView
-          region={{
+      <MapView
+        region={{
+          latitude: location.latitude,
+          longitude: location.longitude,
+          latitudeDelta: 0.005,
+          longitudeDelta: 0.005,
+        }}
+        initialRegion={{
+          latitude: location.latitude,
+          longitude: location.longitude,
+          latitudeDelta: 0.005,
+          longitudeDelta: 0.005,
+        }}
+        className="object-cover"
+        style={StyleSheet.absoluteFill}
+      >
+        <Marker
+          coordinate={{
             latitude: location.latitude,
             longitude: location.longitude,
-            latitudeDelta: 0.005,
-            longitudeDelta: 0.005,
           }}
-          initialRegion={{
-            latitude: location.latitude,
-            longitude: location.longitude,
-            latitudeDelta: 0.005,
-            longitudeDelta: 0.005,
-          }}
-          className="object-cover"
-          style={StyleSheet.absoluteFill}
-        >
-          <Marker
-            coordinate={{
-              latitude: location.latitude,
-              longitude: location.longitude,
-            }}
-          />
-        </MapView>
-      )}
+        />
+      </MapView>
       <Card className="absolute bottom-0 w-full">
         <CardHeader>
           <CardTitle>Registro do ponto</CardTitle>

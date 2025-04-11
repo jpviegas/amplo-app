@@ -1,6 +1,5 @@
 import { ThemeToggle } from "@/components/ThemeToggle";
 import "@/global.css";
-
 import { setAndroidNavigationBar } from "@/lib/android-navigation-bar";
 import { NAV_THEME } from "@/lib/constants";
 import { useColorScheme } from "@/lib/useColorScheme";
@@ -11,9 +10,11 @@ import {
   ThemeProvider,
 } from "@react-navigation/native";
 import { PortalHost } from "@rn-primitives/portal";
+import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
+import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
-import * as React from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Platform } from "react-native";
 
 const LIGHT_THEME: Theme = {
@@ -28,9 +29,12 @@ const DARK_THEME: Theme = {
 export { ErrorBoundary } from "expo-router";
 
 export default function RootLayout() {
-  const hasMounted = React.useRef(false);
+  const [loaded] = useFonts({
+    Quicksand: require("../assets/fonts/Quicksand-Regular.ttf"),
+  });
+  const hasMounted = useRef(false);
   const { colorScheme, isDarkColorScheme } = useColorScheme();
-  const [isColorSchemeLoaded, setIsColorSchemeLoaded] = React.useState(false);
+  const [isColorSchemeLoaded, setIsColorSchemeLoaded] = useState(false);
 
   useIsomorphicLayoutEffect(() => {
     if (hasMounted.current) {
@@ -43,9 +47,12 @@ export default function RootLayout() {
     setAndroidNavigationBar(colorScheme);
     setIsColorSchemeLoaded(true);
     hasMounted.current = true;
+    if (loaded) {
+      SplashScreen.hide();
+    }
   }, []);
 
-  if (!isColorSchemeLoaded) {
+  if (!isColorSchemeLoaded || !loaded) {
     return null;
   }
 
@@ -72,5 +79,5 @@ export default function RootLayout() {
 
 const useIsomorphicLayoutEffect =
   Platform.OS === "web" && typeof window === "undefined"
-    ? React.useEffect
-    : React.useLayoutEffect;
+    ? useEffect
+    : useLayoutEffect;

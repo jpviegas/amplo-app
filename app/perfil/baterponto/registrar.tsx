@@ -1,63 +1,58 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Text } from "@/components/ui/text";
-import * as Device from "expo-device";
 import * as Location from "expo-location";
-import React, { useEffect, useState } from "react";
-import { Platform, StyleSheet, View } from "react-native";
-import Map, { Marker } from "react-native-maps";
+import React, { useRef, useState } from "react";
+import { StyleSheet, View } from "react-native";
+import MapView, { Marker, Region } from "react-native-maps";
 
 export default function Registrar() {
   const [location, setLocation] = useState({ latitude: 0, longitude: 0 });
-  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-  useEffect(() => {
-    async function getCurrentLocation() {
-      if (Platform.OS === "android" && !Device.isDevice) {
-        setErrorMsg(
-          "Oops, this will not work on Snack in an Android Emulator. Try it on your device!",
-        );
-        return;
-      }
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== "granted") {
-        setErrorMsg("Permissão para acessar a localização foi negada.");
-        return;
-      }
-
-      let { coords } = await Location.getCurrentPositionAsync();
-      if (coords) {
-        setLocation({
-          latitude: coords.latitude,
-          longitude: coords.longitude,
-        });
-      }
+  const getMyLocation = async (): Promise<Region | undefined> => {
+    let { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== "granted") return;
+    const { latitude, longitude } = (await Location.getCurrentPositionAsync({}))
+      .coords;
+    if (latitude && longitude) {
+      setLocation({
+        latitude,
+        longitude,
+      });
     }
-
-    getCurrentLocation();
-  }, []);
-
-  let text = "Aguarde...";
-  if (errorMsg) {
-    text = errorMsg;
-  } else if (location) {
-    text = JSON.stringify(location);
-  }
+    const region = {
+      latitude,
+      longitude,
+      latitudeDelta: 0.035,
+      longitudeDelta: 0.035,
+    };
+    return region;
+  };
 
   function handlePoint() {
     console.log(location);
   }
 
+  const mapRef = useRef<MapView>(null);
+
+  const goToMyLocation = async () => {
+    const region = await getMyLocation();
+    region && mapRef.current?.animateToRegion(region, 1000);
+  };
+
   return (
     <View className="flex-1 items-center justify-center">
-      <Map
+      <MapView
         region={{
           latitude: location.latitude,
           longitude: location.longitude,
           latitudeDelta: 0.005,
           longitudeDelta: 0.005,
         }}
-        className="object-cover"
+        ref={mapRef}
+        onMapReady={() => {
+          goToMyLocation();
+        }}
         showsUserLocation
         style={StyleSheet.absoluteFill}
       >
@@ -67,13 +62,17 @@ export default function Registrar() {
             longitude: location.longitude,
           }}
         />
-      </Map>
+      </MapView>
       <Card className="absolute bottom-0 w-full">
         <CardHeader>
           <CardTitle>Registro do ponto</CardTitle>
         </CardHeader>
         <CardContent className="gap-4">
-          <Text>{location.latitude === 0 ? "Aguarde..." : errorMsg}</Text>
+          <Text>
+            {location.latitude === 0
+              ? "Aguarde..."
+              : `${location.latitude}, ${location.longitude}`}
+          </Text>
           <Button
             size={"full"}
             disabled={location.latitude === 0 ? true : false}

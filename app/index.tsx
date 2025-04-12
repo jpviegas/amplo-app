@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Text } from "@/components/ui/text";
 import { useUserStore } from "@/store/userStore";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import { View } from "react-native";
@@ -17,16 +18,19 @@ export default function HomeScreen() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
 
-  function handleLogin({ email }: { email: string }) {
-    addUser(email);
-    Toast.show({
-      type: "success",
-      text1: "Login com sucesso!",
-      topOffset: insets.top === 0 ? 12 : insets.top,
-    });
-    if (email.length > 1) {
-      router.push("/perfil");
-    }
+  async function handleLogin({ email }: { email: string }) {
+    try {
+      await AsyncStorage.setItem("name", email);
+      addUser(email);
+      Toast.show({
+        type: "success",
+        text1: "Login com sucesso!",
+        topOffset: insets.top === 0 ? 12 : insets.top,
+      });
+      if (email.length > 1) {
+        router.push("/perfil");
+      }
+    } catch (error) {}
   }
 
   return (

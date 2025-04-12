@@ -4,7 +4,7 @@ import { Text } from "@/components/ui/text";
 import * as Location from "expo-location";
 import React, { useRef, useState } from "react";
 import { Alert, StyleSheet, View } from "react-native";
-import MapView, { Marker, Region } from "react-native-maps";
+import MapView, { Marker, PROVIDER_GOOGLE, Region } from "react-native-maps";
 
 export default function Registrar() {
   const [location, setLocation] = useState({ latitude: 0, longitude: 0 });
@@ -45,7 +45,7 @@ export default function Registrar() {
   return (
     <View className="flex-1 items-center justify-center">
       <MapView
-        provider="google"
+        provider={PROVIDER_GOOGLE}
         region={{
           latitude: location.latitude,
           longitude: location.longitude,

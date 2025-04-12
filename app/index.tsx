@@ -23,7 +23,6 @@ export default function HomeScreen() {
       await AsyncStorage.setItem("name", email);
       addUser(email);
       Toast.show({
-        type: "success",
         text1: "Login com sucesso!",
         topOffset: insets.top === 0 ? 12 : insets.top,
       });

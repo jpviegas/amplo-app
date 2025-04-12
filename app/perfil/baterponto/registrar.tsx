@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Text } from "@/components/ui/text";
 import * as Location from "expo-location";
 import React, { useRef, useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { Alert, StyleSheet, View } from "react-native";
 import MapView, { Marker, Region } from "react-native-maps";
 
 export default function Registrar() {
@@ -11,7 +11,9 @@ export default function Registrar() {
 
   const getMyLocation = async (): Promise<Region | undefined> => {
     let { status } = await Location.requestForegroundPermissionsAsync();
-    if (status !== "granted") return;
+    if (status !== "granted") {
+      Alert.alert("Permissão negada para acessar localização");
+    }
     const { latitude, longitude } = (await Location.getCurrentPositionAsync({}))
       .coords;
     if (latitude && longitude) {
@@ -43,6 +45,7 @@ export default function Registrar() {
   return (
     <View className="flex-1 items-center justify-center">
       <MapView
+        provider="google"
         region={{
           latitude: location.latitude,
           longitude: location.longitude,
@@ -61,6 +64,7 @@ export default function Registrar() {
             latitude: location.latitude,
             longitude: location.longitude,
           }}
+          title="Localização atual"
         />
       </MapView>
       <Card className="absolute bottom-0 w-full">

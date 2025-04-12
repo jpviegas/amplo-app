@@ -1,10 +1,22 @@
 import ThemedContainer from "@/components/ThemedContainer";
 import { Button } from "@/components/ui/button";
 import { Text } from "@/components/ui/text";
-import { Link } from "expo-router";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Link, useRouter } from "expo-router";
 import { View } from "react-native";
 
 export default function Perfil() {
+  const router = useRouter();
+
+  const logOut = async () => {
+    try {
+      await AsyncStorage.removeItem("name");
+      return router.replace("/");
+    } catch {
+      return router.replace("/");
+    }
+  };
+
   return (
     <ThemedContainer>
       <View className="h-full w-4/5 justify-evenly">
@@ -28,11 +40,11 @@ export default function Perfil() {
             <Text>Bater Ponto</Text>
           </Button>
         </Link>
-        <Link asChild href="/" replace>
-          <Button size={"full"} variant="destructive">
-            <Text>Sair</Text>
-          </Button>
-        </Link>
+        {/* <Link asChild href="/" replace> */}
+        <Button size={"full"} variant="destructive" onPress={logOut}>
+          <Text>Sair</Text>
+        </Button>
+        {/* </Link> */}
       </View>
     </ThemedContainer>
   );

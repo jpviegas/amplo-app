@@ -6,7 +6,7 @@ import { Text } from "@/components/ui/text";
 import { useUserStore } from "@/store/userStore";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useRouter } from "expo-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Toast from "react-native-toast-message";
@@ -17,6 +17,19 @@ export default function HomeScreen() {
   const { addUser } = useUserStore();
   const router = useRouter();
   const insets = useSafeAreaInsets();
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const value = await AsyncStorage.getItem("name");
+        if (value !== null) {
+          return router.replace("/perfil");
+        }
+      } catch (e) {}
+    };
+
+    getData();
+  }, []);
 
   async function handleLogin({ email }: { email: string }) {
     try {

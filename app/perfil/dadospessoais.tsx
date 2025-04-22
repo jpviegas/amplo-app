@@ -6,9 +6,11 @@ import { Text } from "@/components/ui/text";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useState } from "react";
 import { View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Toast from "react-native-toast-message";
 
 export default function DadosPessoais() {
+  const insets = useSafeAreaInsets();
   const [name, setName] = useState("");
   useEffect(() => {
     const getData = async () => {
@@ -28,12 +30,14 @@ export default function DadosPessoais() {
       // DOTO: await login(values)
       Toast.show({
         text1: "Senha alterada com sucesso!",
+        text2: "asas",
       });
       console.log(location);
     } catch (error) {
       Toast.show({
         type: "error",
         text1: "Não foi possível alterar sua senha!",
+        // topOffset: 0,
       });
     }
   }

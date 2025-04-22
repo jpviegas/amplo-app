@@ -42,7 +42,13 @@ export default function HomeScreen() {
       if (email.length > 1) {
         router.push("/perfil");
       }
-    } catch (error) {}
+    } catch (error) {
+      Toast.show({
+        type: "error",
+        text1: "Erro ao tentar login!",
+        topOffset: insets.top === 0 ? 12 : insets.top,
+      });
+    }
   }
 
   return (

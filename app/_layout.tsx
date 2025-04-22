@@ -3,6 +3,7 @@ import "@/global.css";
 import { setAndroidNavigationBar } from "@/lib/android-navigation-bar";
 import { NAV_THEME } from "@/lib/constants";
 import { useColorScheme } from "@/lib/useColorScheme";
+import toastConfig from "@/utils/toastConfig";
 import {
   DarkTheme,
   DefaultTheme,
@@ -74,7 +75,7 @@ export default function RootLayout() {
         <Stack.Screen name="+not-found" />
       </Stack>
       <PortalHost />
-      <Toast position="top" />
+      <Toast config={toastConfig} />
     </ThemeProvider>
   );
 }

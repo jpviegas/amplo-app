@@ -5,6 +5,7 @@ import * as Location from "expo-location";
 import React, { useRef, useState } from "react";
 import { Alert, StyleSheet, View } from "react-native";
 import MapView, { Marker, PROVIDER_GOOGLE, Region } from "react-native-maps";
+import Toast from "react-native-toast-message";
 
 export default function Registrar() {
   const [location, setLocation] = useState({ latitude: 0, longitude: 0 });
@@ -32,7 +33,17 @@ export default function Registrar() {
   };
 
   function handlePoint() {
-    console.log(location);
+    try {
+      Toast.show({
+        text1: "Ponto registrado com sucesso!",
+      });
+      console.log(location);
+    } catch (error) {
+      Toast.show({
+        type: "error",
+        text1: "Não foi possível registar o ponto!",
+      });
+    }
   }
 
   const mapRef = useRef<MapView>(null);

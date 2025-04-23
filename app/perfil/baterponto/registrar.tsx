@@ -63,6 +63,12 @@ export default function Registrar() {
           latitudeDelta: 0.005,
           longitudeDelta: 0.005,
         }}
+        initialRegion={{
+          latitude: -5.7945,
+          longitude: -35.211,
+          latitudeDelta: 0.01,
+          longitudeDelta: 0.01,
+        }}
         ref={mapRef}
         onMapReady={() => {
           goToMyLocation();

@@ -4,32 +4,34 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Text } from "@/components/ui/text";
 import { useUserStore } from "@/store/userStore";
+import { AuthContext } from "@/utils/authContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useRouter } from "expo-router";
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Toast from "react-native-toast-message";
 
 export default function HomeScreen() {
+  const authContext = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { addUser } = useUserStore();
   const router = useRouter();
   const insets = useSafeAreaInsets();
 
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const value = await AsyncStorage.getItem("name");
-        if (value !== null) {
-          return router.replace("/perfil");
-        }
-      } catch (e) {}
-    };
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     try {
+  //       const value = await AsyncStorage.getItem("name");
+  //       if (value !== null) {
+  //         return router.replace("/perfil");
+  //       }
+  //     } catch (e) {}
+  //   };
 
-    getData();
-  }, []);
+  //   getData();
+  // }, []);
 
   async function handleLogin({ email }: { email: string }) {
     try {
@@ -39,9 +41,7 @@ export default function HomeScreen() {
         text1: "Login com sucesso!",
         topOffset: insets.top === 0 ? 12 : insets.top,
       });
-      if (email.length > 1) {
-        router.push("/perfil");
-      }
+      authContext.logIn();
     } catch (error) {
       Toast.show({
         type: "error",

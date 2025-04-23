@@ -1,19 +1,22 @@
 import ThemedContainer from "@/components/ThemedContainer";
 import { Button } from "@/components/ui/button";
 import { Text } from "@/components/ui/text";
+import { AuthContext } from "@/utils/authContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Link, useRouter } from "expo-router";
+import { Link } from "expo-router";
+import { useContext } from "react";
 import { View } from "react-native";
 
 export default function Perfil() {
-  const router = useRouter();
+  const authContext = useContext(AuthContext);
 
   const logOut = async () => {
     try {
       await AsyncStorage.removeItem("name");
-      return router.replace("/");
+      authContext.logOut();
+      // return router.replace("/");
     } catch {
-      return router.replace("/");
+      // return router.replace("/");
     }
   };
 

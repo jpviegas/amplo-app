@@ -3,6 +3,7 @@ import "@/global.css";
 import { setAndroidNavigationBar } from "@/lib/android-navigation-bar";
 import { NAV_THEME } from "@/lib/constants";
 import { useColorScheme } from "@/lib/useColorScheme";
+import { AuthProvider } from "@/utils/authContext";
 import toastConfig from "@/utils/toastConfig";
 import {
   DarkTheme,
@@ -59,24 +60,26 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
-      <StatusBar style={"auto"} />
-      <Stack>
-        <Stack.Screen
-          name="index"
-          options={{
-            headerBackVisible: false,
-            headerTitle: () => false,
-            headerTransparent: true,
-            headerRight: () => <ThemeToggle />,
-          }}
-        />
-        <Stack.Screen name="perfil" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <PortalHost />
-      <Toast config={toastConfig} />
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
+        <StatusBar style={"auto"} />
+        <Stack>
+          <Stack.Screen
+            name="index"
+            options={{
+              headerBackVisible: false,
+              headerTitle: () => false,
+              headerTransparent: true,
+              headerRight: () => <ThemeToggle />,
+            }}
+          />
+          <Stack.Screen name="perfil" options={{ headerShown: false }} />
+          <Stack.Screen name="+not-found" />
+        </Stack>
+        <PortalHost />
+        <Toast position="top" config={toastConfig} />
+      </ThemeProvider>
+    </AuthProvider>
   );
 }
 

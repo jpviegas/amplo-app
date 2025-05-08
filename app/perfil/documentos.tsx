@@ -1,52 +1,66 @@
-import { Button } from "@/components/ui/button";
-import { Text } from "@/components/ui/text";
-import React, { useRef, useState } from "react";
-import { View } from "react-native";
-import SignatureCanvas from "react-native-signature-canvas";
+import React, { useState } from "react";
+import { Image, StyleSheet, View } from "react-native";
+import Signature from "react-native-signature-canvas";
 
 export default function SignatureScreen() {
-  const [signature, setSignature] = useState(null);
-  const ref = useRef();
+  const [signature, setSign] = useState(null);
 
-  const handleSignature = (signature) => {
+  const handleOK = (signature) => {
     console.log(signature);
-    setSignature(signature);
+    setSign(signature);
   };
 
   const handleEmpty = () => {
     console.log("Empty");
   };
 
-  const handleClear = () => {
-    console.log("Clear success!");
-  };
-
-  const handleUndo = () => {
-    ref.current.undo();
-    console.log("Undo success!");
-  };
-
-  const handleEnd = () => {
-    ref.current.readSignature();
-  };
-
+  const style = `.m-signature-pad--footer
+    .button {
+      background-color: red;
+      color: #FFF;
+    }`;
   return (
-    <View className="flex h-3/5 flex-initial">
-      <SignatureCanvas
-        ref={ref}
-        onEnd={handleEnd}
-        onOK={handleSignature}
-        onEmpty={handleEmpty}
-        onClear={handleClear}
-        descriptionText="Assine aqui"
-        clearText="Limpar"
-        confirmText="Enviar"
-      />
-      <View className="gap-4">
-        <Button onPress={() => handleUndo()}>
-          <Text>Desfazer</Text>
-        </Button>
+    <View style={{ flex: 1 }}>
+      <View style={styles.preview}>
+        {signature ? (
+          <Image
+            resizeMode={"contain"}
+            style={{ width: 335, height: 114 }}
+            source={{ uri: signature }}
+          />
+        ) : null}
       </View>
+      <Signature
+        onOK={handleOK}
+        onEmpty={handleEmpty}
+        descriptionText="Sign"
+        clearText="Clear"
+        confirmText="Save"
+        webStyle={style}
+      />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  preview: {
+    width: 335,
+    height: 114,
+    backgroundColor: "#F8F8F8",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 15,
+  },
+  previewText: {
+    color: "#FFF",
+    fontSize: 14,
+    height: 40,
+    lineHeight: 40,
+    paddingLeft: 10,
+    paddingRight: 10,
+    backgroundColor: "#69B2FF",
+    width: 120,
+    textAlign: "center",
+    marginTop: 10,
+  },
+});

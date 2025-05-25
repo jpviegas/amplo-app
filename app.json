@@ -62,13 +62,6 @@
         {
           "locationAlwaysAndWhenInUsePermission": "Permitir que a AMPLO SERVIÇOS utilize sua localização."
         }
-      ],
-      [
-        "expo-maps",
-        {
-          "requestLocationPermission": "true",
-          "locationPermission": "Permitir que a AMPLO SERVIÇOS utilize sua localização."
-        }
       ]
     ],
     "experiments": {

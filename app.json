@@ -67,7 +67,7 @@
         "expo-maps",
         {
           "requestLocationPermission": "true",
-          "locationPermission": "Allow $(PRODUCT_NAME) to use your location"
+          "locationPermission": "Permitir que a AMPLO SERVIÇOS utilize sua localização."
         }
       ]
     ],

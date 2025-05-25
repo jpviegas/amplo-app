@@ -12,10 +12,11 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.jaaoviegas.amploapp",
       "infoPlist": {
-        "ITSAppUsesNonExemptEncryption": false
+        "ITSAppUsesNonExemptEncryption": false,
+        "NSLocationWhenInUseUsageDescription": "Este app usa sua localização para mostrar mapas."
       },
       "config": {
-        "googleMapsApiKey": "process.env.GOOGLE_MAPS_API_KEY"
+        "googleMapsApiKey": "AIzaSyBtP-Sv-Mwx_3zVROlFjhcKa6aiQ66tQes"
       }
     },
     "android": {
@@ -28,11 +29,12 @@
         "android.permission.ACCESS_COARSE_LOCATION",
         "android.permission.ACCESS_FINE_LOCATION",
         "WRITE_EXTERNAL_STORAGE",
-        "READ_EXTERNAL_STORAGE"
+        "READ_EXTERNAL_STORAGE",
+        "ACCESS_FINE_LOCATION"
       ],
       "config": {
         "googleMaps": {
-          "apiKey": "process.env.GOOGLE_MAPS_API_KEY"
+          "apiKey": "AIzaSyBtP-Sv-Mwx_3zVROlFjhcKa6aiQ66tQes"
         }
       }
     },
@@ -59,6 +61,13 @@
         "expo-location",
         {
           "locationAlwaysAndWhenInUsePermission": "Permitir que a AMPLO SERVIÇOS utilize sua localização."
+        }
+      ],
+      [
+        "expo-maps",
+        {
+          "requestLocationPermission": "true",
+          "locationPermission": "Allow $(PRODUCT_NAME) to use your location"
         }
       ]
     ],

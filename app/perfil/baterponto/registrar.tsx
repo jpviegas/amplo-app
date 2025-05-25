@@ -4,7 +4,7 @@ import { Text } from "@/components/ui/text";
 import * as Location from "expo-location";
 import React, { useRef, useState } from "react";
 import { Alert, StyleSheet, View } from "react-native";
-import MapView, { Marker, PROVIDER_GOOGLE, Region } from "react-native-maps";
+import MapView, { Marker, Region } from "react-native-maps";
 import Toast from "react-native-toast-message";
 
 export default function Registrar() {
@@ -56,7 +56,6 @@ export default function Registrar() {
   return (
     <View className="flex-1 items-center justify-center">
       <MapView
-        provider={PROVIDER_GOOGLE}
         region={{
           latitude: location.latitude,
           longitude: location.longitude,
@@ -64,8 +63,8 @@ export default function Registrar() {
           longitudeDelta: 0.005,
         }}
         initialRegion={{
-          latitude: -5.7945,
-          longitude: -35.211,
+          latitude: location.latitude,
+          longitude: location.longitude,
           latitudeDelta: 0.01,
           longitudeDelta: 0.01,
         }}

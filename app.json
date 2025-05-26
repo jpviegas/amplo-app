@@ -16,7 +16,7 @@
         "NSLocationWhenInUseUsageDescription": "Este app usa sua localização para mostrar mapas."
       },
       "config": {
-        "googleMapsApiKey": "AIzaSyBtP-Sv-Mwx_3zVROlFjhcKa6aiQ66tQes"
+        "googleMapsApiKey": "process.env.GOOGLE_MAPS_API_KEY"
       }
     },
     "android": {
@@ -34,7 +34,7 @@
       ],
       "config": {
         "googleMaps": {
-          "apiKey": "AIzaSyBtP-Sv-Mwx_3zVROlFjhcKa6aiQ66tQes"
+          "apiKey": "process.env.GOOGLE_MAPS_API_KEY"
         }
       }
     },

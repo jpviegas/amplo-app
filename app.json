@@ -62,7 +62,8 @@
         {
           "locationAlwaysAndWhenInUsePermission": "Permitir que a AMPLO SERVIÇOS utilize sua localização."
         }
-      ]
+      ],
+      ["expo-font", { "fonts": ["./assets/fonts/FiraSans-MediumItalic.ttf"] }]
     ],
     "experiments": {
       "typedRoutes": true

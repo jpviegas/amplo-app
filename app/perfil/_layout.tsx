@@ -31,7 +31,7 @@ export default function PerfilLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: "Perfil",
+          title: "Início",
           tabBarIcon: ({ color, focused }) => (
             <Home size={28} color={color} strokeWidth={focused ? 2 : 1} />
           ),

@@ -32,24 +32,24 @@ export default function DadosPessoais() {
         text1: "Senha alterada com sucesso!",
         text2: "asas",
       });
-      console.log(location);
     } catch (error) {
       Toast.show({
         type: "error",
         text1: "Não foi possível alterar sua senha!",
-        // topOffset: 0,
       });
     }
   }
 
   return (
     <ThemedContainer>
-      <View className="h-full w-4/5 justify-evenly">
+      <View className="h-full w-11/12 justify-around">
+        <Text className="text-2xl font-semibold">Dados Pessoais</Text>
         <Card>
-          <CardHeader>
-            <CardTitle>Nome do funcionario: {name}</CardTitle>
-          </CardHeader>
-          <CardContent>
+          {/* <CardHeader>
+            <CardTitle>Nome: {name}</CardTitle>
+          </CardHeader> */}
+          <CardContent className="my-4 gap-4">
+            <Text>Nome: {name}</Text>
             <Text>informações pessoais</Text>
             <Text>mais informações...</Text>
             <Text>etc</Text>
@@ -59,9 +59,13 @@ export default function DadosPessoais() {
           <CardHeader>
             <CardTitle>Trocar senha</CardTitle>
           </CardHeader>
-          <CardContent className="gap-4">
+          <CardContent className="my-4 gap-4">
             <Input placeholder="nova senha" />
-            <Button size={"full"} onPress={() => handleChangePass()}>
+            <Button
+              size={"full"}
+              onPress={() => handleChangePass()}
+              className="w-4/5 self-center"
+            >
               <Text>Confirmar</Text>
             </Button>
           </CardContent>

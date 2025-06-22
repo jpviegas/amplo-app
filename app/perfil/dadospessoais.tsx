@@ -45,9 +45,6 @@ export default function DadosPessoais() {
       <View className="h-full w-11/12 justify-around">
         <Text className="text-2xl font-semibold">Dados Pessoais</Text>
         <Card>
-          {/* <CardHeader>
-            <CardTitle>Nome: {name}</CardTitle>
-          </CardHeader> */}
           <CardContent className="my-4 gap-4">
             <Text>Nome: {name}</Text>
             <Text>informações pessoais</Text>

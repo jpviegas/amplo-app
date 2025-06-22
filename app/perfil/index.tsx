@@ -26,7 +26,7 @@ export default function Perfil() {
 
   return (
     <ThemedContainer>
-      <View className="h-full w-4/5 justify-evenly gap-4">
+      <View className="h-full w-11/12 justify-evenly gap-4">
         <Card className="flex-1 justify-center">
           <Link href="/perfil/dadospessoais">
             <CardContent className="flex-row gap-8">

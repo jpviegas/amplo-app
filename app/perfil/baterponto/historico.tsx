@@ -6,7 +6,7 @@ import { FlatList, View } from "react-native";
 export default function Historico() {
   return (
     <ThemedContainer>
-      <View className="flex h-full w-4/5 justify-evenly gap-4">
+      <View className="flex h-full w-11/12 justify-evenly gap-4">
         <Text className="text-lg">Histórico do seu registro dos pontos</Text>
         <View className="flex-row justify-around gap-4">
           <Button className="w-2/5">
@@ -17,7 +17,7 @@ export default function Historico() {
           </Button>
         </View>
         <FlatList
-          className="flex-1 gap-4"
+          className="flex-1 gap-8"
           data={[
             {
               data: "22/05/2025",
@@ -41,7 +41,7 @@ export default function Historico() {
             },
           ]}
           renderItem={({ item }) => (
-            <Text className="mb-4 bg-primary-foreground text-center">
+            <Text className="mx-auto mb-4 w-full bg-primary-foreground py-2 ps-4 text-justify">
               {`data: ${item.data} | hora: ${item.hora} | tipo: ${item.tipo}`}
             </Text>
           )}

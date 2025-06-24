@@ -82,6 +82,15 @@ export default function RootLayout() {
               headerRight: () => <ThemeToggle />,
             }}
           />
+          <Stack.Screen
+            name="acesso"
+            options={{
+              headerBackVisible: false,
+              headerTitle: () => false,
+              headerTransparent: true,
+              headerRight: () => <ThemeToggle />,
+            }}
+          />
           <Stack.Screen name="perfil" options={{ headerShown: false }} />
           <Stack.Screen name="+not-found" />
         </Stack>

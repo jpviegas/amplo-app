@@ -1,24 +1,22 @@
 import ImageViewer from "@/components/ImageViewer";
 import ThemedContainer from "@/components/ThemedContainer";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { Text } from "@/components/ui/text";
+import { useColorScheme } from "@/lib/useColorScheme";
 import { useUserStore } from "@/store/userStore";
 import { AuthContext } from "@/utils/authContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-// import { useRouter } from "expo-router";
 import { Eye, EyeOff, LockKeyhole, User } from "lucide-react-native";
 import { useContext, useState } from "react";
 import { View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Toast from "react-native-toast-message";
 
-import { useColorScheme } from "@/lib/useColorScheme";
-import { Link } from "expo-router";
-
 export default function Login() {
   const { isDarkColorScheme } = useColorScheme();
-
   const authContext = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,7 +24,8 @@ export default function Login() {
   const { addUser } = useUserStore();
   // const router = useRouter();
   const insets = useSafeAreaInsets();
-
+  const [checked, setChecked] = useState(false);
+  // const [isChecked, setChecked] = useState(false);
   // useEffect(() => {
   //   const getData = async () => {
   //     try {
@@ -61,52 +60,67 @@ export default function Login() {
 
   return (
     <ThemedContainer>
-      <View className="h-4/5 w-5/6 justify-around gap-4">
+      <View className="h-4/5 w-11/12 justify-around gap-4">
         <View className="items-center">
           <ImageViewer imgSource={require("@/assets/images/splash.png")} />
         </View>
-        <View className="gap-4">
-          <Text>Email:</Text>
-          <View className="mb-5 w-full flex-row items-center gap-2 border-b-[1px] border-primary">
-            <User size={24} color={isDarkColorScheme ? "white" : "black"} />
-            <Input
-              className="flex-1 border-0 bg-inherit"
-              textContentType="emailAddress"
-              placeholder="digite seu email"
-              value={email}
-              onChangeText={(e) => setEmail(e)}
-            />
+        <View>
+          <View className="mb-4">
+            <Text>EMAIL</Text>
+            <View className="mb-5 w-full flex-row items-center gap-2 border-b-[1px] border-secondary-foreground">
+              <User size={24} color={isDarkColorScheme ? "white" : "black"} />
+              <Input
+                className="flex-1 border-0 bg-inherit"
+                textContentType="emailAddress"
+                placeholder="digite seu email"
+                value={email}
+                onChangeText={(e) => setEmail(e)}
+              />
+            </View>
           </View>
-          <Text>Senha:</Text>
-          <View className="mb-5 w-full flex-row items-center gap-2 border-b-[1px] border-primary">
-            <LockKeyhole
-              size={24}
-              color={isDarkColorScheme ? "white" : "black"}
-            />
-            <Input
-              className="w-4/5 border-0 bg-inherit"
-              textContentType="password"
-              placeholder="digite sua senha"
-              value={password}
-              secureTextEntry={securePass}
-              onChangeText={(e) => setPassword(e)}
-            />
-            {securePass ? (
-              <Eye
+          <View>
+            <Text>SENHA</Text>
+            <View className="mb-2 w-full flex-row items-center gap-2 border-b-[1px] border-secondary-foreground">
+              <LockKeyhole
                 size={24}
                 color={isDarkColorScheme ? "white" : "black"}
-                onPress={() => setSecurePass(!securePass)}
-                className="absolute right-[-10] top-1.5"
               />
-            ) : (
-              <EyeOff
-                size={24}
-                color={isDarkColorScheme ? "white" : "black"}
-                onPress={() => setSecurePass(!securePass)}
-                className="absolute left-10 top-1.5"
+              <Input
+                className="w-4/5 border-0 bg-inherit"
+                textContentType="password"
+                placeholder="digite sua senha"
+                value={password}
+                secureTextEntry={securePass}
+                onChangeText={(e) => setPassword(e)}
               />
-            )}
+              {securePass ? (
+                <Eye
+                  size={24}
+                  color={isDarkColorScheme ? "white" : "black"}
+                  onPress={() => setSecurePass(!securePass)}
+                  className="absolute right-[-10] top-1.5"
+                />
+              ) : (
+                <EyeOff
+                  size={24}
+                  color={isDarkColorScheme ? "white" : "black"}
+                  onPress={() => setSecurePass(!securePass)}
+                  className="absolute left-10 top-1.5"
+                />
+              )}
+            </View>
           </View>
+          <Text className="text-right italic text-primary">
+            Esqueceu sua senha?
+          </Text>
+        </View>
+        <View className="flex-row items-center gap-4">
+          <Checkbox checked={checked} onCheckedChange={setChecked} />
+          <Label onPress={() => setChecked(!checked)}>
+            <Text className="text-lg font-normal">
+              Acesso com FaceID ou biometria
+            </Text>
+          </Label>
         </View>
         <View className="gap-4">
           <Button
@@ -117,12 +131,12 @@ export default function Login() {
           >
             <Text>Entrar</Text>
           </Button>
-          <View className="items-center">
+          {/* <View className="items-center">
             <Text>Ainda não possui conta?</Text>
             <Link asChild href={"/cadastro"}>
               <Text className="text-2xl text-primary">Crie sua conta aqui</Text>
             </Link>
-          </View>
+          </View> */}
         </View>
       </View>
     </ThemedContainer>

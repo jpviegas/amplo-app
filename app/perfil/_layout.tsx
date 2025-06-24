@@ -56,13 +56,13 @@ export default function PerfilLayout() {
         }}
       />
       <Tabs.Screen
-        name="folha"
+        name="documentos"
         options={{
           href: null,
         }}
       />
       <Tabs.Screen
-        name="documentos"
+        name="folha"
         options={{
           href: null,
         }}

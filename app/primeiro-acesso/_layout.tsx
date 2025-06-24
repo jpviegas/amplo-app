@@ -31,9 +31,9 @@ const DARK_THEME: Theme = {
 
 export { ErrorBoundary } from "expo-router";
 
-export default function RootLayout() {
+export default function PrimeiroAcessoLayout() {
   const [loaded] = useFonts({
-    Quicksand: require("../assets/fonts/Quicksand-Regular.ttf"),
+    Quicksand: require("../../assets/fonts/Quicksand-Regular.ttf"),
   });
   const hasMounted = useRef(false);
   const { colorScheme, isDarkColorScheme } = useColorScheme();
@@ -74,7 +74,7 @@ export default function RootLayout() {
             }}
           />
           <Stack.Screen
-            name="login"
+            name="criar-senha"
             options={{
               headerBackVisible: false,
               headerTitle: () => false,
@@ -82,25 +82,6 @@ export default function RootLayout() {
               headerRight: () => <ThemeToggle />,
             }}
           />
-          <Stack.Screen
-            name="acesso"
-            options={{
-              headerBackVisible: false,
-              headerTitle: () => false,
-              headerTransparent: true,
-              headerRight: () => <ThemeToggle />,
-            }}
-          />
-          <Stack.Screen name="perfil" options={{ headerShown: false }} />
-          <Stack.Screen
-            name="primeiro-acesso"
-            options={{ headerShown: false }}
-          />
-          {/* <Stack.Screen
-            name="primeiro-acesso/criar-senha"
-            options={{ headerShown: false }}
-          /> */}
-          <Stack.Screen name="+not-found" />
         </Stack>
         <PortalHost />
         <Toast position="top" config={toastConfig} />

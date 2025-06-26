@@ -25,29 +25,26 @@ export default function HomeScreen() {
 
   return (
     <ThemedContainer>
-      <View className="h-4/5 w-11/12 justify-around">
+      <View className="h-4/5 w-11/12 justify-around gap-4">
+        <Text className="text-center text-2xl font-bold text-primary">
+          Acesse sua conta
+        </Text>
         <View className="items-center">
           <ImageViewer imgSource={require("@/assets/images/splash.png")} />
         </View>
-        <Text className="text-center text-2xl font-bold text-primary">
-          Acessar o App
-        </Text>
-        <Text>
-          Para acessar todos os serviços do app, é necessário possuir uma conta
-        </Text>
-        <View>
-          <Link asChild href={"/acesso"}>
+        <View className="gap-4">
+          <Link href={"/login"} asChild>
             <Button className="mt-5 w-4/5 self-center" size={"full"}>
-              <Text>JÁ POSSUO ACESSO</Text>
+              <Text>ENTRAR</Text>
             </Button>
           </Link>
-          <Link asChild href={"/cadastro"}>
+          <Link href={"/primeiro-acesso"} asChild>
             <Button
               className="mt-5 w-4/5 self-center bg-inherit"
               size={"full"}
               variant={"outline"}
             >
-              <Text className="text-primary">NÃO POSSUO ACESSO</Text>
+              <Text className="text-primary">PRIMEIRO ACESSO</Text>
             </Button>
           </Link>
         </View>

@@ -27,12 +27,12 @@ export default function Perfil() {
 
   return (
     <ThemedContainer>
-      <View className="w-full flex-1 items-center justify-between">
+      <View className="w-full flex-1 items-center justify-between gap-2">
         <View className="items-center">
           <ImageViewer imgSource={require("@/assets/images/splash.png")} />
         </View>
-        <View className="w-11/12 gap-4">
-          <View className="flex-row gap-4">
+        <View className="w-full flex-1 justify-evenly bg-primary dark:bg-black">
+          <View className="flex-row gap-4 px-4">
             <Card className="flex-1">
               <Link href="/perfil/dadospessoais">
                 <CardContent className="items-center">
@@ -67,7 +67,7 @@ export default function Perfil() {
               </Link>
             </Card>
           </View>
-          <View className="flex-row gap-4">
+          <View className="flex-row gap-4 px-4">
             <Card className="flex-1">
               <Link href="/perfil/folha">
                 <CardContent className="items-center">
@@ -104,7 +104,7 @@ export default function Perfil() {
               </Link>
             </Card>
           </View>
-          <View className="flex-row gap-4">
+          <View className="flex-row gap-4 px-4">
             <Card className="flex-1">
               <Link href="/perfil/folha">
                 <CardContent className="items-center">
@@ -147,7 +147,7 @@ export default function Perfil() {
             size={"full"}
             variant="destructive"
             onPress={logOut}
-            className="mb-6 w-4/5 self-center"
+            className="w-4/5 self-center"
           >
             <Text>Sair</Text>
           </Button>

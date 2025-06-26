@@ -1,4 +1,3 @@
-import { ThemeToggle } from "@/components/ThemeToggle";
 import "@/global.css";
 import { setAndroidNavigationBar } from "@/lib/android-navigation-bar";
 import { NAV_THEME } from "@/lib/constants";
@@ -33,7 +32,7 @@ export { ErrorBoundary } from "expo-router";
 
 export default function PrimeiroAcessoLayout() {
   const [loaded] = useFonts({
-    Quicksand: require("../../assets/fonts/Quicksand-Regular.ttf"),
+    Quicksand: require("@/assets/fonts/Quicksand-Regular.ttf"),
   });
   const hasMounted = useRef(false);
   const { colorScheme, isDarkColorScheme } = useColorScheme();
@@ -64,24 +63,8 @@ export default function PrimeiroAcessoLayout() {
       <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
         <StatusBar style={"auto"} />
         <Stack>
-          <Stack.Screen
-            name="index"
-            options={{
-              headerBackVisible: false,
-              headerTitle: () => false,
-              headerTransparent: true,
-              headerRight: () => <ThemeToggle />,
-            }}
-          />
-          <Stack.Screen
-            name="criar-senha"
-            options={{
-              headerBackVisible: false,
-              headerTitle: () => false,
-              headerTransparent: true,
-              headerRight: () => <ThemeToggle />,
-            }}
-          />
+          <Stack.Screen name="index" options={{ headerShown: false }} />
+          <Stack.Screen name="criar-senha" options={{ headerShown: false }} />
         </Stack>
         <PortalHost />
         <Toast position="top" config={toastConfig} />

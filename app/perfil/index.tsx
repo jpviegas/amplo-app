@@ -1,3 +1,4 @@
+import ImageViewer from "@/components/ImageViewer";
 import ThemedContainer from "@/components/ThemedContainer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -6,7 +7,7 @@ import { useColorScheme } from "@/lib/useColorScheme";
 import { AuthContext } from "@/utils/authContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Link } from "expo-router";
-import { FileSignature, FileText, MapPin, User } from "lucide-react-native";
+import { FileSignature, User } from "lucide-react-native";
 import React, { useContext } from "react";
 import { View } from "react-native";
 
@@ -26,53 +27,131 @@ export default function Perfil() {
 
   return (
     <ThemedContainer>
-      <View className="h-full w-11/12 justify-evenly gap-4">
-        <Card className="flex-1 justify-center">
-          <Link href="/perfil/dadospessoais">
-            <CardContent className="flex-row gap-8">
-              <User size={32} color={isDarkColorScheme ? "white" : "black"} />
-              <Text className="align-middle text-xl">DADOS PESSOAIS</Text>
-            </CardContent>
-          </Link>
-        </Card>
-        <Card className="flex-1 justify-center">
-          <Link href="/perfil/folha">
-            <CardContent className="flex-row gap-8">
-              <FileText
-                size={32}
-                color={isDarkColorScheme ? "white" : "black"}
-              />
-              <Text className="align-middle text-xl">FOLHA DE PAGAMENTO</Text>
-            </CardContent>
-          </Link>
-        </Card>
-        <Card className="flex-1 justify-center">
-          <Link href="/perfil/documentos">
-            <CardContent className="flex-row gap-8">
-              <FileSignature
-                size={32}
-                color={isDarkColorScheme ? "white" : "black"}
-              />
-              <Text className="align-middle text-xl">DOCUMENTOS</Text>
-            </CardContent>
-          </Link>
-        </Card>
-        <Card className="flex-1 justify-center">
-          <Link href="/perfil/baterponto">
-            <CardContent className="flex-row gap-8">
-              <MapPin size={32} color={isDarkColorScheme ? "white" : "black"} />
-              <Text className="align-middle text-xl">BATER PONTO</Text>
-            </CardContent>
-          </Link>
-        </Card>
-        <Button
-          size={"full"}
-          variant="destructive"
-          onPress={logOut}
-          className="mb-6 w-4/5 self-center"
-        >
-          <Text>Sair</Text>
-        </Button>
+      <View className="w-full flex-1 items-center justify-between">
+        <View className="items-center">
+          <ImageViewer imgSource={require("@/assets/images/splash.png")} />
+        </View>
+        <View className="w-11/12 gap-4">
+          <View className="flex-row gap-4">
+            <Card className="flex-1">
+              <Link href="/perfil/dadospessoais">
+                <CardContent className="items-center">
+                  <User
+                    size={32}
+                    color={isDarkColorScheme ? "white" : "black"}
+                  />
+                  <Text className="text-center text-xl">Dados Pessoais</Text>
+                </CardContent>
+              </Link>
+            </Card>
+            <Card className="flex-1">
+              <Link href="/perfil/assinatura">
+                <CardContent className="items-center">
+                  <FileSignature
+                    size={32}
+                    color={isDarkColorScheme ? "white" : "black"}
+                  />
+                  <Text className="text-sm">Documentos</Text>
+                </CardContent>
+              </Link>
+            </Card>
+            <Card className="flex-1">
+              <Link href="/perfil/folha">
+                <CardContent className="items-center">
+                  <FileSignature
+                    size={32}
+                    color={isDarkColorScheme ? "white" : "black"}
+                  />
+                  <Text className="text-base">Pagamento Benefício</Text>
+                </CardContent>
+              </Link>
+            </Card>
+          </View>
+          <View className="flex-row gap-4">
+            <Card className="flex-1">
+              <Link href="/perfil/folha">
+                <CardContent className="items-center">
+                  <FileSignature
+                    size={32}
+                    color={isDarkColorScheme ? "white" : "black"}
+                  />
+                  <Text className="text-center text-xl">Férias</Text>
+                </CardContent>
+              </Link>
+            </Card>
+            <Card className="flex-1">
+              <Link href="/perfil/baterponto">
+                <CardContent className="items-center">
+                  <FileSignature
+                    size={32}
+                    color={isDarkColorScheme ? "white" : "black"}
+                  />
+                  <Text className="text-center text-lg">Ponto Eletrônico</Text>
+                </CardContent>
+              </Link>
+            </Card>
+            <Card className="flex-1">
+              <Link href="/perfil/assinatura">
+                <CardContent className="items-center">
+                  <FileSignature
+                    size={32}
+                    color={isDarkColorScheme ? "white" : "black"}
+                  />
+                  <Text className="text-center text-base">
+                    Assinatura Eletrônica
+                  </Text>
+                </CardContent>
+              </Link>
+            </Card>
+          </View>
+          <View className="flex-row gap-4">
+            <Card className="flex-1">
+              <Link href="/perfil/folha">
+                <CardContent className="items-center">
+                  <FileSignature
+                    size={32}
+                    color={isDarkColorScheme ? "white" : "black"}
+                  />
+                  <Text className="text-center text-sm">
+                    Área de Treinamento
+                  </Text>
+                </CardContent>
+              </Link>
+            </Card>
+            <Card className="flex-1">
+              <Link href="/perfil/folha">
+                <CardContent className="items-center">
+                  <FileSignature
+                    size={32}
+                    color={isDarkColorScheme ? "white" : "black"}
+                  />
+                  <Text className="text-center text-sm">Aviso Comunicado</Text>
+                </CardContent>
+              </Link>
+            </Card>
+            <Card className="flex-1">
+              <Link href="/perfil/folha">
+                <CardContent className="items-center">
+                  <FileSignature
+                    size={32}
+                    color={isDarkColorScheme ? "white" : "black"}
+                  />
+                  <Text className="text-center text-sm">
+                    Atendimento Conecta
+                  </Text>
+                </CardContent>
+              </Link>
+            </Card>
+          </View>
+          <Button
+            size={"full"}
+            variant="destructive"
+            onPress={logOut}
+            className="mb-6 w-4/5 self-center"
+          >
+            <Text>Sair</Text>
+          </Button>
+        </View>
       </View>
     </ThemedContainer>
   );

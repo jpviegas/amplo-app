@@ -45,8 +45,8 @@ export default function Perfil() {
               </Link>
             </Card>
             <Card className="flex-1">
-              <Link href="/perfil/assinatura">
-                <CardContent className="items-center">
+              <Link href="/perfil/assinatura" className="flex-1">
+                <CardContent className="h-full items-center justify-between">
                   <FileSignature
                     size={32}
                     color={isDarkColorScheme ? "white" : "black"}

@@ -70,6 +70,14 @@ export default function PerfilLayout() {
           <Stack.Screen name="baterponto" options={{ headerShown: false }} />
           <Stack.Screen name="dadospessoais" options={{ headerShown: false }} />
           <Stack.Screen name="folha" options={{ headerShown: false }} />
+          <Stack.Screen
+            name="dadospessoais/index"
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="dadospessoais/perfil"
+            options={{ headerShown: false }}
+          />
         </Stack>
       </ThemeProvider>
     </AuthProvider>

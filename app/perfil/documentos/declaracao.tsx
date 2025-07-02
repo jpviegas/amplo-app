@@ -5,11 +5,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Text } from "@/components/ui/text";
 import { useColorScheme } from "@/lib/useColorScheme";
 import { Link } from "expo-router";
-import { Lock, UserRoundCog } from "lucide-react-native";
+import { UserRoundCog } from "lucide-react-native";
 import React from "react";
 import { View } from "react-native";
 
-export default function DadosPessoais() {
+export default function Declaracao() {
   const { isDarkColorScheme } = useColorScheme();
 
   return (
@@ -28,18 +28,27 @@ export default function DadosPessoais() {
                       size={32}
                       color={isDarkColorScheme ? "white" : "black"}
                     />
-                    <Text>Perfil</Text>
-                  </CardContent>
-                </Link>
-              </Card>
-              <Card className="flex-1">
-                <Link href="./dadospessoais/alterar-senha">
-                  <CardContent className="py-safe w-full items-center justify-evenly">
-                    <Lock
-                      size={32}
-                      color={isDarkColorScheme ? "white" : "black"}
-                    />
-                    <Text>Alterar Senha</Text>
+                    <View>
+                      <Text>Declaração I.R.R.F</Text>
+                      <View className="flex-row items-center justify-center gap-2">
+                        <View>
+                          <Text>icone</Text>
+                          <Text>Assinar</Text>
+                        </View>
+                        <View>
+                          <Text>icone</Text>
+                          <Text>Visualizar</Text>
+                          <View>
+                            <Text>icone</Text>
+                            <Text>Compartilhar</Text>
+                            <View>
+                              <Text>icone</Text>
+                              <Text>Baixar</Text>
+                            </View>
+                          </View>
+                        </View>
+                      </View>
+                    </View>
                   </CardContent>
                 </Link>
               </Card>

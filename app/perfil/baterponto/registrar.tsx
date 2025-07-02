@@ -1,4 +1,3 @@
-import ThemedContainer from "@/components/ThemedContainer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Text } from "@/components/ui/text";
@@ -7,6 +6,7 @@ import { Link } from "expo-router";
 import React, { useRef, useState } from "react";
 import { Alert, StyleSheet, View } from "react-native";
 import MapView, { Marker, Region } from "react-native-maps";
+import { SafeAreaView } from "react-native-safe-area-context";
 import Toast from "react-native-toast-message";
 
 export default function Registrar() {
@@ -56,7 +56,7 @@ export default function Registrar() {
   };
 
   return (
-    <ThemedContainer>
+    <SafeAreaView className="flex-1">
       <View className="flex-1 items-center justify-center">
         <MapView
           region={{
@@ -116,6 +116,6 @@ export default function Registrar() {
           </CardContent>
         </Card>
       </View>
-    </ThemedContainer>
+    </SafeAreaView>
   );
 }

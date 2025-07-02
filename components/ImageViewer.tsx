@@ -21,7 +21,7 @@ export default function ImageViewer({ imgSource }: Props) {
 
 const styles = StyleSheet.create({
   container: {
-    height: 300,
+    height: 200,
     width: 300,
   },
   image: {

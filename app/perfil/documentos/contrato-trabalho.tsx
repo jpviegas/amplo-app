@@ -9,7 +9,7 @@ import { Lock, UserRoundCog } from "lucide-react-native";
 import React from "react";
 import { View } from "react-native";
 
-export default function DadosPessoais() {
+export default function ContratoTrabalho() {
   const { isDarkColorScheme } = useColorScheme();
 
   return (
@@ -28,7 +28,27 @@ export default function DadosPessoais() {
                       size={32}
                       color={isDarkColorScheme ? "white" : "black"}
                     />
-                    <Text>Perfil</Text>
+                    <View>
+                      <Text>Contrato de Trabalho</Text>
+                      <View className="flex-row items-center justify-center gap-2">
+                        <View>
+                          <Text>icone</Text>
+                          <Text>Assinar</Text>
+                        </View>
+                        <View>
+                          <Text>icone</Text>
+                          <Text>Visualizar</Text>
+                          <View>
+                            <Text>icone</Text>
+                            <Text>Compartilhar</Text>
+                            <View>
+                              <Text>icone</Text>
+                              <Text>Baixar</Text>
+                            </View>
+                          </View>
+                        </View>
+                      </View>
+                    </View>
                   </CardContent>
                 </Link>
               </Card>
@@ -39,7 +59,27 @@ export default function DadosPessoais() {
                       size={32}
                       color={isDarkColorScheme ? "white" : "black"}
                     />
-                    <Text>Alterar Senha</Text>
+                    <View>
+                      <Text>T.R.C.T</Text>
+                      <View className="flex-row items-center justify-center gap-2">
+                        <View>
+                          <Text>icone</Text>
+                          <Text>Assinar</Text>
+                        </View>
+                        <View>
+                          <Text>icone</Text>
+                          <Text>Visualizar</Text>
+                          <View>
+                            <Text>icone</Text>
+                            <Text>Compartilhar</Text>
+                            <View>
+                              <Text>icone</Text>
+                              <Text>Baixar</Text>
+                            </View>
+                          </View>
+                        </View>
+                      </View>
+                    </View>
                   </CardContent>
                 </Link>
               </Card>

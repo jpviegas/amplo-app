@@ -1,8 +1,11 @@
+import ImageViewer from "@/components/ImageViewer";
 import ThemedContainer from "@/components/ThemedContainer";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Text } from "@/components/ui/text";
 import { useColorScheme } from "@/lib/useColorScheme";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Link } from "expo-router";
 import {
   AlertCircle,
   CalendarRange,
@@ -55,66 +58,74 @@ export default function DadosPessoais() {
 
   return (
     <ThemedContainer>
-      <View className="h-full w-11/12 justify-around">
-        <Text className="text-2xl font-semibold">Dados Pessoais</Text>
-        <View className="border-b-2">
-          <Text>NOME</Text>
-          <View className="flex-row items-center gap-2">
-            <User size={32} color={isDarkColorScheme ? "white" : "black"} />
-            <Input className="border-0 border-secondary bg-inherit">
-              {name ? name : "Digite seu nome completo"}
-            </Input>
-          </View>
+      <View className="w-full flex-1 justify-evenly gap-2">
+        <View className="items-center">
+          <ImageViewer imgSource={require("@/assets/images/splash.png")} />
         </View>
-        <View className="border-b-2">
-          <Text>CPF</Text>
-          <View className="flex-row items-center gap-2">
-            <CircleAlert
-              size={32}
-              color={isDarkColorScheme ? "black" : "white"}
-              fill={isDarkColorScheme ? "white" : "black"}
-            />
-            <Input className="border-0 border-secondary bg-inherit">
-              000.000.000-00
-            </Input>
-          </View>
-        </View>
-        <View className="border-b-2">
-          <Text>RG</Text>
-          <View className="flex-row items-center gap-2">
-            <AlertCircle
-              size={32}
-              color={isDarkColorScheme ? "white" : "black"}
-            />
-            <Input className="border-0 border-secondary bg-inherit">
-              000.000.000-00
-            </Input>
-          </View>
-        </View>
-        <View className="border-b-2">
-          <Text>DATA DE NASCIMENTO</Text>
-          <View className="flex-row items-center gap-2">
-            <CalendarRange
-              size={32}
-              color={isDarkColorScheme ? "white" : "black"}
-            />
-            <Input className="border-0 border-secondary bg-inherit">
-              data nascimento
-            </Input>
-          </View>
-        </View>
-        <View className="border-b-2">
-          <Text>CELULAR</Text>
-          <View className="flex-row items-center gap-2">
-            <Phone size={32} color={isDarkColorScheme ? "white" : "black"} />
-            <Input className="border-0 border-secondary bg-inherit">
-              (00) 00000-0000
-            </Input>
-          </View>
-        </View>
-        <View className="border-b-2">
-          <Text>GÊNERO</Text>
-          {/* <View className="flex-row items-center gap-2">
+        <View className="w-full flex-1 bg-primary dark:bg-black">
+          <View className="mx-4 gap-4">
+            <Text className="text-center text-2xl font-semibold">Perfil</Text>
+            <View className="border-b-2">
+              <Text>NOME</Text>
+              <View className="flex-row items-center gap-2">
+                <User size={32} color={isDarkColorScheme ? "white" : "black"} />
+                <Input className="border-0 border-secondary bg-inherit">
+                  {name ? name : "Digite seu nome completo"}
+                </Input>
+              </View>
+            </View>
+            <View className="border-b-2">
+              <Text>CPF</Text>
+              <View className="flex-row items-center gap-2">
+                <CircleAlert
+                  size={32}
+                  color={isDarkColorScheme ? "black" : "white"}
+                  fill={isDarkColorScheme ? "white" : "black"}
+                />
+                <Input className="border-0 border-secondary bg-inherit">
+                  000.000.000-00
+                </Input>
+              </View>
+            </View>
+            <View className="border-b-2">
+              <Text>RG</Text>
+              <View className="flex-row items-center gap-2">
+                <AlertCircle
+                  size={32}
+                  color={isDarkColorScheme ? "white" : "black"}
+                />
+                <Input className="border-0 border-secondary bg-inherit">
+                  000.000.000-00
+                </Input>
+              </View>
+            </View>
+            <View className="border-b-2">
+              <Text>DATA DE NASCIMENTO</Text>
+              <View className="flex-row items-center gap-2">
+                <CalendarRange
+                  size={32}
+                  color={isDarkColorScheme ? "white" : "black"}
+                />
+                <Input className="border-0 border-secondary bg-inherit">
+                  data nascimento
+                </Input>
+              </View>
+            </View>
+            <View className="border-b-2">
+              <Text>CELULAR</Text>
+              <View className="flex-row items-center gap-2">
+                <Phone
+                  size={32}
+                  color={isDarkColorScheme ? "white" : "black"}
+                />
+                <Input className="border-0 border-secondary bg-inherit">
+                  (00) 00000-0000
+                </Input>
+              </View>
+            </View>
+            <View className="border-b-2">
+              <Text>GÊNERO</Text>
+              {/* <View className="flex-row items-center gap-2">
             <Input className="border-0 border-secondary bg-inherit">
               <Select>
                 <SelectTrigger className="w-[250px]">
@@ -135,13 +146,20 @@ export default function DadosPessoais() {
               </Select>
             </Input>
           </View> */}
+            </View>
+            <View>
+              <Text>
+                FILHOS OU DEPENDENTES MENORES DE 14 ANOS OU DEPENDENTES
+                INVÁLIDOS DE QUEALQUER IDADE
+              </Text>
+            </View>
+          </View>
         </View>
-        <View>
-          <Text>
-            FILHOS OU DEPENDENTES MENORES DE 14 ANOS OU DEPENDENTES INVÁLIDOS DE
-            QUEALQUER IDADE
-          </Text>
-        </View>
+        <Link asChild href={".."}>
+          <Button size={"full"} variant="outline" className="w-4/5 self-center">
+            <Text>Voltar</Text>
+          </Button>
+        </Link>
         {/* <Card>
           <CardHeader>
             <CardTitle>Trocar senha</CardTitle>

@@ -68,7 +68,7 @@ export default function PerfilLayout() {
           />
           <Stack.Screen name="assinatura" options={{ headerShown: false }} />
           <Stack.Screen name="baterponto" options={{ headerShown: false }} />
-          <Stack.Screen name="dadospessoais" options={{ headerShown: false }} />
+          {/* <Stack.Screen name="dadospessoais" options={{ headerShown: false }} /> */}
           <Stack.Screen name="folha" options={{ headerShown: false }} />
           <Stack.Screen
             name="dadospessoais/index"

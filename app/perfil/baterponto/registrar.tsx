@@ -1,7 +1,9 @@
+import ThemedContainer from "@/components/ThemedContainer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Text } from "@/components/ui/text";
 import * as Location from "expo-location";
+import { Link } from "expo-router";
 import React, { useRef, useState } from "react";
 import { Alert, StyleSheet, View } from "react-native";
 import MapView, { Marker, Region } from "react-native-maps";
@@ -54,54 +56,66 @@ export default function Registrar() {
   };
 
   return (
-    <View className="flex-1 items-center justify-center">
-      <MapView
-        region={{
-          latitude: location.latitude,
-          longitude: location.longitude,
-          latitudeDelta: 0.005,
-          longitudeDelta: 0.005,
-        }}
-        initialRegion={{
-          latitude: location.latitude,
-          longitude: location.longitude,
-          latitudeDelta: 0.01,
-          longitudeDelta: 0.01,
-        }}
-        ref={mapRef}
-        onMapReady={() => {
-          goToMyLocation();
-        }}
-        showsUserLocation
-        style={StyleSheet.absoluteFill}
-      >
-        <Marker
-          coordinate={{
+    <ThemedContainer>
+      <View className="flex-1 items-center justify-center">
+        <MapView
+          region={{
             latitude: location.latitude,
             longitude: location.longitude,
+            latitudeDelta: 0.005,
+            longitudeDelta: 0.005,
           }}
-          title="Localização atual"
-        />
-      </MapView>
-      <Card className="absolute bottom-0 w-full">
-        <CardHeader>
-          <CardTitle>Registro do ponto</CardTitle>
-        </CardHeader>
-        <CardContent className="gap-4">
-          <Text>
-            {location.latitude === 0
-              ? "Aguarde..."
-              : `${location.latitude}, ${location.longitude}`}
-          </Text>
-          <Button
-            size={"full"}
-            disabled={location.latitude === 0 ? true : false}
-            onPress={() => handlePoint()}
-          >
-            <Text>Bater Ponto</Text>
-          </Button>
-        </CardContent>
-      </Card>
-    </View>
+          initialRegion={{
+            latitude: location.latitude,
+            longitude: location.longitude,
+            latitudeDelta: 0.01,
+            longitudeDelta: 0.01,
+          }}
+          ref={mapRef}
+          onMapReady={() => {
+            goToMyLocation();
+          }}
+          showsUserLocation
+          style={StyleSheet.absoluteFill}
+        >
+          <Marker
+            coordinate={{
+              latitude: location.latitude,
+              longitude: location.longitude,
+            }}
+            title="Localização atual"
+          />
+        </MapView>
+        <Card className="absolute bottom-0 w-full">
+          <CardHeader>
+            <CardTitle>Registro do ponto</CardTitle>
+          </CardHeader>
+          <CardContent className="gap-4">
+            <Text>
+              {location.latitude === 0
+                ? "Aguarde..."
+                : `${location.latitude}, ${location.longitude}`}
+            </Text>
+            <Button
+              size={"full"}
+              disabled={location.latitude === 0 ? true : false}
+              onPress={() => handlePoint()}
+              className="w-4/5 self-center"
+            >
+              <Text>Bater Ponto</Text>
+            </Button>
+            <Link asChild href={".."}>
+              <Button
+                size={"full"}
+                variant="outline"
+                className="w-4/5 self-center"
+              >
+                <Text className="text-primary">Voltar</Text>
+              </Button>
+            </Link>
+          </CardContent>
+        </Card>
+      </View>
+    </ThemedContainer>
   );
 }

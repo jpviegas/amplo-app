@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Text } from "@/components/ui/text";
 import { useColorScheme } from "@/lib/useColorScheme";
 import { Link } from "expo-router";
-import { UserRoundCog } from "lucide-react-native";
+import { Download, Eye, Handshake, Pencil, Share2 } from "lucide-react-native";
 import React from "react";
 import { View } from "react-native";
 
@@ -20,39 +20,53 @@ export default function CodigoConduta() {
         </View>
         <View className="w-full flex-1 justify-evenly bg-primary dark:bg-black">
           <View className="h-4/5">
-            <View className="mx-4 flex-row gap-4">
-              <Card className="flex-1">
-                <Link href="./dadospessoais/editar-perfil">
-                  <CardContent className="py-safe w-full items-center justify-evenly">
-                    <UserRoundCog
-                      size={32}
-                      color={isDarkColorScheme ? "white" : "black"}
-                    />
-                    <View>
-                      <Text>Código de Conduta</Text>
-                      <View className="flex-row items-center justify-center gap-2">
-                        <View>
-                          <Text>icone</Text>
-                          <Text>Assinar</Text>
+            <View className="mx-4 gap-4">
+              <Text className="text-center text-3xl font-bold">
+                Código de Conduta
+              </Text>
+              <Card>
+                <Link href="/perfil/dadospessoais/editar-perfil">
+                  <CardContent className="py-safe-or-3.5 flex-row items-center">
+                    <View className="mb-2 items-center">
+                      <Text className="mb-2 font-bold">Código de Conduta</Text>
+                      <View className="w-full flex-row justify-between">
+                        <Handshake
+                          size={40}
+                          color={isDarkColorScheme ? "white" : "black"}
+                        />
+                        <View className="items-center">
+                          <Pencil
+                            size={32}
+                            color={isDarkColorScheme ? "white" : "black"}
+                          />
+                          <Text className="text-base">Assinar</Text>
                         </View>
-                        <View>
-                          <Text>icone</Text>
-                          <Text>Visualizar</Text>
-                          <View>
-                            <Text>icone</Text>
-                            <Text>Compartilhar</Text>
-                            <View>
-                              <Text>icone</Text>
-                              <Text>Baixar</Text>
-                            </View>
-                          </View>
+                        <View className="items-center">
+                          <Eye
+                            size={32}
+                            color={isDarkColorScheme ? "white" : "black"}
+                          />
+                          <Text className="text-base">Visualizar</Text>
+                        </View>
+                        <View className="items-center">
+                          <Share2
+                            size={32}
+                            color={isDarkColorScheme ? "white" : "black"}
+                          />
+                          <Text className="text-base">Compartilhar</Text>
+                        </View>
+                        <View className="items-center">
+                          <Download
+                            size={32}
+                            color={isDarkColorScheme ? "white" : "black"}
+                          />
+                          <Text className="text-base">Baixar</Text>
                         </View>
                       </View>
                     </View>
                   </CardContent>
                 </Link>
               </Card>
-              <View className="flex-1 bg-transparent"></View>
             </View>
           </View>
           <Link asChild href={".."}>

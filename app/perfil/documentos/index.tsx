@@ -31,7 +31,7 @@ export default function Documentos() {
           <View className="h-4/5 justify-evenly">
             <View className="mx-4 flex-row gap-4">
               <Card className="flex-1">
-                <Link href="./dadospessoais">
+                <Link href="/perfil/documentos/contrato-trabalho">
                   <CardContent className="py-safe w-full items-center justify-evenly">
                     <CircleUser
                       size={32}
@@ -44,7 +44,7 @@ export default function Documentos() {
                 </Link>
               </Card>
               <Card className="flex-1">
-                <Link href="./documentos">
+                <Link href="/perfil/documentos/codigo-conduta">
                   <CardContent className="py-safe items-center justify-evenly">
                     <Files
                       size={32}
@@ -55,7 +55,7 @@ export default function Documentos() {
                 </Link>
               </Card>
               <Card className="flex-1">
-                <Link href="./folha">
+                <Link href="/perfil/documentos/politica-interna">
                   <CardContent className="py-safe w-full items-center justify-evenly">
                     <CircleDollarSign
                       size={32}
@@ -68,7 +68,7 @@ export default function Documentos() {
             </View>
             <View className="flex-row gap-4 px-4">
               <Card className="flex-1">
-                <Link href="./folha">
+                <Link href="/perfil/documentos/declaracao">
                   <CardContent className="py-safe w-full items-center justify-evenly">
                     <FileSignature
                       size={32}
@@ -81,7 +81,7 @@ export default function Documentos() {
                 </Link>
               </Card>
               <Card className="flex-1">
-                <Link href="./baterponto">
+                <Link href="/perfil/documentos/ficha-registro">
                   <CardContent className="py-safe w-full items-center justify-evenly">
                     <Clock
                       size={32}
@@ -94,7 +94,7 @@ export default function Documentos() {
                 </Link>
               </Card>
               <Card className="flex-1">
-                <Link href="./assinatura">
+                <Link href="/perfil/documentos/ficha-epi">
                   <CardContent className="py-safe w-full items-center justify-evenly">
                     <FileSignature
                       size={32}
@@ -109,7 +109,7 @@ export default function Documentos() {
             </View>
             <View className="flex-row gap-4 px-4">
               <Card className="flex-1">
-                <Link href="./folha">
+                <Link href="/perfil/documentos/saude-ocupacional">
                   <CardContent className="py-safe w-full items-center justify-evenly">
                     <FileSignature
                       size={32}
@@ -122,7 +122,7 @@ export default function Documentos() {
                 </Link>
               </Card>
               <Card className="flex-1">
-                <Link href="./folha">
+                <Link href="./termos">
                   <CardContent className="py-safe w-full items-center justify-evenly">
                     <MessageSquareText
                       size={32}

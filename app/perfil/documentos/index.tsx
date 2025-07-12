@@ -4,16 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Text } from "@/components/ui/text";
 import { useColorScheme } from "@/lib/useColorScheme";
+import { styles } from "@/styles/styles";
 import { AuthContext } from "@/utils/authContext";
+import { Image } from "expo-image";
 import { Link } from "expo-router";
-import {
-  CircleDollarSign,
-  CircleUser,
-  Clock,
-  Files,
-  FileSignature,
-  MessageSquareText,
-} from "lucide-react-native";
+import { CircleUser, FileSignature } from "lucide-react-native";
 import React, { useContext } from "react";
 import { View } from "react-native";
 
@@ -44,25 +39,25 @@ export default function Documentos() {
                 </Link>
               </Card>
               <Card className="flex-1">
-                <Link href="/perfil/documentos/codigo-conduta">
-                  <CardContent className="py-safe items-center justify-evenly">
-                    <Files
-                      size={32}
-                      color={isDarkColorScheme ? "white" : "black"}
+                <Link href="/perfil/dadospessoais">
+                  <View className="py-safe w-full items-center">
+                    <Image
+                      source={require("@/assets/icons/conduta.png")}
+                      style={styles.icon}
                     />
-                    <Text className="text-sm">Código de Conduta</Text>
-                  </CardContent>
+                    <Text className="text-center">Código de Conduta</Text>
+                  </View>
                 </Link>
               </Card>
               <Card className="flex-1">
-                <Link href="/perfil/documentos/politica-interna">
-                  <CardContent className="py-safe w-full items-center justify-evenly">
-                    <CircleDollarSign
-                      size={32}
-                      color={isDarkColorScheme ? "white" : "black"}
+                <Link href="/perfil/dadospessoais">
+                  <View className="py-safe w-full items-center">
+                    <Image
+                      source={require("@/assets/icons/politica.png")}
+                      style={styles.icon}
                     />
-                    <Text className="text-base">Política Interna</Text>
-                  </CardContent>
+                    <Text className="text-center">Ficha de E.P.I.</Text>
+                  </View>
                 </Link>
               </Card>
             </View>
@@ -81,68 +76,60 @@ export default function Documentos() {
                 </Link>
               </Card>
               <Card className="flex-1">
-                <Link href="/perfil/documentos/ficha-registro">
-                  <CardContent className="py-safe w-full items-center justify-evenly">
-                    <Clock
-                      size={32}
-                      color={isDarkColorScheme ? "white" : "black"}
+                <Link href="/perfil/dadospessoais">
+                  <View className="py-safe w-full items-center">
+                    <Image
+                      source={require("@/assets/icons/ficha.png")}
+                      style={styles.icon}
                     />
-                    <Text className="text-center text-lg">
-                      Ficha de Registro
-                    </Text>
-                  </CardContent>
+                    <Text className="text-center">Ficha de Registro</Text>
+                  </View>
                 </Link>
               </Card>
               <Card className="flex-1">
-                <Link href="/perfil/documentos/ficha-epi">
-                  <CardContent className="py-safe w-full items-center justify-evenly">
-                    <FileSignature
-                      size={32}
-                      color={isDarkColorScheme ? "white" : "black"}
+                <Link href="/perfil/dadospessoais">
+                  <View className="py-safe w-full items-center">
+                    <Image
+                      source={require("@/assets/icons/epi.png")}
+                      style={styles.icon}
                     />
-                    <Text className="text-center text-base">
-                      Ficha de E.P.I.
-                    </Text>
-                  </CardContent>
+                    <Text className="text-center">Ficha de E.P.I.</Text>
+                  </View>
                 </Link>
               </Card>
             </View>
             <View className="flex-row gap-4 px-4">
               <Card className="flex-1">
-                <Link href="/perfil/documentos/saude-ocupacional">
-                  <CardContent className="py-safe w-full items-center justify-evenly">
-                    <FileSignature
-                      size={32}
-                      color={isDarkColorScheme ? "white" : "black"}
+                <Link href="/perfil/dadospessoais">
+                  <View className="py-safe w-full items-center">
+                    <Image
+                      source={require("@/assets/icons/saude.png")}
+                      style={styles.icon}
                     />
-                    <Text className="text-center text-sm">
-                      Saúde Ocupacional
-                    </Text>
-                  </CardContent>
+                    <Text className="text-center">Saúde Ocupacional</Text>
+                  </View>
                 </Link>
               </Card>
               <Card className="flex-1">
-                <Link href="./termos">
-                  <CardContent className="py-safe w-full items-center justify-evenly">
-                    <MessageSquareText
-                      size={32}
-                      color={isDarkColorScheme ? "white" : "black"}
+                <Link href="/perfil/dadospessoais">
+                  <View className="py-safe w-full items-center">
+                    <Image
+                      source={require("@/assets/icons/termos.png")}
+                      style={styles.icon}
                     />
-                    <Text className="text-center text-sm">Termos</Text>
-                  </CardContent>
+                    <Text className="text-center">Termos</Text>
+                  </View>
                 </Link>
               </Card>
               <Card className="flex-1">
-                <Link href="./folha">
-                  <CardContent className="py-safe w-full items-center justify-evenly">
-                    <FileSignature
-                      size={32}
-                      color={isDarkColorScheme ? "white" : "black"}
+                <Link href="/perfil/dadospessoais">
+                  <View className="py-safe w-full items-center">
+                    <Image
+                      source={require("@/assets/icons/arquivo.png")}
+                      style={styles.icon}
                     />
-                    <Text className="text-center text-sm">
-                      Demais Documentos
-                    </Text>
-                  </CardContent>
+                    <Text className="text-center">Demais Documentos</Text>
+                  </View>
                 </Link>
               </Card>
             </View>

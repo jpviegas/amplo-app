@@ -4,8 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Text } from "@/components/ui/text";
 import { useColorScheme } from "@/lib/useColorScheme";
+import { styles } from "@/styles/styles";
+import { Image } from "expo-image";
 import { Link } from "expo-router";
-import { Lock, UserRoundCog } from "lucide-react-native";
+import { Lock } from "lucide-react-native";
 import React from "react";
 import { View } from "react-native";
 
@@ -22,14 +24,14 @@ export default function DadosPessoais() {
           <View className="h-4/5">
             <View className="mx-4 flex-row gap-4">
               <Card className="flex-1">
-                <Link href="./dadospessoais/editar-perfil">
-                  <CardContent className="py-safe w-full items-center justify-evenly">
-                    <UserRoundCog
-                      size={32}
-                      color={isDarkColorScheme ? "white" : "black"}
+                <Link href="/perfil/dadospessoais/editar-perfil">
+                  <View className="py-safe w-full items-center">
+                    <Image
+                      source={require("@/assets/icons/perfil.png")}
+                      style={styles.icon}
                     />
-                    <Text>Perfil</Text>
-                  </CardContent>
+                    <Text className="text-center">Perfil</Text>
+                  </View>
                 </Link>
               </Card>
               <Card className="flex-1">

@@ -1,8 +1,8 @@
+import BackButton from "@/components/BackButton";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Text } from "@/components/ui/text";
 import * as Location from "expo-location";
-import { Link } from "expo-router";
 import React, { useRef, useState } from "react";
 import { Alert, StyleSheet, View } from "react-native";
 import MapView, { Marker, Region } from "react-native-maps";
@@ -86,7 +86,7 @@ export default function Registrar() {
             title="Localização atual"
           />
         </MapView>
-        <Card className="absolute bottom-0 w-full">
+        <Card className="absolute bottom-0 w-full bg-primary">
           <CardHeader>
             <CardTitle>Registro do ponto</CardTitle>
           </CardHeader>
@@ -100,19 +100,13 @@ export default function Registrar() {
               size={"full"}
               disabled={location.latitude === 0 ? true : false}
               onPress={() => handlePoint()}
-              className="w-4/5 self-center"
+              className="w-4/5 self-center bg-green-500"
             >
-              <Text>Bater Ponto</Text>
+              <Text className="text-3xl font-black text-secondary-foreground">
+                CONFIRMAR
+              </Text>
             </Button>
-            <Link asChild href={".."}>
-              <Button
-                size={"full"}
-                variant="outline"
-                className="w-4/5 self-center"
-              >
-                <Text className="text-primary">Voltar</Text>
-              </Button>
-            </Link>
+            <BackButton />
           </CardContent>
         </Card>
       </View>

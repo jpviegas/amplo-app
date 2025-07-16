@@ -15,7 +15,7 @@ export default function HomeScreen() {
       try {
         const value = await AsyncStorage.getItem("name");
         if (value !== null) {
-          return router.replace("/perfil");
+          return router.replace("/menu");
         }
       } catch (e) {}
     };

@@ -1,20 +1,30 @@
 import ImageViewer from "@/components/ImageViewer";
 import ThemedContainer from "@/components/ThemedContainer";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Text } from "@/components/ui/text";
 import { useColorScheme } from "@/lib/useColorScheme";
 import { styles } from "@/styles/styles";
 import { AuthContext } from "@/utils/authContext";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Image } from "expo-image";
 import { Link } from "expo-router";
-import { CircleUser, FileSignature } from "lucide-react-native";
 import React, { useContext } from "react";
 import { View } from "react-native";
 
-export default function Documentos() {
+export default function Perfil() {
   const authContext = useContext(AuthContext);
   const { isDarkColorScheme } = useColorScheme();
+
+  const logOut = async () => {
+    try {
+      await AsyncStorage.removeItem("name");
+      authContext.logOut();
+      // return router.replace("/");
+    } catch {
+      // return router.replace("/");
+    }
+  };
 
   return (
     <ThemedContainer>
@@ -26,26 +36,24 @@ export default function Documentos() {
           <View className="h-4/5 justify-evenly">
             <View className="mx-4 flex-row gap-4">
               <Card className="flex-1">
-                <Link href="/perfil/documentos/contrato-trabalho">
-                  <CardContent className="py-safe w-full items-center justify-evenly">
-                    <CircleUser
-                      size={32}
-                      color={isDarkColorScheme ? "white" : "black"}
-                    />
-                    <Text className="text-center text-xl">
-                      Contrato de Trabalho
-                    </Text>
-                  </CardContent>
-                </Link>
-              </Card>
-              <Card className="flex-1">
                 <Link href="/perfil/dadospessoais">
                   <View className="py-safe w-full items-center">
                     <Image
-                      source={require("@/assets/icons/conduta.png")}
+                      source={require("@/assets/icons/dadospessoais.png")}
                       style={styles.icon}
                     />
-                    <Text className="text-center">Código de Conduta</Text>
+                    <Text className="text-center">Dados Pessoais</Text>
+                  </View>
+                </Link>
+              </Card>
+              <Card className="flex-1">
+                <Link href="/perfil/documentos">
+                  <View className="py-safe w-full items-center">
+                    <Image
+                      source={require("@/assets/icons/documentos.png")}
+                      style={styles.icon}
+                    />
+                    <Text className="text-center">Documentos</Text>
                   </View>
                 </Link>
               </Card>
@@ -53,47 +61,10 @@ export default function Documentos() {
                 <Link href="/perfil/dadospessoais">
                   <View className="py-safe w-full items-center">
                     <Image
-                      source={require("@/assets/icons/politica.png")}
+                      source={require("@/assets/icons/pagamento.png")}
                       style={styles.icon}
                     />
-                    <Text className="text-center">Ficha de E.P.I.</Text>
-                  </View>
-                </Link>
-              </Card>
-            </View>
-            <View className="flex-row gap-4 px-4">
-              <Card className="flex-1">
-                <Link href="/perfil/documentos/declaracao">
-                  <CardContent className="py-safe w-full items-center justify-evenly">
-                    <FileSignature
-                      size={32}
-                      color={isDarkColorScheme ? "white" : "black"}
-                    />
-                    <Text className="text-center text-xl">
-                      Declaração I.R.R.F.
-                    </Text>
-                  </CardContent>
-                </Link>
-              </Card>
-              <Card className="flex-1">
-                <Link href="/perfil/dadospessoais">
-                  <View className="py-safe w-full items-center">
-                    <Image
-                      source={require("@/assets/icons/ficha.png")}
-                      style={styles.icon}
-                    />
-                    <Text className="text-center">Ficha de Registro</Text>
-                  </View>
-                </Link>
-              </Card>
-              <Card className="flex-1">
-                <Link href="/perfil/dadospessoais">
-                  <View className="py-safe w-full items-center">
-                    <Image
-                      source={require("@/assets/icons/epi.png")}
-                      style={styles.icon}
-                    />
-                    <Text className="text-center">Ficha de E.P.I.</Text>
+                    <Text className="text-center">Pagamento Benefício</Text>
                   </View>
                 </Link>
               </Card>
@@ -103,10 +74,10 @@ export default function Documentos() {
                 <Link href="/perfil/dadospessoais">
                   <View className="py-safe w-full items-center">
                     <Image
-                      source={require("@/assets/icons/saude.png")}
+                      source={require("@/assets/icons/ferias.png")}
                       style={styles.icon}
                     />
-                    <Text className="text-center">Saúde Ocupacional</Text>
+                    <Text className="text-center">Ferias</Text>
                   </View>
                 </Link>
               </Card>
@@ -114,10 +85,30 @@ export default function Documentos() {
                 <Link href="/perfil/dadospessoais">
                   <View className="py-safe w-full items-center">
                     <Image
-                      source={require("@/assets/icons/termos.png")}
+                      source={require("@/assets/icons/pontoeletronico.png")}
                       style={styles.icon}
                     />
-                    <Text className="text-center">Termos</Text>
+                    <Text className="text-center">Ponto Eletronico</Text>
+                  </View>
+                </Link>
+              </Card>
+              <Card className="flex-1">
+                <Link href="/perfil/dadospessoais">
+                  <View className="py-safe w-full items-center">
+                    <Text className="text-center">-</Text>
+                  </View>
+                </Link>
+              </Card>
+            </View>
+            <View className="flex-row gap-4 px-4">
+              <Card className="flex-1">
+                <Link href="/perfil/dadospessoais">
+                  <View className="py-safe w-full items-center">
+                    <Image
+                      source={require("@/assets/icons/treinamento.png")}
+                      style={styles.icon}
+                    />
+                    <Text className="text-center">Área de Treinamento</Text>
                   </View>
                 </Link>
               </Card>
@@ -125,24 +116,34 @@ export default function Documentos() {
                 <Link href="/perfil/dadospessoais">
                   <View className="py-safe w-full items-center">
                     <Image
-                      source={require("@/assets/icons/arquivo.png")}
+                      source={require("@/assets/icons/aviso.png")}
                       style={styles.icon}
                     />
-                    <Text className="text-center">Demais Documentos</Text>
+                    <Text className="text-center">Aviso Comunicado</Text>
+                  </View>
+                </Link>
+              </Card>
+              <Card className="flex-1">
+                <Link href="/perfil/dadospessoais">
+                  <View className="py-safe w-full items-center">
+                    <Image
+                      source={require("@/assets/icons/atendimento.png")}
+                      style={styles.icon}
+                    />
+                    <Text className="text-center">Atendimento Conecta</Text>
                   </View>
                 </Link>
               </Card>
             </View>
           </View>
-          <Link asChild href={".."}>
-            <Button
-              size={"full"}
-              variant="outline"
-              className="w-4/5 self-center"
-            >
-              <Text>Voltar</Text>
-            </Button>
-          </Link>
+          <Button
+            size={"lg"}
+            variant="destructive"
+            onPress={logOut}
+            className="w-4/5 self-center"
+          >
+            <Text className="font-semibold">SAIR</Text>
+          </Button>
         </View>
       </View>
     </ThemedContainer>

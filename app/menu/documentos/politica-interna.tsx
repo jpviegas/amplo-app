@@ -1,18 +1,14 @@
+import BackButton from "@/components/BackButton";
 import ImageViewer from "@/components/ImageViewer";
 import ThemedContainer from "@/components/ThemedContainer";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Text } from "@/components/ui/text";
-import { useColorScheme } from "@/lib/useColorScheme";
-import { Link } from "expo-router";
-import { Download, Eye, Handshake, Pencil, Share2 } from "lucide-react-native";
+import { styles } from "@/styles/styles";
+import { Image } from "expo-image";
 import React from "react";
-
 import { View } from "react-native";
 
 export default function PoliticaInterna() {
-  const { isDarkColorScheme } = useColorScheme();
-
   return (
     <ThemedContainer>
       <View className="w-full flex-1 justify-evenly gap-2">
@@ -22,63 +18,57 @@ export default function PoliticaInterna() {
         <View className="w-full flex-1 justify-evenly bg-primary dark:bg-black">
           <View className="h-4/5">
             <View className="mx-4 gap-4">
-              <Text className="text-center text-3xl font-bold">
+              <Text className="text-center text-3xl font-black">
                 Política Interna
               </Text>
-              <Card>
-                <Link href="/perfil/dadospessoais/editar-perfil">
-                  <CardContent className="py-safe-or-3.5 flex-row items-center">
-                    <View className="mb-2 items-center">
+              <Card className="flex h-1/2 justify-center">
+                <CardContent className="h-full justify-center">
+                  <View className="my-safe w-full flex-row justify-center">
+                    <View className="my-auto">
+                      <Image
+                        source={require("@/assets/icons/politica.png")}
+                        style={styles.icon}
+                      />
+                    </View>
+                    <View className="ml-4 w-5/6">
                       <Text className="mb-2 font-bold">Política Interna</Text>
-                      <View className="w-full flex-row justify-between">
-                        <Handshake
-                          size={40}
-                          color={isDarkColorScheme ? "white" : "black"}
-                        />
+                      <View className="w-full flex-row justify-evenly">
                         <View className="items-center">
-                          <Pencil
-                            size={32}
-                            color={isDarkColorScheme ? "white" : "black"}
+                          <Image
+                            source={require("@/assets/icons/assinar.png")}
+                            style={styles.iconSM}
                           />
                           <Text className="text-base">Assinar</Text>
                         </View>
                         <View className="items-center">
-                          <Eye
-                            size={32}
-                            color={isDarkColorScheme ? "white" : "black"}
+                          <Image
+                            source={require("@/assets/icons/visualizar.png")}
+                            style={styles.iconSM}
                           />
                           <Text className="text-base">Visualizar</Text>
                         </View>
                         <View className="items-center">
-                          <Share2
-                            size={32}
-                            color={isDarkColorScheme ? "white" : "black"}
+                          <Image
+                            source={require("@/assets/icons/compartilhar.png")}
+                            style={styles.iconSM}
                           />
                           <Text className="text-base">Compartilhar</Text>
                         </View>
                         <View className="items-center">
-                          <Download
-                            size={32}
-                            color={isDarkColorScheme ? "white" : "black"}
+                          <Image
+                            source={require("@/assets/icons/baixar.png")}
+                            style={styles.iconSM}
                           />
                           <Text className="text-base">Baixar</Text>
                         </View>
                       </View>
                     </View>
-                  </CardContent>
-                </Link>
+                  </View>
+                </CardContent>
               </Card>
             </View>
           </View>
-          <Link asChild href={".."}>
-            <Button
-              size={"full"}
-              variant="outline"
-              className="w-4/5 self-center"
-            >
-              <Text>Voltar</Text>
-            </Button>
-          </Link>
+          <BackButton />
         </View>
       </View>
     </ThemedContainer>

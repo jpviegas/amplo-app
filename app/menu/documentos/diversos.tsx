@@ -21,7 +21,7 @@ export default function Diversos() {
     <ThemedContainer>
       <View className="w-full flex-1 justify-evenly gap-2">
         <View className="items-center">
-          <ImageViewer imgSource={require("@/assets/images/splash.png")} />
+          <ImageViewer imgSource={require("@/assets/images/conecta.png")} />
         </View>
         <View className="w-full flex-1 justify-evenly bg-primary dark:bg-black">
           <View className="h-4/5">
@@ -82,20 +82,22 @@ export default function Diversos() {
                       onPressIn={() => setOpenCollapsible(!openCollapsible)}
                     >
                       <Card className="flex-1">
-                        <CardContent className="mx-4 flex-row justify-between">
-                          <Text className="font-bold">Advertência</Text>
-                          <Image
-                            source={require("@/assets/icons/seta.png")}
-                            style={{
-                              width: 30,
-                              height: 20,
-                              contentFit: "contain",
-                              marginTop: 3,
-                              transform: openCollapsible
-                                ? [{ rotate: "180deg" }]
-                                : [{ rotate: "0deg" }],
-                            }}
-                          />
+                        <CardContent className="">
+                          <View className="mx-4 flex-row justify-between">
+                            <Text className="font-bold">Advertência</Text>
+                            <Image
+                              source={require("@/assets/icons/seta.png")}
+                              style={{
+                                width: 30,
+                                height: 20,
+                                contentFit: "contain",
+                                marginTop: 3,
+                                transform: openCollapsible
+                                  ? [{ rotate: "180deg" }]
+                                  : [{ rotate: "0deg" }],
+                              }}
+                            />
+                          </View>
                         </CardContent>
                       </Card>
                     </CollapsibleTrigger>

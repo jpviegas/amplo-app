@@ -13,7 +13,7 @@ export default function Pagamentos() {
     <ThemedContainer>
       <View className="w-full flex-1 items-center justify-between gap-2">
         <View className="items-center">
-          <ImageViewer imgSource={require("@/assets/images/splash.png")} />
+          <ImageViewer imgSource={require("@/assets/images/conecta.png")} />
         </View>
         <View className="w-full flex-1 justify-between bg-primary dark:bg-black">
           <Text className="text-center text-4xl font-bold">
@@ -22,7 +22,7 @@ export default function Pagamentos() {
           <View className="h-full justify-evenly">
             <View className="mx-4 h-1/6 flex-row gap-4">
               <Card className="flex-1">
-                <Link href="/menu/documentos/contrato-trabalho">
+                <Link href="/menu/pagamentos/holerite">
                   <View className="h-full w-full items-center justify-center">
                     <Image
                       source={require("@/assets/icons/registrarponto.png")}
@@ -33,7 +33,7 @@ export default function Pagamentos() {
                 </Link>
               </Card>
               <Card className="flex-1">
-                <Link href="/menu/documentos/codigo-conduta">
+                <Link href="/menu/pagamentos/refeicao">
                   <View className="h-full w-full items-center justify-center">
                     <Image
                       source={require("@/assets/icons/refeicao.png")}
@@ -44,7 +44,7 @@ export default function Pagamentos() {
                 </Link>
               </Card>
               <Card className="flex-1">
-                <Link href="/menu/documentos/politica-interna">
+                <Link href="/menu/pagamentos/refeicao">
                   <View className="h-full w-full items-center justify-center">
                     <Image
                       source={require("@/assets/icons/valealimentacao.png")}
@@ -59,7 +59,7 @@ export default function Pagamentos() {
             </View>
             <View className="mx-4 h-1/6 flex-row gap-4">
               <Card className="flex-1">
-                <Link href="/menu/documentos/ficha-registro">
+                <Link href="/menu/pagamentos/transporte">
                   <View className="h-full w-full items-center justify-center">
                     <Image
                       source={require("@/assets/icons/transporte.png")}
@@ -72,7 +72,7 @@ export default function Pagamentos() {
                 </Link>
               </Card>
               <Card className="flex-1">
-                <Link href="/menu/documentos/ficha-epi">
+                <Link href="/menu/pagamentos/rendimento">
                   <View className="h-full w-full items-center justify-center">
                     <Image
                       source={require("@/assets/icons/rendimentos.png")}

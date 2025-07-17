@@ -1,14 +1,8 @@
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { setAndroidNavigationBar } from "@/lib/android-navigation-bar";
 import { NAV_THEME } from "@/lib/constants";
 import { useColorScheme } from "@/lib/useColorScheme";
 import { AuthProvider } from "@/utils/authContext";
-import {
-  DarkTheme,
-  DefaultTheme,
-  Theme,
-  ThemeProvider,
-} from "@react-navigation/native";
+import { DefaultTheme, Theme, ThemeProvider } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
@@ -18,10 +12,6 @@ import { Platform } from "react-native";
 const LIGHT_THEME: Theme = {
   ...DefaultTheme,
   colors: NAV_THEME.light,
-};
-const DARK_THEME: Theme = {
-  ...DarkTheme,
-  colors: NAV_THEME.dark,
 };
 
 export { ErrorBoundary } from "expo-router";
@@ -55,17 +45,9 @@ export default function PerfilLayout() {
 
   return (
     <AuthProvider>
-      <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
+      <ThemeProvider value={LIGHT_THEME}>
         <Stack>
-          <Stack.Screen
-            name="index"
-            options={{
-              headerBackVisible: false,
-              headerTitle: () => false,
-              headerTransparent: true,
-              headerRight: () => <ThemeToggle />,
-            }}
-          />
+          <Stack.Screen name="index" options={{ headerShown: false }} />
           <Stack.Screen name="assinatura" options={{ headerShown: false }} />
           <Stack.Screen name="baterponto" options={{ headerShown: false }} />
           <Stack.Screen name="dadospessoais" options={{ headerShown: false }} />

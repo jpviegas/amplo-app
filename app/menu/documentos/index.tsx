@@ -13,7 +13,7 @@ export default function Documentos() {
     <ThemedContainer>
       <View className="w-full flex-1 items-center justify-between gap-2">
         <View className="items-center">
-          <ImageViewer imgSource={require("@/assets/images/splash.png")} />
+          <ImageViewer imgSource={require("@/assets/images/conecta.png")} />
         </View>
         <View className="w-full flex-1 justify-between bg-primary dark:bg-black">
           <Text className="text-center text-4xl font-bold">Documentos</Text>

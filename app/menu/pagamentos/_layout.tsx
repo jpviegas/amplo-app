@@ -11,6 +11,10 @@ export default function DocumentosLayout() {
   return (
     <Stack>
       <Stack.Screen name="index" options={{ headerShown: false }} />
+      <Stack.Screen name="holerite" options={{ headerShown: false }} />
+      <Stack.Screen name="refeicao" options={{ headerShown: false }} />
+      <Stack.Screen name="rendimento" options={{ headerShown: false }} />
+      <Stack.Screen name="transporte" options={{ headerShown: false }} />
     </Stack>
   );
 }

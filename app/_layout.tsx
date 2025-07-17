@@ -4,12 +4,7 @@ import { NAV_THEME } from "@/lib/constants";
 import { useColorScheme } from "@/lib/useColorScheme";
 import { AuthProvider } from "@/utils/authContext";
 import toastConfig from "@/utils/toastConfig";
-import {
-  DarkTheme,
-  DefaultTheme,
-  Theme,
-  ThemeProvider,
-} from "@react-navigation/native";
+import { DefaultTheme, Theme, ThemeProvider } from "@react-navigation/native";
 import { PortalHost } from "@rn-primitives/portal";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
@@ -22,10 +17,6 @@ import Toast from "react-native-toast-message";
 const LIGHT_THEME: Theme = {
   ...DefaultTheme,
   colors: NAV_THEME.light,
-};
-const DARK_THEME: Theme = {
-  ...DarkTheme,
-  colors: NAV_THEME.dark,
 };
 
 export { ErrorBoundary } from "expo-router";
@@ -60,7 +51,7 @@ export default function RootLayout() {
 
   return (
     <AuthProvider>
-      <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
+      <ThemeProvider value={LIGHT_THEME}>
         <StatusBar style={"auto"} />
         <Stack>
           <Stack.Screen name="index" options={{ headerShown: false }} />

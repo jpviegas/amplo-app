@@ -20,7 +20,7 @@ export default function SaudeOcupacional() {
     <ThemedContainer>
       <View className="w-full flex-1 justify-evenly gap-2">
         <View className="items-center">
-          <ImageViewer imgSource={require("@/assets/images/splash.png")} />
+          <ImageViewer imgSource={require("@/assets/images/conecta.png")} />
         </View>
         <View className="w-full flex-1 justify-evenly bg-primary dark:bg-black">
           <View className="h-4/5">
@@ -77,13 +77,13 @@ export default function SaudeOcupacional() {
                   </Card>
 
                   <Card className="flex-1">
-                    <CardContent>
+                    <CardContent className="mt-2">
                       <Collapsible>
                         <CollapsibleTrigger
                           onPressIn={() => setOpenCollapsible(!openCollapsible)}
                           className="mx-4 flex-row justify-between"
                         >
-                          <Text className="font-bold">Periódico</Text>
+                          <Text className="flex-1 font-bold">Periódico</Text>
                           <Image
                             source={require("@/assets/icons/seta.png")}
                             style={{

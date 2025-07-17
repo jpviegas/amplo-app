@@ -13,7 +13,7 @@ export default function BaterPonto() {
     <ThemedContainer>
       <View className="w-full flex-1 justify-evenly gap-2">
         <View className="items-center">
-          <ImageViewer imgSource={require("@/assets/images/splash.png")} />
+          <ImageViewer imgSource={require("@/assets/images/conecta.png")} />
         </View>
         <View className="w-full flex-1 justify-evenly bg-primary dark:bg-black">
           <Text className="text-center text-4xl font-bold">

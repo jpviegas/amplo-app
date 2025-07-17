@@ -12,7 +12,7 @@ export default function DadosPessoaisLayout() {
     <Stack>
       <Stack.Screen name="index" options={{ headerShown: false }} />
       <Stack.Screen name="alterar-senha" options={{ headerShown: false }} />
-      <Stack.Screen name="editar-perfil" options={{ headerShown: false }} />
+      <Stack.Screen name="perfil" options={{ headerShown: false }} />
     </Stack>
   );
 }

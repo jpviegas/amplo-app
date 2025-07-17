@@ -1,4 +1,5 @@
 import ImageViewer from "@/components/ImageViewer";
+import LoadingScreen from "@/components/LoadingScreen";
 import ThemedContainer from "@/components/ThemedContainer";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -8,27 +9,37 @@ import { AuthContext } from "@/utils/authContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Image } from "expo-image";
 import { Link } from "expo-router";
-import React, { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { View } from "react-native";
 
-export default function menu() {
+export default function Menu() {
   const authContext = useContext(AuthContext);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const logOut = async () => {
     try {
       await AsyncStorage.removeItem("name");
       authContext.logOut();
-      // return router.replace("/");
-    } catch {
-      // return router.replace("/");
-    }
+    } catch {}
   };
+
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
 
   return (
     <ThemedContainer>
       <View className="w-full flex-1 items-center justify-between gap-2">
         <View className="items-center">
-          <ImageViewer imgSource={require("@/assets/images/splash.png")} />
+          <ImageViewer imgSource={require("@/assets/images/conecta.png")} />
         </View>
         <View className="w-full flex-1 justify-between bg-primary dark:bg-black">
           <Text className="text-center text-4xl font-bold">Menu Principal</Text>

@@ -1,96 +1,61 @@
 import BackButton from "@/components/BackButton";
-import ImageViewer from "@/components/ImageViewer";
+import LoadingScreen from "@/components/LoadingScreen";
+import ThemedCard from "@/components/ThemedCard";
 import ThemedContainer from "@/components/ThemedContainer";
-import { Card } from "@/components/ui/card";
-import { Text } from "@/components/ui/text";
-import { styles } from "@/styles/styles";
-import { Image } from "expo-image";
-import { Link } from "expo-router";
+import { useEffect, useState } from "react";
 import { View } from "react-native";
 
 export default function Pagamentos() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
+
   return (
-    <ThemedContainer>
-      <View className="w-full flex-1 items-center justify-between gap-2">
-        <View className="items-center">
-          <ImageViewer imgSource={require("@/assets/images/conecta.png")} />
+    <ThemedContainer title="Pagamento Benefícios">
+      <View className="h-5/6 justify-around">
+        <View className="mx-4 h-1/4 flex-row gap-4">
+          <ThemedCard
+            link={"/menu/pagamentos/holerite"}
+            icon={require("@/assets/icons/registrarponto.png")}
+            title="Holerite"
+          />
+          <ThemedCard
+            link={"/menu/pagamentos/refeicao"}
+            icon={require("@/assets/icons/refeicao.png")}
+            title="Vale Refeição"
+          />
+          <ThemedCard
+            link={"/menu/pagamentos/refeicao"}
+            icon={require("@/assets/icons/valealimentacao.png")}
+            title="Vale Alimentação"
+          />
         </View>
-        <View className="w-full flex-1 justify-between bg-primary dark:bg-black">
-          <Text className="text-center text-4xl font-bold">
-            Pagamento Benefícios
-          </Text>
-          <View className="h-full justify-evenly">
-            <View className="mx-4 h-1/6 flex-row gap-4">
-              <Card className="flex-1">
-                <Link href="/menu/pagamentos/holerite">
-                  <View className="h-full w-full items-center justify-center">
-                    <Image
-                      source={require("@/assets/icons/registrarponto.png")}
-                      style={styles.icon}
-                    />
-                    <Text className="text-center text-base">Holerite</Text>
-                  </View>
-                </Link>
-              </Card>
-              <Card className="flex-1">
-                <Link href="/menu/pagamentos/refeicao">
-                  <View className="h-full w-full items-center justify-center">
-                    <Image
-                      source={require("@/assets/icons/refeicao.png")}
-                      style={styles.icon}
-                    />
-                    <Text className="text-center text-base">Vale Refeição</Text>
-                  </View>
-                </Link>
-              </Card>
-              <Card className="flex-1">
-                <Link href="/menu/pagamentos/refeicao">
-                  <View className="h-full w-full items-center justify-center">
-                    <Image
-                      source={require("@/assets/icons/valealimentacao.png")}
-                      style={styles.icon}
-                    />
-                    <Text className="text-center text-base">
-                      Vale Alimentação
-                    </Text>
-                  </View>
-                </Link>
-              </Card>
-            </View>
-            <View className="mx-4 h-1/6 flex-row gap-4">
-              <Card className="flex-1">
-                <Link href="/menu/pagamentos/transporte">
-                  <View className="h-full w-full items-center justify-center">
-                    <Image
-                      source={require("@/assets/icons/transporte.png")}
-                      style={styles.icon}
-                    />
-                    <Text className="text-center text-base">
-                      Vale Transporte
-                    </Text>
-                  </View>
-                </Link>
-              </Card>
-              <Card className="flex-1">
-                <Link href="/menu/pagamentos/rendimento">
-                  <View className="h-full w-full items-center justify-center">
-                    <Image
-                      source={require("@/assets/icons/rendimentos.png")}
-                      style={styles.icon}
-                    />
-                    <Text className="text-center text-base">
-                      Informe de Rendimentos
-                    </Text>
-                  </View>
-                </Link>
-              </Card>
-              <View className="flex-1"></View>
-            </View>
-            <View className="mx-4 h-1/6 flex-row gap-4"></View>
-            <BackButton />
-          </View>
+        <View className="mx-4 h-1/4 flex-row gap-4">
+          <ThemedCard
+            link={"/menu/pagamentos/transporte"}
+            icon={require("@/assets/icons/transporte.png")}
+            title="Vale Transporte"
+          />
+          <ThemedCard
+            link={"/menu/pagamentos/rendimento"}
+            icon={require("@/assets/icons/rendimentos.png")}
+            title="Informe de Rendimentos"
+          />
+          <View className="flex-1"></View>
         </View>
+        <View className="mx-4 h-1/4 flex-row gap-4" />
       </View>
+      <BackButton />
     </ThemedContainer>
   );
 }

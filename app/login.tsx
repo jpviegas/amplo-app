@@ -1,5 +1,4 @@
 import ImageViewer from "@/components/ImageViewer";
-import ThemedContainer from "@/components/ThemedContainer";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
@@ -9,10 +8,14 @@ import { useColorScheme } from "@/lib/useColorScheme";
 import { useUserStore } from "@/store/userStore";
 import { AuthContext } from "@/utils/authContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { router } from "expo-router";
 import { Eye, EyeOff, LockKeyhole, User } from "lucide-react-native";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+import {
+  SafeAreaView,
+  useSafeAreaInsets,
+} from "react-native-safe-area-context";
 import Toast from "react-native-toast-message";
 
 export default function Login() {
@@ -40,6 +43,19 @@ export default function Login() {
   //   getData();
   // }, []);
 
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const value = await AsyncStorage.getItem("name");
+        if (value !== null) {
+          return router.replace("/menu");
+        }
+      } catch (e) {}
+    };
+
+    getData();
+  }, []);
+
   async function handleLogin({ email }: { email: string }) {
     try {
       await AsyncStorage.setItem("name", email);
@@ -59,7 +75,7 @@ export default function Login() {
   }
 
   return (
-    <ThemedContainer>
+    <SafeAreaView className="flex flex-1 items-center justify-center bg-black/5 dark:bg-black">
       <View className="h-4/5 w-11/12 justify-around gap-4">
         <View className="items-center">
           <ImageViewer imgSource={require("@/assets/images/splash.png")} />
@@ -139,6 +155,6 @@ export default function Login() {
           </View> */}
         </View>
       </View>
-    </ThemedContainer>
+    </SafeAreaView>
   );
 }

@@ -2,7 +2,7 @@ import { AuthContext } from "@/utils/authContext";
 import { Redirect, Stack } from "expo-router";
 import { useContext } from "react";
 
-export default function BaterPontoLayout() {
+export default function DocumentosLayout() {
   const authState = useContext(AuthContext);
   if (!authState.isLoggedIn) {
     return <Redirect href={"/"} />;
@@ -11,10 +11,6 @@ export default function BaterPontoLayout() {
   return (
     <Stack>
       <Stack.Screen name="index" options={{ headerShown: false }} />
-      <Stack.Screen name="confirmar" options={{ headerShown: false }} />
-      <Stack.Screen name="espelho" options={{ headerShown: false }} />
-      <Stack.Screen name="historico" options={{ headerShown: false }} />
-      <Stack.Screen name="registrar" options={{ headerShown: false }} />
     </Stack>
   );
 }

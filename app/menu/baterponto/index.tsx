@@ -1,44 +1,33 @@
 import BackButton from "@/components/BackButton";
-import ImageViewer from "@/components/ImageViewer";
+import ThemedCard from "@/components/ThemedCard";
 import ThemedContainer from "@/components/ThemedContainer";
-import { Card } from "@/components/ui/card";
-import { Text } from "@/components/ui/text";
-import { styles } from "@/styles/styles";
-import { Image } from "expo-image";
-import { Link } from "expo-router";
 import { View } from "react-native";
 
 export default function BaterPonto() {
   return (
-    <ThemedContainer>
-      <View className="w-full flex-1 justify-evenly gap-2">
-        <View className="items-center">
-          <ImageViewer imgSource={require("@/assets/images/conecta.png")} />
+    <ThemedContainer title="Ponto Eletrônico">
+      <View className="h-5/6 justify-around">
+        <View className="mx-4 h-1/4 flex-row gap-4">
+          <ThemedCard
+            link={"/menu/baterponto/registrar"}
+            icon={require("@/assets/icons/pontoeletronico.png")}
+            title="Registrar Ponto"
+          />
+          <ThemedCard
+            link={"/menu/baterponto/espelho"}
+            icon={require("@/assets/icons/espelho.png")}
+            title="Espelho de Ponto"
+          />
+          <ThemedCard
+            link={"/menu/baterponto/abono"}
+            icon={require("@/assets/icons/abono.png")}
+            title="Solicitar Abono"
+          />
         </View>
-        <View className="w-full flex-1 justify-evenly bg-primary dark:bg-black">
-          <Text className="text-center text-4xl font-bold">
-            Ponto Eletrônico
-          </Text>
-          <View className="h-4/5">
-            <View className="mx-4 flex-row gap-4">
-              <Card className="flex-1">
-                <Link href="/menu/baterponto/registrar">
-                  <View className="py-safe w-full items-center">
-                    <Image
-                      source={require("@/assets/icons/registrarponto.png")}
-                      style={styles.icon}
-                    />
-                    <Text className="text-center">Registrar Ponto</Text>
-                  </View>
-                </Link>
-              </Card>
-              <View className="flex-1"></View>
-              <View className="flex-1"></View>
-            </View>
-          </View>
-          <BackButton />
-        </View>
+        <View className="mx-4 h-1/4 flex-row gap-4" />
+        <View className="mx-4 h-1/4 flex-row gap-4" />
       </View>
+      <BackButton />
     </ThemedContainer>
   );
 }

@@ -1,136 +1,78 @@
 import BackButton from "@/components/BackButton";
-import ImageViewer from "@/components/ImageViewer";
+import LoadingScreen from "@/components/LoadingScreen";
+import ThemedCard from "@/components/ThemedCard";
 import ThemedContainer from "@/components/ThemedContainer";
-import { Card } from "@/components/ui/card";
-import { Text } from "@/components/ui/text";
-import { styles } from "@/styles/styles";
-import { Image } from "expo-image";
-import { Link } from "expo-router";
+import { useEffect, useState } from "react";
 import { View } from "react-native";
 
 export default function Documentos() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
+
   return (
-    <ThemedContainer>
-      <View className="w-full flex-1 items-center justify-between gap-2">
-        <View className="items-center">
-          <ImageViewer imgSource={require("@/assets/images/conecta.png")} />
+    <ThemedContainer title="Documentos">
+      <View className="h-5/6 justify-around">
+        <View className="mx-4 h-1/4 flex-row gap-4">
+          <ThemedCard
+            link={"/menu/documentos/contrato-trabalho"}
+            icon={require("@/assets/icons/documentos.png")}
+            title="Contrato de Trabalho"
+          />
+          <ThemedCard
+            link={"/menu/documentos/codigo-conduta"}
+            icon={require("@/assets/icons/conduta.png")}
+            title="Código de Conduta"
+          />
+          <ThemedCard
+            link={"/menu/documentos/política-interna"}
+            icon={require("@/assets/icons/politica.png")}
+            title="Política Interna"
+          />
         </View>
-        <View className="w-full flex-1 justify-between bg-primary dark:bg-black">
-          <Text className="text-center text-4xl font-bold">Documentos</Text>
-          <View className="h-full justify-evenly">
-            <View className="mx-4 h-1/6 flex-row gap-4">
-              <Card className="flex-1">
-                <Link href="/menu/documentos/contrato-trabalho">
-                  <View className="h-full w-full items-center justify-center">
-                    <Image
-                      source={require("@/assets/icons/documentos.png")}
-                      style={styles.icon}
-                    />
-                    <Text className="text-center text-base">
-                      Contrato de Trabalho
-                    </Text>
-                  </View>
-                </Link>
-              </Card>
-              <Card className="flex-1">
-                <Link href="/menu/documentos/codigo-conduta">
-                  <View className="h-full w-full items-center justify-center">
-                    <Image
-                      source={require("@/assets/icons/conduta.png")}
-                      style={styles.icon}
-                    />
-                    <Text className="text-center text-base">
-                      Código de Conduta
-                    </Text>
-                  </View>
-                </Link>
-              </Card>
-              <Card className="flex-1">
-                <Link href="/menu/documentos/politica-interna">
-                  <View className="h-full w-full items-center justify-center">
-                    <Image
-                      source={require("@/assets/icons/politica.png")}
-                      style={styles.icon}
-                    />
-                    <Text className="text-center text-base">
-                      Política Interna
-                    </Text>
-                  </View>
-                </Link>
-              </Card>
-            </View>
-            <View className="mx-4 h-1/6 flex-row gap-4">
-              <Card className="flex-1">
-                <Link href="/menu/documentos/ficha-registro">
-                  <View className="h-full w-full items-center justify-center">
-                    <Image
-                      source={require("@/assets/icons/ficha.png")}
-                      style={styles.icon}
-                    />
-                    <Text className="text-center text-base">
-                      Ficha de Registro
-                    </Text>
-                  </View>
-                </Link>
-              </Card>
-              <Card className="flex-1">
-                <Link href="/menu/documentos/ficha-epi">
-                  <View className="h-full w-full items-center justify-center">
-                    <Image
-                      source={require("@/assets/icons/epi.png")}
-                      style={styles.icon}
-                    />
-                    <Text className="text-center text-base">
-                      Ficha de E.P.I.
-                    </Text>
-                  </View>
-                </Link>
-              </Card>
-              <Card className="flex-1">
-                <Link href="/menu/documentos/saude-ocupacional">
-                  <View className="h-full w-full items-center justify-center">
-                    <Image
-                      source={require("@/assets/icons/saude.png")}
-                      style={styles.icon}
-                    />
-                    <Text className="text-center text-base">
-                      Saúde Ocupacional
-                    </Text>
-                  </View>
-                </Link>
-              </Card>
-            </View>
-            <View className="mx-4 h-1/6 flex-row gap-4">
-              <Card className="flex-1">
-                <Link href="/menu/documentos/termos">
-                  <View className="h-full w-full items-center justify-center">
-                    <Image
-                      source={require("@/assets/icons/termos.png")}
-                      style={styles.icon}
-                    />
-                    <Text className="text-center text-base">Termos</Text>
-                  </View>
-                </Link>
-              </Card>
-              <Card className="flex-1">
-                <Link href="/menu/documentos/diversos">
-                  <View className="h-full w-full items-center justify-center">
-                    <Image
-                      source={require("@/assets/icons/arquivo.png")}
-                      style={styles.icon}
-                    />
-                    <Text className="text-center text-base">
-                      Demais Documentos
-                    </Text>
-                  </View>
-                </Link>
-              </Card>
-              <View className="flex-1"></View>
-            </View>
-            <BackButton />
-          </View>
+        <View className="mx-4 h-1/4 flex-row gap-4">
+          <ThemedCard
+            link={"/menu/documentos/ficha-registro"}
+            icon={require("@/assets/icons/ficha.png")}
+            title="Ficha de Registro"
+          />
+          <ThemedCard
+            link={"/menu/documentos/ficha-epi"}
+            icon={require("@/assets/icons/epi.png")}
+            title="Ficha de E.P.I."
+          />
+          <ThemedCard
+            link={"/menu/documentos/saude-ocupacional"}
+            icon={require("@/assets/icons/saude.png")}
+            title="Saúde Ocupacional"
+          />
+        </View>
+        <View className="mx-4 h-1/4 flex-row gap-4">
+          <ThemedCard
+            link={"/menu/documentos/termos"}
+            icon={require("@/assets/icons/termos.png")}
+            title="Termos"
+          />
+          <ThemedCard
+            link={"/menu/documentos/diversos"}
+            icon={require("@/assets/icons/arquivo.png")}
+            title="Demais Documentos"
+          />
+
+          <View className="flex-1" />
         </View>
       </View>
+      <BackButton />
     </ThemedContainer>
   );
 }

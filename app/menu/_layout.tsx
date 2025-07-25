@@ -53,6 +53,7 @@ export default function PerfilLayout() {
           <Stack.Screen name="dadospessoais" options={{ headerShown: false }} />
           <Stack.Screen name="documentos" options={{ headerShown: false }} />
           <Stack.Screen name="pagamentos" options={{ headerShown: false }} />
+          <Stack.Screen name="treinamentos" options={{ headerShown: false }} />
         </Stack>
       </ThemeProvider>
     </AuthProvider>

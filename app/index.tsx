@@ -1,11 +1,11 @@
 import ImageViewer from "@/components/ImageViewer";
-import ThemedContainer from "@/components/ThemedContainer";
 import { Button } from "@/components/ui/button";
 import { Text } from "@/components/ui/text";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Link, useRouter } from "expo-router";
 import { useEffect } from "react";
 import { View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -24,7 +24,7 @@ export default function HomeScreen() {
   }, []);
 
   return (
-    <ThemedContainer>
+    <SafeAreaView className="flex flex-1 items-center justify-center bg-black/5">
       <View className="h-4/5 w-11/12 justify-around gap-4">
         <Text className="text-center text-2xl font-bold text-primary">
           Acesse sua conta
@@ -49,6 +49,6 @@ export default function HomeScreen() {
           </Link>
         </View>
       </View>
-    </ThemedContainer>
+    </SafeAreaView>
   );
 }

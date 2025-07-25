@@ -1,5 +1,4 @@
 import BackButton from "@/components/BackButton";
-import ImageViewer from "@/components/ImageViewer";
 import ThemedContainer from "@/components/ThemedContainer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -19,17 +18,11 @@ export default function ValeRefeicao() {
   const [selectedYear, setSelectedYear] = useState("");
 
   return (
-    <ThemedContainer>
-      <View className="w-full flex-1 justify-evenly gap-2">
-        <View className="items-center">
-          <ImageViewer imgSource={require("@/assets/images/conecta.png")} />
-        </View>
-        <View className="w-full flex-1 justify-evenly bg-primary dark:bg-black">
+    <ThemedContainer title="Vale Refeição">
+      <View className="h-5/6 justify-around">
+        <View className="mx-4 h-1/4 flex-row gap-4">
           <View className="mx-4 h-4/5 items-center">
             <View className="mx-4 h-full w-full gap-4">
-              <Text className="text-center text-3xl font-black">
-                Vale Refeição
-              </Text>
               <Select
                 defaultValue={{ value: "ano", label: "Ano" }}
                 className="w-40 self-center"

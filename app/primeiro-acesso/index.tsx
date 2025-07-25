@@ -1,5 +1,5 @@
+import BackButton from "@/components/BackButton";
 import ImageViewer from "@/components/ImageViewer";
-import ThemedContainer from "@/components/ThemedContainer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Text } from "@/components/ui/text";
@@ -10,7 +10,10 @@ import { router } from "expo-router";
 import { User } from "lucide-react-native";
 import { useContext, useState } from "react";
 import { View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+import {
+  SafeAreaView,
+  useSafeAreaInsets,
+} from "react-native-safe-area-context";
 import Toast from "react-native-toast-message";
 
 export default function PrimeiroAcesso() {
@@ -40,7 +43,7 @@ export default function PrimeiroAcesso() {
   }
 
   return (
-    <ThemedContainer>
+    <SafeAreaView className="flex flex-1 items-center justify-center bg-black/5 dark:bg-black">
       <View className="h-4/5 w-11/12 justify-around gap-4">
         <View className="items-center">
           <ImageViewer imgSource={require("@/assets/images/splash.png")} />
@@ -67,10 +70,11 @@ export default function PrimeiroAcesso() {
             onPress={() => sendEmail({ email })}
             // disabled={email.length < 2 ? true : false}
           >
-            <Text>Entrar</Text>
+            <Text>ENTRAR</Text>
           </Button>
+          <BackButton />
         </View>
       </View>
-    </ThemedContainer>
+    </SafeAreaView>
   );
 }

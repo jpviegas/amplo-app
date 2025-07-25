@@ -1,6 +1,7 @@
-import ImageViewer from "@/components/ImageViewer";
+import BackButton from "@/components/BackButton";
 import ThemedContainer from "@/components/ThemedContainer";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Text } from "@/components/ui/text";
 import { useColorScheme } from "@/lib/useColorScheme";
@@ -17,17 +18,11 @@ export default function AlterarSenha() {
   const [securePass, setSecurePass] = useState(true);
 
   return (
-    <ThemedContainer>
-      <View className="w-full flex-1 justify-evenly gap-2">
-        <View className="items-center">
-          <ImageViewer imgSource={require("@/assets/images/conecta.png")} />
-        </View>
-        <View className="w-full flex-1 justify-evenly bg-primary dark:bg-black">
-          <View className="h-4/5">
-            <View className="gap-4 px-4">
-              <Text className="text-center text-2xl font-bold">
-                Alterar Senha
-              </Text>
+    <ThemedContainer title="Alterar Senha">
+      <View className="h-2/3 justify-around">
+        <View className="mx-4 flex-1 flex-row gap-4">
+          <Card className="w-full">
+            <CardContent className="h-full justify-evenly">
               <View className="mb-4">
                 <Text>SENHA ATUAL</Text>
                 <View className="mb-2 w-full flex-row items-center gap-2 border-b-[1px] border-secondary-foreground">
@@ -124,18 +119,21 @@ export default function AlterarSenha() {
                   )}
                 </View>
               </View>
-            </View>
-          </View>
-          <Link asChild href={".."}>
-            <Button
-              size={"full"}
-              variant="outline"
-              className="w-4/5 self-center"
-            >
-              <Text>Voltar</Text>
-            </Button>
-          </Link>
+            </CardContent>
+          </Card>
         </View>
+      </View>
+      <View>
+        <Link asChild href={".."}>
+          <Button
+            size={"lg"}
+            variant="outline"
+            className="w-3/5 self-center bg-green-500"
+          >
+            <Text className="font-black">CONFIRMAR</Text>
+          </Button>
+        </Link>
+        <BackButton />
       </View>
     </ThemedContainer>
   );

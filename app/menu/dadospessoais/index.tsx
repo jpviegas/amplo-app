@@ -43,7 +43,7 @@ export default function DadosPessoais() {
               </CardContent>
             </Link>
           </Card>
-          <View className="flex-1 bg-transparent"></View>
+          <View className="flex-1" />
         </View>
         <View className="mx-4 h-1/4 flex-row gap-4" />
         <View className="mx-4 h-1/4 flex-row gap-4" />

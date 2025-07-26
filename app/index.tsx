@@ -1,9 +1,10 @@
 import ImageViewer from "@/components/ImageViewer";
 import { Button } from "@/components/ui/button";
 import { Text } from "@/components/ui/text";
+import { AuthContext } from "@/utils/authContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Link, useRouter } from "expo-router";
-import { useEffect } from "react";
+import { Link, Redirect, useRouter } from "expo-router";
+import { useContext, useEffect } from "react";
 import { View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -22,6 +23,11 @@ export default function HomeScreen() {
 
     getData();
   }, []);
+
+  const authState = useContext(AuthContext);
+  if (authState.isLoggedIn) {
+    return <Redirect href={"/menu"} />;
+  }
 
   return (
     <SafeAreaView className="flex flex-1 items-center justify-center bg-black/5">

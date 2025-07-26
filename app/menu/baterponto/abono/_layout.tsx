@@ -2,7 +2,7 @@ import { AuthContext } from "@/utils/authContext";
 import { Redirect, Stack } from "expo-router";
 import { useContext } from "react";
 
-export default function PagamentosLayout() {
+export default function AbonoLayout() {
   const authState = useContext(AuthContext);
   if (!authState.isLoggedIn) {
     return <Redirect href={"/"} />;
@@ -11,10 +11,8 @@ export default function PagamentosLayout() {
   return (
     <Stack>
       <Stack.Screen name="index" options={{ headerShown: false }} />
-      <Stack.Screen name="holerite" options={{ headerShown: false }} />
-      <Stack.Screen name="refeicao" options={{ headerShown: false }} />
-      <Stack.Screen name="rendimento" options={{ headerShown: false }} />
-      <Stack.Screen name="transporte" options={{ headerShown: false }} />
+      <Stack.Screen name="historico" options={{ headerShown: false }} />
+      <Stack.Screen name="solicitar" options={{ headerShown: false }} />
     </Stack>
   );
 }

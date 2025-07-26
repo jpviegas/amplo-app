@@ -1,4 +1,5 @@
 import BackButton from "@/components/BackButton";
+import LoadingScreen from "@/components/LoadingScreen";
 import ThemedContainer from "@/components/ThemedContainer";
 import { Button } from "@/components/ui/button";
 import { Text } from "@/components/ui/text";
@@ -91,6 +92,20 @@ export default function Registrar() {
 
     // return () => clearInterval(interval);
   }, []);
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
 
   return (
     <ThemedContainer title={currentDate}>

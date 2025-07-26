@@ -2,7 +2,7 @@ import { AuthContext } from "@/utils/authContext";
 import { Redirect, Stack } from "expo-router";
 import { useContext } from "react";
 
-export default function BaterPontoLayout() {
+export default function EspelhoLayout() {
   const authState = useContext(AuthContext);
   if (!authState.isLoggedIn) {
     return <Redirect href={"/"} />;

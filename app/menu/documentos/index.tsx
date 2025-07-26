@@ -68,7 +68,6 @@ export default function Documentos() {
             icon={require("@/assets/icons/arquivo.png")}
             title="Demais Documentos"
           />
-
           <View className="flex-1" />
         </View>
       </View>

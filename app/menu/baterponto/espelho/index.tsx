@@ -38,15 +38,9 @@ export default function EspelhoPonto() {
             <SelectContent>
               <SelectGroup>
                 <SelectLabel>Ano</SelectLabel>
-                <SelectItem label="2023" value="2023">
-                  2023
-                </SelectItem>
-                <SelectItem label="2024" value="2024">
-                  2024
-                </SelectItem>
-                <SelectItem label="2025" value="2025">
-                  2025
-                </SelectItem>
+                <SelectItem label="2023" value="2023" />
+                <SelectItem label="2024" value="2024" />
+                <SelectItem label="2025" value="2025" />
               </SelectGroup>
             </SelectContent>
           </Select>

@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/select";
 import { Text } from "@/components/ui/text";
 import { useColorScheme } from "@/lib/useColorScheme";
+import { useUserStore } from "@/store/userStore";
 import {
   AlertCircle,
   Calendar,
@@ -29,7 +30,7 @@ import { ScrollView, View } from "react-native";
 
 export default function Perfil() {
   const { isDarkColorScheme } = useColorScheme();
-  const [name] = useState("");
+  const { user } = useUserStore();
   const [gender, setGender] = useState("");
   const [dependents, setDependents] = useState("no");
 
@@ -46,8 +47,11 @@ export default function Perfil() {
                     size={32}
                     color={isDarkColorScheme ? "white" : "black"}
                   />
-                  <Input className="border-0 border-secondary bg-inherit">
-                    {name ? name : "Digite seu nome completo"}
+                  <Input
+                    className="border-0 border-secondary bg-inherit"
+                    placeholder="Digite seu nome completo"
+                  >
+                    {user}
                   </Input>
                 </View>
               </View>

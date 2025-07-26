@@ -11,6 +11,7 @@ export default function BaterPontoLayout() {
   return (
     <Stack>
       <Stack.Screen name="index" options={{ headerShown: false }} />
+      <Stack.Screen name="abono" options={{ headerShown: false }} />
       <Stack.Screen name="confirmar" options={{ headerShown: false }} />
       <Stack.Screen name="espelho" options={{ headerShown: false }} />
       <Stack.Screen name="historico" options={{ headerShown: false }} />

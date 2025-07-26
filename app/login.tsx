@@ -8,7 +8,7 @@ import { useColorScheme } from "@/lib/useColorScheme";
 import { useUserStore } from "@/store/userStore";
 import { AuthContext } from "@/utils/authContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { router } from "expo-router";
+import { Redirect, router } from "expo-router";
 import { Eye, EyeOff, LockKeyhole, User } from "lucide-react-native";
 import { useContext, useEffect, useState } from "react";
 import { View } from "react-native";
@@ -55,6 +55,11 @@ export default function Login() {
 
     getData();
   }, []);
+
+  // const authState = useContext(AuthContext);
+  if (authContext.isLoggedIn) {
+    return <Redirect href={"/menu"} />;
+  }
 
   async function handleLogin({ email }: { email: string }) {
     try {

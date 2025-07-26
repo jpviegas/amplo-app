@@ -9,7 +9,7 @@ type Props = {
   className?: string;
   title: string;
   sign?: boolean;
-  icon: ImageSourcePropType;
+  icon?: ImageSourcePropType;
 };
 
 export default function ThemedCard({ className, title, icon, sign }: Props) {

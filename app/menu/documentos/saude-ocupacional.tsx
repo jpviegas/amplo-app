@@ -197,14 +197,14 @@ export default function SaudeOcupacional() {
             <ThemedCard
               className="flex-1"
               title="Retorno ao Trabalho"
-              icon={require("@/assets/icons/documentos.png")}
+              icon={require("@/assets/icons/saude.png")}
               sign
             />
 
             <ThemedCard
               className="flex-1"
               title="Demissional"
-              icon={require("@/assets/icons/documentos.png")}
+              icon={require("@/assets/icons/saude.png")}
               sign
             />
           </View>

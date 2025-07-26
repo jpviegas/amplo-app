@@ -14,9 +14,9 @@ import { View } from "react-native";
 export default function Treinamentos() {
   return (
     <ThemedContainer title="Treinamentos">
-      <View className="h-5/6 justify-around">
-        <View className="mx-4 h-full gap-4">
-          <Card className="flex-1 justify-around">
+      <View className="mx-4 h-5/6">
+        <View className="h-full gap-4">
+          <Card className="flex-1">
             <CardHeader>
               <CardTitle>TÍTULO</CardTitle>
               <CardDescription>Curso de boas práticas</CardDescription>

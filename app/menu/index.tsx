@@ -1,7 +1,7 @@
 import LoadingScreen from "@/components/LoadingScreen";
 import { LogOutButton } from "@/components/LogOutButton";
-import ThemedCard from "@/components/ThemedCard";
 import ThemedContainer from "@/components/ThemedContainer";
+import ThemedIconCard from "@/components/ThemedIconCard";
 import { useEffect, useState } from "react";
 import { View } from "react-native";
 
@@ -24,46 +24,46 @@ export default function MenuPrincipal() {
     <ThemedContainer title="Menu Principal">
       <View className="h-5/6 justify-around">
         <View className="mx-4 h-1/4 flex-row gap-4">
-          <ThemedCard
+          <ThemedIconCard
             link={"/menu/dadospessoais"}
             icon={require("@/assets/icons/dadospessoais.png")}
             title="Dados Pessoais"
           />
-          <ThemedCard
+          <ThemedIconCard
             link={"/menu/documentos"}
             icon={require("@/assets/icons/documentos.png")}
             title="Documentos"
           />
-          <ThemedCard
+          <ThemedIconCard
             link={"/menu/pagamentos"}
             icon={require("@/assets/icons/pagamento.png")}
             title="Pagamento Benefício"
           />
         </View>
         <View className="mx-4 h-1/4 flex-row gap-4">
-          <ThemedCard
+          <ThemedIconCard
             link={"/menu/documentos"}
             icon={require("@/assets/icons/ferias.png")}
             title="Férias"
           />
-          <ThemedCard
+          <ThemedIconCard
             link={"/menu/baterponto"}
             icon={require("@/assets/icons/pontoeletronico.png")}
             title="Ponto Eletrônico"
           />
-          <ThemedCard
+          <ThemedIconCard
             link={"/menu/treinamentos"}
             icon={require("@/assets/icons/treinamento.png")}
             title="Área de Treinamento"
           />
         </View>
         <View className="mx-4 h-1/4 flex-row gap-4">
-          <ThemedCard
+          <ThemedIconCard
             link={"/menu/documentos"}
             icon={require("@/assets/icons/aviso.png")}
             title="Aviso Comunicado"
           />
-          <ThemedCard
+          <ThemedIconCard
             link={"/menu/documentos"}
             icon={require("@/assets/icons/arquivo.png")}
             title="Atendimento Conecta"

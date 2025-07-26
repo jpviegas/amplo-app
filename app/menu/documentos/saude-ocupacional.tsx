@@ -1,4 +1,5 @@
 import BackButton from "@/components/BackButton";
+import ThemedCard from "@/components/ThemedCard";
 import ThemedContainer from "@/components/ThemedContainer";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -17,322 +18,199 @@ export default function SaudeOcupacional() {
 
   return (
     <ThemedContainer title="Saúde Ocupacional">
-      <View className="w-full flex-1 justify-evenly bg-primary dark:bg-black">
-        <View className="h-4/5">
-          <View className="mx-4 h-full gap-4">
-            <ScrollView className="h-5/6">
-              <View className="gap-4">
-                <Card className="flex-1">
-                  <CardContent className="h-full justify-center">
-                    <View className="my-safe w-full flex-row">
-                      <View className="my-auto">
-                        <Image
-                          source={require("@/assets/icons/saude.png")}
-                          style={styles.icon}
-                        />
-                      </View>
-                      <View className="ml-4 w-5/6">
-                        <Text className="mb-2 font-bold">Admissional</Text>
-                        <View className="w-full flex-row justify-evenly">
-                          <View className="items-center">
-                            <Image
-                              source={require("@/assets/icons/assinar.png")}
-                              style={styles.iconSM}
-                            />
-                            <Text className="text-base">Assinar</Text>
-                          </View>
-                          <View className="items-center">
-                            <Image
-                              source={require("@/assets/icons/visualizar.png")}
-                              style={styles.iconSM}
-                            />
-                            <Text className="text-base">Visualizar</Text>
-                          </View>
-                          <View className="items-center">
-                            <Image
-                              source={require("@/assets/icons/compartilhar.png")}
-                              style={styles.iconSM}
-                            />
-                            <Text className="text-base">Compartilhar</Text>
-                          </View>
-                          <View className="items-center">
-                            <Image
-                              source={require("@/assets/icons/baixar.png")}
-                              style={styles.iconSM}
-                            />
-                            <Text className="text-base">Baixar</Text>
-                          </View>
-                        </View>
-                      </View>
-                    </View>
-                  </CardContent>
-                </Card>
+      <View className="mx-4 h-5/6 gap-4">
+        <ScrollView className="h-5/6">
+          <View className="gap-4">
+            <ThemedCard
+              className="flex-1"
+              title="Admissional"
+              icon={require("@/assets/icons/saude.png")}
+            />
 
-                <Card className="flex-1">
-                  <CardContent className="mt-2">
-                    <Collapsible>
-                      <CollapsibleTrigger
-                        onPressIn={() => setOpenCollapsible(!openCollapsible)}
-                        className="mx-4 flex-row justify-between"
-                      >
-                        <Text className="flex-1 font-bold">Periódico</Text>
-                        <Image
-                          source={require("@/assets/icons/seta.png")}
-                          style={{
-                            width: 30,
-                            height: 20,
-                            contentFit: "contain",
-                            marginTop: 3,
-                            transform: openCollapsible
-                              ? [{ rotate: "180deg" }]
-                              : [{ rotate: "0deg" }],
-                          }}
-                        />
-                      </CollapsibleTrigger>
-                      <CollapsibleContent className="flex-1 gap-4">
-                        <Card className="h-14">
-                          <CardContent className="mt-1">
-                            <View className="flex-row justify-evenly">
-                              <Text className="align-middle">2022</Text>
-                              <View className="items-center">
-                                <Image
-                                  source={require("@/assets/icons/assinar.png")}
-                                  style={styles.iconXS}
-                                />
-                                <Text className="text-sm">Assinar</Text>
-                              </View>
-                              <View className="items-center">
-                                <Image
-                                  source={require("@/assets/icons/visualizar.png")}
-                                  style={styles.iconXS}
-                                />
-                                <Text className="text-sm">Visualizar</Text>
-                              </View>
-                              <View className="items-center">
-                                <Image
-                                  source={require("@/assets/icons/compartilhar.png")}
-                                  style={styles.iconXS}
-                                />
-                                <Text className="text-sm">Compartilhar</Text>
-                              </View>
-                              <View className="items-center">
-                                <Image
-                                  source={require("@/assets/icons/baixar.png")}
-                                  style={styles.iconXS}
-                                />
-                                <Text className="text-sm">Baixar</Text>
-                              </View>
-                            </View>
-                          </CardContent>
-                        </Card>
-                        <Card className="h-14">
-                          <CardContent className="mt-1">
-                            <View className="w-full flex-row justify-evenly">
-                              <Text className="align-middle">2023</Text>
-                              <View className="items-center">
-                                <Image
-                                  source={require("@/assets/icons/assinar.png")}
-                                  style={styles.iconXS}
-                                />
-                                <Text className="text-sm">Assinar</Text>
-                              </View>
-                              <View className="items-center">
-                                <Image
-                                  source={require("@/assets/icons/visualizar.png")}
-                                  style={styles.iconXS}
-                                />
-                                <Text className="text-sm">Visualizar</Text>
-                              </View>
-                              <View className="items-center">
-                                <Image
-                                  source={require("@/assets/icons/compartilhar.png")}
-                                  style={styles.iconXS}
-                                />
-                                <Text className="text-sm">Compartilhar</Text>
-                              </View>
-                              <View className="items-center">
-                                <Image
-                                  source={require("@/assets/icons/baixar.png")}
-                                  style={styles.iconXS}
-                                />
-                                <Text className="text-sm">Baixar</Text>
-                              </View>
-                            </View>
-                          </CardContent>
-                        </Card>
-                        <Card className="h-14">
-                          <CardContent className="mt-1">
-                            <View className="w-full flex-row justify-evenly">
-                              <Text className="align-middle">2024</Text>
-                              <View className="items-center">
-                                <Image
-                                  source={require("@/assets/icons/assinar.png")}
-                                  style={styles.iconXS}
-                                />
-                                <Text className="text-sm">Assinar</Text>
-                              </View>
-                              <View className="items-center">
-                                <Image
-                                  source={require("@/assets/icons/visualizar.png")}
-                                  style={styles.iconXS}
-                                />
-                                <Text className="text-sm">Visualizar</Text>
-                              </View>
-                              <View className="items-center">
-                                <Image
-                                  source={require("@/assets/icons/compartilhar.png")}
-                                  style={styles.iconXS}
-                                />
-                                <Text className="text-sm">Compartilhar</Text>
-                              </View>
-                              <View className="items-center">
-                                <Image
-                                  source={require("@/assets/icons/baixar.png")}
-                                  style={styles.iconXS}
-                                />
-                                <Text className="text-sm">Baixar</Text>
-                              </View>
-                            </View>
-                          </CardContent>
-                        </Card>
-                        <Card className="h-14">
-                          <CardContent className="mt-1">
-                            <View className="w-full flex-row justify-evenly">
-                              <Text className="align-middle">2025</Text>
-                              <View className="items-center">
-                                <Image
-                                  source={require("@/assets/icons/assinar.png")}
-                                  style={styles.iconXS}
-                                />
-                                <Text className="text-sm">Assinar</Text>
-                              </View>
-                              <View className="items-center">
-                                <Image
-                                  source={require("@/assets/icons/visualizar.png")}
-                                  style={styles.iconXS}
-                                />
-                                <Text className="text-sm">Visualizar</Text>
-                              </View>
-                              <View className="items-center">
-                                <Image
-                                  source={require("@/assets/icons/compartilhar.png")}
-                                  style={styles.iconXS}
-                                />
-                                <Text className="text-sm">Compartilhar</Text>
-                              </View>
-                              <View className="items-center">
-                                <Image
-                                  source={require("@/assets/icons/baixar.png")}
-                                  style={styles.iconXS}
-                                />
-                                <Text className="text-sm">Baixar</Text>
-                              </View>
-                            </View>
-                          </CardContent>
-                        </Card>
-                      </CollapsibleContent>
-                    </Collapsible>
-                  </CardContent>
-                </Card>
+            <Card className="flex-1">
+              <CardContent className="mt-2">
+                <Collapsible>
+                  <CollapsibleTrigger
+                    onPressIn={() => setOpenCollapsible(!openCollapsible)}
+                    className="mx-4 flex-row justify-between"
+                  >
+                    <Text className="flex-1 font-bold">Periódico</Text>
+                    <Image
+                      source={require("@/assets/icons/seta.png")}
+                      style={{
+                        width: 30,
+                        height: 20,
+                        contentFit: "contain",
+                        marginTop: 3,
+                        transform: openCollapsible
+                          ? [{ rotate: "180deg" }]
+                          : [{ rotate: "0deg" }],
+                      }}
+                    />
+                  </CollapsibleTrigger>
+                  <CollapsibleContent className="flex-1 gap-4">
+                    <Card className="h-14">
+                      <CardContent className="mt-1">
+                        <View className="flex-row justify-evenly">
+                          <Text className="align-middle">2022</Text>
+                          <View className="items-center">
+                            <Image
+                              source={require("@/assets/icons/assinar.png")}
+                              style={styles.iconXS}
+                            />
+                            <Text className="text-sm">Assinar</Text>
+                          </View>
+                          <View className="items-center">
+                            <Image
+                              source={require("@/assets/icons/visualizar.png")}
+                              style={styles.iconXS}
+                            />
+                            <Text className="text-sm">Visualizar</Text>
+                          </View>
+                          <View className="items-center">
+                            <Image
+                              source={require("@/assets/icons/compartilhar.png")}
+                              style={styles.iconXS}
+                            />
+                            <Text className="text-sm">Compartilhar</Text>
+                          </View>
+                          <View className="items-center">
+                            <Image
+                              source={require("@/assets/icons/baixar.png")}
+                              style={styles.iconXS}
+                            />
+                            <Text className="text-sm">Baixar</Text>
+                          </View>
+                        </View>
+                      </CardContent>
+                    </Card>
+                    <Card className="h-14">
+                      <CardContent className="mt-1">
+                        <View className="w-full flex-row justify-evenly">
+                          <Text className="align-middle">2023</Text>
+                          <View className="items-center">
+                            <Image
+                              source={require("@/assets/icons/assinar.png")}
+                              style={styles.iconXS}
+                            />
+                            <Text className="text-sm">Assinar</Text>
+                          </View>
+                          <View className="items-center">
+                            <Image
+                              source={require("@/assets/icons/visualizar.png")}
+                              style={styles.iconXS}
+                            />
+                            <Text className="text-sm">Visualizar</Text>
+                          </View>
+                          <View className="items-center">
+                            <Image
+                              source={require("@/assets/icons/compartilhar.png")}
+                              style={styles.iconXS}
+                            />
+                            <Text className="text-sm">Compartilhar</Text>
+                          </View>
+                          <View className="items-center">
+                            <Image
+                              source={require("@/assets/icons/baixar.png")}
+                              style={styles.iconXS}
+                            />
+                            <Text className="text-sm">Baixar</Text>
+                          </View>
+                        </View>
+                      </CardContent>
+                    </Card>
+                    <Card className="h-14">
+                      <CardContent className="mt-1">
+                        <View className="w-full flex-row justify-evenly">
+                          <Text className="align-middle">2024</Text>
+                          <View className="items-center">
+                            <Image
+                              source={require("@/assets/icons/assinar.png")}
+                              style={styles.iconXS}
+                            />
+                            <Text className="text-sm">Assinar</Text>
+                          </View>
+                          <View className="items-center">
+                            <Image
+                              source={require("@/assets/icons/visualizar.png")}
+                              style={styles.iconXS}
+                            />
+                            <Text className="text-sm">Visualizar</Text>
+                          </View>
+                          <View className="items-center">
+                            <Image
+                              source={require("@/assets/icons/compartilhar.png")}
+                              style={styles.iconXS}
+                            />
+                            <Text className="text-sm">Compartilhar</Text>
+                          </View>
+                          <View className="items-center">
+                            <Image
+                              source={require("@/assets/icons/baixar.png")}
+                              style={styles.iconXS}
+                            />
+                            <Text className="text-sm">Baixar</Text>
+                          </View>
+                        </View>
+                      </CardContent>
+                    </Card>
+                    <Card className="h-14">
+                      <CardContent className="mt-1">
+                        <View className="w-full flex-row justify-evenly">
+                          <Text className="align-middle">2025</Text>
+                          <View className="items-center">
+                            <Image
+                              source={require("@/assets/icons/assinar.png")}
+                              style={styles.iconXS}
+                            />
+                            <Text className="text-sm">Assinar</Text>
+                          </View>
+                          <View className="items-center">
+                            <Image
+                              source={require("@/assets/icons/visualizar.png")}
+                              style={styles.iconXS}
+                            />
+                            <Text className="text-sm">Visualizar</Text>
+                          </View>
+                          <View className="items-center">
+                            <Image
+                              source={require("@/assets/icons/compartilhar.png")}
+                              style={styles.iconXS}
+                            />
+                            <Text className="text-sm">Compartilhar</Text>
+                          </View>
+                          <View className="items-center">
+                            <Image
+                              source={require("@/assets/icons/baixar.png")}
+                              style={styles.iconXS}
+                            />
+                            <Text className="text-sm">Baixar</Text>
+                          </View>
+                        </View>
+                      </CardContent>
+                    </Card>
+                  </CollapsibleContent>
+                </Collapsible>
+              </CardContent>
+            </Card>
 
-                <Card className="flex-1 justify-center">
-                  <CardContent className="h-full justify-center">
-                    <View className="my-safe w-full flex-row justify-center">
-                      <View className="my-auto">
-                        <Image
-                          source={require("@/assets/icons/documentos.png")}
-                          style={styles.icon}
-                        />
-                      </View>
-                      <View className="ml-4 w-5/6">
-                        <Text className="mb-2 font-bold">
-                          Retorno ao Trabalho
-                        </Text>
-                        <View className="w-full flex-row justify-evenly">
-                          <View className="items-center">
-                            <Image
-                              source={require("@/assets/icons/assinar.png")}
-                              style={styles.iconSM}
-                            />
-                            <Text className="text-base">Assinar</Text>
-                          </View>
-                          <View className="items-center">
-                            <Image
-                              source={require("@/assets/icons/visualizar.png")}
-                              style={styles.iconSM}
-                            />
-                            <Text className="text-base">Visualizar</Text>
-                          </View>
-                          <View className="items-center">
-                            <Image
-                              source={require("@/assets/icons/compartilhar.png")}
-                              style={styles.iconSM}
-                            />
-                            <Text className="text-base">Compartilhar</Text>
-                          </View>
-                          <View className="items-center">
-                            <Image
-                              source={require("@/assets/icons/baixar.png")}
-                              style={styles.iconSM}
-                            />
-                            <Text className="text-base">Baixar</Text>
-                          </View>
-                        </View>
-                      </View>
-                    </View>
-                  </CardContent>
-                </Card>
-                <Card className="flex-1 justify-center">
-                  <CardContent className="h-full justify-center">
-                    <View className="my-safe w-full flex-row justify-center">
-                      <View className="my-auto">
-                        <Image
-                          source={require("@/assets/icons/documentos.png")}
-                          style={styles.icon}
-                        />
-                      </View>
-                      <View className="ml-4 w-5/6">
-                        <Text className="mb-2 font-bold">Demissional</Text>
-                        <View className="w-full flex-row justify-evenly">
-                          <View className="items-center">
-                            <Image
-                              source={require("@/assets/icons/assinar.png")}
-                              style={styles.iconSM}
-                            />
-                            <Text className="text-base">Assinar</Text>
-                          </View>
-                          <View className="items-center">
-                            <Image
-                              source={require("@/assets/icons/visualizar.png")}
-                              style={styles.iconSM}
-                            />
-                            <Text className="text-base">Visualizar</Text>
-                          </View>
-                          <View className="items-center">
-                            <Image
-                              source={require("@/assets/icons/compartilhar.png")}
-                              style={styles.iconSM}
-                            />
-                            <Text className="text-base">Compartilhar</Text>
-                          </View>
-                          <View className="items-center">
-                            <Image
-                              source={require("@/assets/icons/baixar.png")}
-                              style={styles.iconSM}
-                            />
-                            <Text className="text-base">Baixar</Text>
-                          </View>
-                        </View>
-                      </View>
-                    </View>
-                  </CardContent>
-                </Card>
-              </View>
-            </ScrollView>
+            <ThemedCard
+              className="flex-1"
+              title="Retorno ao Trabalho"
+              icon={require("@/assets/icons/documentos.png")}
+              sign
+            />
+
+            <ThemedCard
+              className="flex-1"
+              title="Demissional"
+              icon={require("@/assets/icons/documentos.png")}
+              sign
+            />
           </View>
-        </View>
-        <BackButton />
+        </ScrollView>
       </View>
+      <BackButton />
     </ThemedContainer>
   );
 }

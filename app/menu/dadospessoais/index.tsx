@@ -1,7 +1,7 @@
 import BackButton from "@/components/BackButton";
 import LoadingScreen from "@/components/LoadingScreen";
-import ThemedCard from "@/components/ThemedCard";
 import ThemedContainer from "@/components/ThemedContainer";
+import ThemedIconCard from "@/components/ThemedIconCard";
 import { Card, CardContent } from "@/components/ui/card";
 import { Text } from "@/components/ui/text";
 import { useColorScheme } from "@/lib/useColorScheme";
@@ -30,7 +30,7 @@ export default function DadosPessoais() {
     <ThemedContainer title="Dados Pessoais">
       <View className="h-4/5 justify-around">
         <View className="mx-4 h-1/4 flex-row gap-4">
-          <ThemedCard
+          <ThemedIconCard
             link={"/menu/dadospessoais/perfil"}
             icon={require("@/assets/icons/perfil.png")}
             title="Perfil"

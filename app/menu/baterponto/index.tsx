@@ -1,6 +1,6 @@
 import BackButton from "@/components/BackButton";
-import ThemedCard from "@/components/ThemedCard";
 import ThemedContainer from "@/components/ThemedContainer";
+import ThemedCard from "@/components/ThemedIconCard";
 import { View } from "react-native";
 
 export default function BaterPonto() {

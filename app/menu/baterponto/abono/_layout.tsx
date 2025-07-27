@@ -11,6 +11,7 @@ export default function AbonoLayout() {
   return (
     <Stack>
       <Stack.Screen name="index" options={{ headerShown: false }} />
+      <Stack.Screen name="[ano]/[mes]" options={{ headerShown: false }} />
       <Stack.Screen name="historico" options={{ headerShown: false }} />
       <Stack.Screen name="solicitar" options={{ headerShown: false }} />
     </Stack>

@@ -16,7 +16,7 @@ export default function Abono() {
           <ThemedIconCard
             link={"/menu/baterponto/abono/historico"}
             icon={require("@/assets/icons/espelho.png")}
-            title="Registrar Ponto"
+            title="Meu Histórico"
           />
           <View className="flex-1" />
         </View>

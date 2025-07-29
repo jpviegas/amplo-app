@@ -19,7 +19,7 @@ export default function RootLayout() {
     Quicksand: require("@/assets/fonts/Quicksand-Regular.ttf"),
   });
   const hasMounted = useRef(false);
-  const { colorScheme, isDarkColorScheme } = useColorScheme();
+  const { colorScheme, setColorScheme } = useColorScheme();
   const [isColorSchemeLoaded, setIsColorSchemeLoaded] = useState(false);
 
   useIsomorphicLayoutEffect(() => {
@@ -30,6 +30,7 @@ export default function RootLayout() {
     if (Platform.OS === "web") {
       document.documentElement.classList.add("bg-background");
     }
+    setColorScheme("light");
     setAndroidNavigationBar(colorScheme);
     setIsColorSchemeLoaded(true);
     hasMounted.current = true;

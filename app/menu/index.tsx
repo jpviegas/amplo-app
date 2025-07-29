@@ -2,22 +2,28 @@ import LoadingScreen from "@/components/LoadingScreen";
 import { LogOutButton } from "@/components/LogOutButton";
 import ThemedContainer from "@/components/ThemedContainer";
 import ThemedIconCard from "@/components/ThemedIconCard";
+import { useUserStore } from "@/store/userStore";
+import { Redirect } from "expo-router";
 import { useEffect, useState } from "react";
 import { View } from "react-native";
 
 export default function MenuPrincipal() {
   const [isLoading, setIsLoading] = useState(true);
+  const { user } = useUserStore();
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 500);
-
     return () => clearTimeout(timer);
   }, []);
 
   if (isLoading) {
     return <LoadingScreen />;
+  }
+
+  if (!user) {
+    return <Redirect href={"/"} />;
   }
 
   return (

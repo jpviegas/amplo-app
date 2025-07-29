@@ -8,9 +8,8 @@ import { useColorScheme } from "@/lib/useColorScheme";
 import { useUserStore } from "@/store/userStore";
 import { AuthContext } from "@/utils/authContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Redirect, router } from "expo-router";
 import { Eye, EyeOff, LockKeyhole, User } from "lucide-react-native";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { View } from "react-native";
 import {
   SafeAreaView,
@@ -25,41 +24,8 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [securePass, setSecurePass] = useState(true);
   const { addUser } = useUserStore();
-  // const router = useRouter();
   const insets = useSafeAreaInsets();
   const [checked, setChecked] = useState(false);
-  // const [isChecked, setChecked] = useState(false);
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     try {
-  //       const value = await AsyncStorage.getItem("name");
-  //       if (value !== null) {
-  //         return router.replace("/perfil");
-  //         // return <Redirect href={'/perfil'}
-  //       }
-  //     } catch (e) {}
-  //   };
-
-  //   getData();
-  // }, []);
-
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const value = await AsyncStorage.getItem("name");
-        if (value !== null) {
-          return router.replace("/menu");
-        }
-      } catch (e) {}
-    };
-
-    getData();
-  }, []);
-
-  // const authState = useContext(AuthContext);
-  if (authContext.isLoggedIn) {
-    return <Redirect href={"/menu"} />;
-  }
 
   async function handleLogin({ email }: { email: string }) {
     try {
@@ -69,6 +35,7 @@ export default function Login() {
         text1: "Login com sucesso!",
         topOffset: insets.top === 0 ? 12 : insets.top,
       });
+
       authContext.logIn();
     } catch (error) {
       Toast.show({

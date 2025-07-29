@@ -1,12 +1,12 @@
 import { AuthContext } from "@/utils/authContext";
-import { Redirect, Stack } from "expo-router";
+import { Stack } from "expo-router";
 import { useContext } from "react";
 
 export default function DocumentosLayout() {
   const authState = useContext(AuthContext);
-  if (!authState.isLoggedIn) {
-    return <Redirect href={"/"} />;
-  }
+  // if (!authState.isLoggedIn) {
+  //   return <Redirect href={"/"} />;
+  // }
 
   return (
     <Stack>

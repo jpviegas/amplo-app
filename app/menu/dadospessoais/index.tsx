@@ -28,8 +28,8 @@ export default function DadosPessoais() {
 
   return (
     <ThemedContainer title="Dados Pessoais">
-      <View className="h-4/5 justify-around">
-        <View className="mx-4 h-1/4 flex-row gap-4">
+      <View className="mx-4 h-4/5">
+        <View className="h-1/4 flex-row gap-4">
           <ThemedIconCard
             link={"/menu/dadospessoais/perfil"}
             icon={require("@/assets/icons/perfil.png")}
@@ -45,8 +45,6 @@ export default function DadosPessoais() {
           </Card>
           <View className="flex-1" />
         </View>
-        <View className="mx-4 h-1/4 flex-row gap-4" />
-        <View className="mx-4 h-1/4 flex-row gap-4" />
       </View>
       <BackButton />
     </ThemedContainer>

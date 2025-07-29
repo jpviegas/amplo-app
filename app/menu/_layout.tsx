@@ -14,7 +14,7 @@ export default function PerfilLayout() {
     Quicksand: require("@/assets/fonts/Quicksand-Regular.ttf"),
   });
   const hasMounted = useRef(false);
-  const { colorScheme, isDarkColorScheme } = useColorScheme();
+  const { colorScheme } = useColorScheme();
   const [isColorSchemeLoaded, setIsColorSchemeLoaded] = useState(false);
 
   useIsomorphicLayoutEffect(() => {
@@ -41,6 +41,8 @@ export default function PerfilLayout() {
       <Stack>
         <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="assinatura" options={{ headerShown: false }} />
+        <Stack.Screen name="atendimento" options={{ headerShown: false }} />
+        <Stack.Screen name="aviso" options={{ headerShown: false }} />
         <Stack.Screen name="baterponto" options={{ headerShown: false }} />
         <Stack.Screen name="dadospessoais" options={{ headerShown: false }} />
         <Stack.Screen name="documentos" options={{ headerShown: false }} />

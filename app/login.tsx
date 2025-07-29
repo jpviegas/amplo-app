@@ -8,6 +8,7 @@ import { useColorScheme } from "@/lib/useColorScheme";
 import { useUserStore } from "@/store/userStore";
 import { AuthContext } from "@/utils/authContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Redirect } from "expo-router";
 import { Eye, EyeOff, LockKeyhole, User } from "lucide-react-native";
 import { useContext, useState } from "react";
 import { View } from "react-native";
@@ -23,7 +24,7 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [securePass, setSecurePass] = useState(true);
-  const { addUser } = useUserStore();
+  const { addUser, user } = useUserStore();
   const insets = useSafeAreaInsets();
   const [checked, setChecked] = useState(false);
 
@@ -44,6 +45,10 @@ export default function Login() {
         topOffset: insets.top === 0 ? 12 : insets.top,
       });
     }
+  }
+
+  if (user) {
+    return <Redirect href={"/menu"} />;
   }
 
   return (

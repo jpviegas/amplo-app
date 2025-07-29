@@ -22,8 +22,8 @@ export default function Pagamentos() {
 
   return (
     <ThemedContainer title="Pagamento Benefícios">
-      <View className="h-5/6 justify-around">
-        <View className="mx-4 h-1/4 flex-row gap-4">
+      <View className="mx-4 h-4/5 justify-around">
+        <View className="h-1/4 flex-row gap-4">
           <ThemedIconCard
             link={"/menu/pagamentos/holerite"}
             icon={require("@/assets/icons/registrarponto.png")}
@@ -40,7 +40,7 @@ export default function Pagamentos() {
             title="Vale Alimentação"
           />
         </View>
-        <View className="mx-4 h-1/4 flex-row gap-4">
+        <View className="h-1/4 flex-row gap-4">
           <ThemedIconCard
             link={"/menu/pagamentos/transporte"}
             icon={require("@/assets/icons/transporte.png")}
@@ -53,7 +53,7 @@ export default function Pagamentos() {
           />
           <View className="flex-1"></View>
         </View>
-        <View className="mx-4 h-1/4 flex-row gap-4" />
+        <View className="h-1/4" />
       </View>
       <BackButton />
     </ThemedContainer>

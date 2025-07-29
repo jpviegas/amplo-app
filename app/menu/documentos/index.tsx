@@ -22,8 +22,8 @@ export default function Documentos() {
 
   return (
     <ThemedContainer title="Documentos">
-      <View className="h-5/6 justify-around">
-        <View className="mx-4 h-1/4 flex-row gap-4">
+      <View className="mx-4 h-4/5 justify-around">
+        <View className="h-1/4 flex-row gap-4">
           <ThemedIconCard
             link={"/menu/documentos/contrato-trabalho"}
             icon={require("@/assets/icons/documentos.png")}
@@ -40,7 +40,7 @@ export default function Documentos() {
             title="Política Interna"
           />
         </View>
-        <View className="mx-4 h-1/4 flex-row gap-4">
+        <View className="h-1/4 flex-row gap-4">
           <ThemedIconCard
             link={"/menu/documentos/ficha-registro"}
             icon={require("@/assets/icons/ficha.png")}
@@ -57,7 +57,7 @@ export default function Documentos() {
             title="Saúde Ocupacional"
           />
         </View>
-        <View className="mx-4 h-1/4 flex-row gap-4">
+        <View className="h-1/4 flex-row gap-4">
           <ThemedIconCard
             link={"/menu/documentos/termos"}
             icon={require("@/assets/icons/termos.png")}

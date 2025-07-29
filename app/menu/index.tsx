@@ -28,8 +28,8 @@ export default function MenuPrincipal() {
 
   return (
     <ThemedContainer title="Menu Principal">
-      <View className="h-5/6 justify-around">
-        <View className="mx-4 h-1/4 flex-row gap-4">
+      <View className="mx-4 h-4/5 justify-around">
+        <View className="h-1/4 flex-row gap-4">
           <ThemedIconCard
             link={"/menu/dadospessoais"}
             icon={require("@/assets/icons/dadospessoais.png")}
@@ -46,7 +46,7 @@ export default function MenuPrincipal() {
             title="Pagamento Benefício"
           />
         </View>
-        <View className="mx-4 h-1/4 flex-row gap-4">
+        <View className="h-1/4 flex-row gap-4">
           <ThemedIconCard
             link={"/menu/documentos"}
             icon={require("@/assets/icons/ferias.png")}
@@ -63,14 +63,14 @@ export default function MenuPrincipal() {
             title="Área de Treinamento"
           />
         </View>
-        <View className="mx-4 h-1/4 flex-row gap-4">
+        <View className="h-1/4 flex-row gap-4">
           <ThemedIconCard
-            link={"/menu/documentos"}
+            link={"/menu/aviso"}
             icon={require("@/assets/icons/aviso.png")}
             title="Aviso Comunicado"
           />
           <ThemedIconCard
-            link={"/menu/documentos"}
+            link={"/menu/atendimento"}
             icon={require("@/assets/icons/arquivo.png")}
             title="Atendimento Conecta"
           />

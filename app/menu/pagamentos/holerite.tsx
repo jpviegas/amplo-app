@@ -21,9 +21,9 @@ export default function Holerite() {
 
   return (
     <ThemedContainer title="Holerite">
-      <View className="w-full flex-1 justify-evenly bg-primary dark:bg-black">
+      <View className="flex-1 justify-evenly">
         <View className="mx-4 h-4/5 items-center">
-          <View className="mx-4 h-full w-full gap-4">
+          <View className="h-full w-full gap-4">
             <Select
               defaultValue={{ value: "ano", label: "Ano" }}
               className="w-40 self-center"
@@ -50,8 +50,8 @@ export default function Holerite() {
                 </SelectGroup>
               </SelectContent>
             </Select>
-            (
-            {selectedYear !== "" && (
+
+            {selectedYear && (
               <ScrollView className="h-fit w-full">
                 <View className="gap-4">
                   <Card className="h-14">
@@ -147,7 +147,6 @@ export default function Holerite() {
                 </View>
               </ScrollView>
             )}
-            )
           </View>
         </View>
         <BackButton />

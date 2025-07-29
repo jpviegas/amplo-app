@@ -44,8 +44,8 @@ export default function EspelhoPonto() {
               </SelectGroup>
             </SelectContent>
           </Select>
-          {selectedYear !== "" && (
-            <ScrollView className="h-fit w-full">
+          <ScrollView className="h-full w-full flex-1">
+            {selectedYear && (
               <View className="gap-4">
                 <Card className="h-14">
                   <CardContent className="mt-1">
@@ -55,7 +55,7 @@ export default function EspelhoPonto() {
                         <Link
                           href={{
                             pathname: "/menu/baterponto/espelho/[ano]/[mes]",
-                            params: { ano: "2023", mes: "01" },
+                            params: { ano: selectedYear, mes: "01" },
                           }}
                         >
                           <View className="items-center">
@@ -92,7 +92,7 @@ export default function EspelhoPonto() {
                         <Link
                           href={{
                             pathname: "/menu/baterponto/espelho/[ano]/[mes]",
-                            params: { ano: "2023", mes: "02" },
+                            params: { ano: selectedYear, mes: "02" },
                           }}
                         >
                           <View className="items-center">
@@ -129,7 +129,7 @@ export default function EspelhoPonto() {
                         <Link
                           href={{
                             pathname: "/menu/baterponto/espelho/[ano]/[mes]",
-                            params: { ano: "2023", mes: "03" },
+                            params: { ano: selectedYear, mes: "03" },
                           }}
                         >
                           <View className="items-center">
@@ -159,8 +159,8 @@ export default function EspelhoPonto() {
                   </CardContent>
                 </Card>
               </View>
-            </ScrollView>
-          )}
+            )}
+          </ScrollView>
         </View>
       </View>
       <BackButton />

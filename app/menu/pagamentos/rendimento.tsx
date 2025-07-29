@@ -10,7 +10,7 @@ import { View } from "react-native";
 export default function InformeRendimento() {
   return (
     <ThemedContainer title="Informe Rendimento">
-      <View className="mx-4 h-5/6">
+      <View className="mx-4 h-4/5">
         <View className="h-1/4 gap-4">
           <Card className="h-14">
             <CardContent className="mt-1">

@@ -11,12 +11,14 @@ type Props = {
 export default function ThemedContainer({ children, title }: Props) {
   return (
     <SafeAreaView className="flex flex-1 items-center justify-center bg-black/5">
-      <View className="w-full flex-1 items-center justify-between gap-4">
+      <View className="w-full flex-1 items-center justify-between gap-10">
         <View className="items-center">
           <ImageViewer imgSource={require("@/assets/images/conecta.png")} />
         </View>
         <View className="w-full flex-1 bg-primary">
-          <Text className="mt-4 text-center text-4xl font-bold">{title}</Text>
+          <View className="absolute -top-7 w-screen rounded-t-[100%] bg-primary">
+            <Text className="mt-4 text-center text-4xl font-bold">{title}</Text>
+          </View>
           <View className="flex-1 justify-around">{children}</View>
         </View>
       </View>

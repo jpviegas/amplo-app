@@ -14,15 +14,15 @@ import { View } from "react-native";
 export default function Treinamentos() {
   return (
     <ThemedContainer title="Treinamentos">
-      <View className="mx-4 h-5/6">
-        <View className="h-full gap-4">
-          <Card className="flex-1">
+      <View className="mx-4 h-4/5">
+        <View className="h-full justify-evenly gap-4">
+          <Card className="h-2/5">
             <CardHeader>
               <CardTitle>TÍTULO</CardTitle>
               <CardDescription>Curso de boas práticas</CardDescription>
             </CardHeader>
             <CardContent className="justify-between">
-              <View className="h-1/2 w-4/5 self-center bg-gray-300">
+              <View className="w-4/5 self-center bg-gray-300">
                 <Text>foto ilustrativa</Text>
               </View>
               <Button className="w-1/2 self-center bg-green-500">
@@ -30,7 +30,7 @@ export default function Treinamentos() {
               </Button>
             </CardContent>
           </Card>
-          <Card className="flex-1">
+          <Card className="h-2/5">
             <CardHeader>
               <CardTitle>TÍTULO</CardTitle>
               <CardDescription>
@@ -38,7 +38,7 @@ export default function Treinamentos() {
               </CardDescription>
             </CardHeader>
             <CardContent className="justify-between">
-              <View className="h-1/2 w-4/5 self-center bg-gray-300">
+              <View className="w-4/5 self-center bg-gray-300">
                 <Text>foto ilustrativa</Text>
               </View>
               <Button className="w-1/2 self-center bg-green-500">

@@ -42,7 +42,7 @@ export default function SolicitarAbono() {
       <View className="mx-4 h-3/4 gap-4">
         <Select
           defaultValue={{ value: "selecione", label: "Selecione o Motivo" }}
-          className="w-1/2 self-center"
+          className="mt-6 w-1/2 self-center"
           onValueChange={(value) => setSelectedReason(value?.value)}
         >
           <SelectTrigger>

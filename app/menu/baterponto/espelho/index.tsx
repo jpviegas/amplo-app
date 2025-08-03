@@ -22,11 +22,11 @@ export default function EspelhoPonto() {
 
   return (
     <ThemedContainer title="Espelho de Ponto">
-      <View className="h-5/6 justify-around">
+      <View className="h-4/5 justify-around">
         <View className="mx-4 h-full flex-col gap-4">
           <Select
             defaultValue={{ value: "ano", label: "Ano" }}
-            className="w-40 self-center"
+            className="mt-6 w-40 self-center"
             onValueChange={(value) => setSelectedYear(value?.label)}
           >
             <SelectTrigger>

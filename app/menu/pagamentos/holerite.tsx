@@ -21,136 +21,134 @@ export default function Holerite() {
 
   return (
     <ThemedContainer title="Holerite">
-      <View className="flex-1 justify-evenly">
-        <View className="mx-4 h-4/5 items-center">
-          <View className="h-full w-full gap-4">
-            <Select
-              defaultValue={{ value: "ano", label: "Ano" }}
-              className="w-40 self-center"
-              onValueChange={(value) => setSelectedYear(value?.label)}
-            >
-              <SelectTrigger>
-                <SelectValue
-                  className="native:text-lg text-sm text-foreground"
-                  placeholder="Selecione o ano"
-                />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectLabel>Ano</SelectLabel>
-                  <SelectItem label="2023" value="2023">
-                    2023
-                  </SelectItem>
-                  <SelectItem label="2024" value="2024">
-                    2024
-                  </SelectItem>
-                  <SelectItem label="2025" value="2025">
-                    2025
-                  </SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
+      <View className="mx-4 h-4/5 items-center">
+        <View className="h-full w-full gap-4">
+          <Select
+            defaultValue={{ value: "ano", label: "Ano" }}
+            className="mt-6 w-40 self-center"
+            onValueChange={(value) => setSelectedYear(value?.label)}
+          >
+            <SelectTrigger>
+              <SelectValue
+                className="native:text-lg text-sm text-foreground"
+                placeholder="Selecione o ano"
+              />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectLabel>Ano</SelectLabel>
+                <SelectItem label="2023" value="2023">
+                  2023
+                </SelectItem>
+                <SelectItem label="2024" value="2024">
+                  2024
+                </SelectItem>
+                <SelectItem label="2025" value="2025">
+                  2025
+                </SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
 
-            {selectedYear && (
-              <ScrollView className="h-fit w-full">
-                <View className="gap-4">
-                  <Card className="h-14">
-                    <CardContent className="mt-1">
-                      <View className="flex-row justify-around">
-                        <Text className="align-middle">Jan</Text>
-                        <View className="flex-row gap-4">
-                          <View className="items-center">
-                            <Image
-                              source={require("@/assets/icons/visualizar.png")}
-                              style={styles.iconXS}
-                            />
-                            <Text className="text-sm">Visualizar</Text>
-                          </View>
-                          <View className="items-center">
-                            <Image
-                              source={require("@/assets/icons/compartilhar.png")}
-                              style={styles.iconXS}
-                            />
-                            <Text className="text-sm">Compartilhar</Text>
-                          </View>
-                          <View className="items-center">
-                            <Image
-                              source={require("@/assets/icons/baixar.png")}
-                              style={styles.iconXS}
-                            />
-                            <Text className="text-sm">Baixar</Text>
-                          </View>
+          {selectedYear && (
+            <ScrollView className="h-fit w-full">
+              <View className="gap-4">
+                <Card className="h-14">
+                  <CardContent className="mt-1">
+                    <View className="flex-row justify-around">
+                      <Text className="align-middle">Jan</Text>
+                      <View className="flex-row gap-4">
+                        <View className="items-center">
+                          <Image
+                            source={require("@/assets/icons/visualizar.png")}
+                            style={styles.iconXS}
+                          />
+                          <Text className="text-sm">Visualizar</Text>
+                        </View>
+                        <View className="items-center">
+                          <Image
+                            source={require("@/assets/icons/compartilhar.png")}
+                            style={styles.iconXS}
+                          />
+                          <Text className="text-sm">Compartilhar</Text>
+                        </View>
+                        <View className="items-center">
+                          <Image
+                            source={require("@/assets/icons/baixar.png")}
+                            style={styles.iconXS}
+                          />
+                          <Text className="text-sm">Baixar</Text>
                         </View>
                       </View>
-                    </CardContent>
-                  </Card>
-                  <Card className="h-14">
-                    <CardContent className="mt-1">
-                      <View className="flex-row justify-around">
-                        <Text className="align-middle">Fev</Text>
-                        <View className="flex-row gap-4">
-                          <View className="items-center">
-                            <Image
-                              source={require("@/assets/icons/visualizar.png")}
-                              style={styles.iconXS}
-                            />
-                            <Text className="text-sm">Visualizar</Text>
-                          </View>
-                          <View className="items-center">
-                            <Image
-                              source={require("@/assets/icons/compartilhar.png")}
-                              style={styles.iconXS}
-                            />
-                            <Text className="text-sm">Compartilhar</Text>
-                          </View>
-                          <View className="items-center">
-                            <Image
-                              source={require("@/assets/icons/baixar.png")}
-                              style={styles.iconXS}
-                            />
-                            <Text className="text-sm">Baixar</Text>
-                          </View>
+                    </View>
+                  </CardContent>
+                </Card>
+                <Card className="h-14">
+                  <CardContent className="mt-1">
+                    <View className="flex-row justify-around">
+                      <Text className="align-middle">Fev</Text>
+                      <View className="flex-row gap-4">
+                        <View className="items-center">
+                          <Image
+                            source={require("@/assets/icons/visualizar.png")}
+                            style={styles.iconXS}
+                          />
+                          <Text className="text-sm">Visualizar</Text>
+                        </View>
+                        <View className="items-center">
+                          <Image
+                            source={require("@/assets/icons/compartilhar.png")}
+                            style={styles.iconXS}
+                          />
+                          <Text className="text-sm">Compartilhar</Text>
+                        </View>
+                        <View className="items-center">
+                          <Image
+                            source={require("@/assets/icons/baixar.png")}
+                            style={styles.iconXS}
+                          />
+                          <Text className="text-sm">Baixar</Text>
                         </View>
                       </View>
-                    </CardContent>
-                  </Card>
-                  <Card className="h-14">
-                    <CardContent className="mt-1">
-                      <View className="flex-row justify-around">
-                        <Text className="align-middle">Mar</Text>
-                        <View className="flex-row gap-4">
-                          <View className="items-center">
-                            <Image
-                              source={require("@/assets/icons/visualizar.png")}
-                              style={styles.iconXS}
-                            />
-                            <Text className="text-sm">Visualizar</Text>
-                          </View>
-                          <View className="items-center">
-                            <Image
-                              source={require("@/assets/icons/compartilhar.png")}
-                              style={styles.iconXS}
-                            />
-                            <Text className="text-sm">Compartilhar</Text>
-                          </View>
-                          <View className="items-center">
-                            <Image
-                              source={require("@/assets/icons/baixar.png")}
-                              style={styles.iconXS}
-                            />
-                            <Text className="text-sm">Baixar</Text>
-                          </View>
+                    </View>
+                  </CardContent>
+                </Card>
+                <Card className="h-14">
+                  <CardContent className="mt-1">
+                    <View className="flex-row justify-around">
+                      <Text className="align-middle">Mar</Text>
+                      <View className="flex-row gap-4">
+                        <View className="items-center">
+                          <Image
+                            source={require("@/assets/icons/visualizar.png")}
+                            style={styles.iconXS}
+                          />
+                          <Text className="text-sm">Visualizar</Text>
+                        </View>
+                        <View className="items-center">
+                          <Image
+                            source={require("@/assets/icons/compartilhar.png")}
+                            style={styles.iconXS}
+                          />
+                          <Text className="text-sm">Compartilhar</Text>
+                        </View>
+                        <View className="items-center">
+                          <Image
+                            source={require("@/assets/icons/baixar.png")}
+                            style={styles.iconXS}
+                          />
+                          <Text className="text-sm">Baixar</Text>
                         </View>
                       </View>
-                    </CardContent>
-                  </Card>
-                </View>
-              </ScrollView>
-            )}
-          </View>
+                    </View>
+                  </CardContent>
+                </Card>
+              </View>
+            </ScrollView>
+          )}
         </View>
-        <BackButton />
       </View>
+      <BackButton />
     </ThemedContainer>
   );
 }

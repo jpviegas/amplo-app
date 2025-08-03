@@ -108,8 +108,11 @@ export default function Registrar() {
   }
 
   return (
-    <ThemedContainer title={currentDate}>
-      <View className="h-2/3 w-5/6 self-center">
+    <ThemedContainer title="">
+      <Text className="right-4 mt-[-16] text-center text-4xl font-bold">
+        {currentDate}
+      </Text>
+      <View className="h-full w-4/5 flex-1 self-center">
         <MapView
           region={{
             latitude: location.latitude,

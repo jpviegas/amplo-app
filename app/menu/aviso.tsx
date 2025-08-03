@@ -14,7 +14,7 @@ export default function Aviso() {
   return (
     <ThemedContainer title="Aviso e Comunicado">
       <View className="mx-4 h-4/5 gap-4">
-        <Card>
+        <Card className="mt-6">
           <CardHeader>
             <CardTitle>TÍTULO</CardTitle>
             <CardDescription>Feriados do mês de Junho</CardDescription>

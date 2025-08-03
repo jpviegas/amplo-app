@@ -6,7 +6,7 @@ import { View } from "react-native";
 export default function Abono() {
   return (
     <ThemedContainer title="Solicitar Abono">
-      <View className="h-5/6 justify-around">
+      <View className="h-4/5 justify-around">
         <View className="mx-4 h-1/4 flex-row gap-4">
           <ThemedIconCard
             link={"/menu/baterponto/abono/solicitar"}

@@ -7,7 +7,7 @@ export default function Atendimento() {
   return (
     <ThemedContainer title="Atendimento Conecta">
       <View className="mx-4 h-4/5 gap-4">
-        <View className="h-1/4 flex-row gap-4">
+        <View className="mt-6 h-1/4 flex-row gap-4">
           <ThemedIconCard
             link={"/menu/atendimento/rh"}
             icon={require("@/assets/icons/rh.png")}
@@ -19,9 +19,9 @@ export default function Atendimento() {
             title="Operacional"
           />
           <ThemedIconCard
-            link={"/menu/atendimento/chefia"}
-            icon={require("@/assets/icons/chefia.png")}
-            title="Área de Treinamento"
+            link={"/menu/atendimento/ouvidoria"}
+            icon={require("@/assets/icons/ouvidoria.png")}
+            title="Ouvidoria Reclamação"
           />
         </View>
       </View>

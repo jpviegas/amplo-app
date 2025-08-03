@@ -11,10 +11,11 @@ import { View } from "react-native";
 export default function FichaEPI() {
   return (
     <ThemedContainer title="Ficha de E.P.I.">
-      <View className="mx-4 h-5/6 gap-4">
+      <View className="mx-4 h-4/5 gap-4">
         <ThemedCard
           title="Ficha de E.P.I."
           icon={require("@/assets/icons/epi.png")}
+          className="mt-6"
         />
         <Card>
           <CardContent className="flex-row justify-between py-1">

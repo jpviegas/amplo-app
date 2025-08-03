@@ -23,7 +23,6 @@ export default function ThemedCard({ className, title, icon, sign }: Props) {
           <View className="ml-4 w-5/6">
             <Text className="mb-2 font-bold">{title}</Text>
             <View className="w-full flex-row justify-evenly">
-              (
               {sign && (
                 <View className="items-center">
                   <Image
@@ -33,7 +32,6 @@ export default function ThemedCard({ className, title, icon, sign }: Props) {
                   <Text className="text-base">Assinar</Text>
                 </View>
               )}
-              )
               <View className="items-center">
                 <Image
                   source={require("@/assets/icons/visualizar.png")}

@@ -12,7 +12,7 @@ export default function InformeRendimento() {
     <ThemedContainer title="Informe Rendimento">
       <View className="mx-4 h-4/5">
         <View className="h-1/4 gap-4">
-          <Card className="h-14">
+          <Card className="mt-6 h-14">
             <CardContent className="mt-1">
               <View className="flex-row justify-around">
                 <Text className="align-middle">2022</Text>

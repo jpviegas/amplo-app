@@ -35,7 +35,7 @@ export default function Pagamentos() {
             title="Vale Refeição"
           />
           <ThemedIconCard
-            link={"/menu/pagamentos/refeicao"}
+            link={"/menu/pagamentos/"}
             icon={require("@/assets/icons/valealimentacao.png")}
             title="Vale Alimentação"
           />
@@ -51,7 +51,7 @@ export default function Pagamentos() {
             icon={require("@/assets/icons/rendimentos.png")}
             title="Informe de Rendimentos"
           />
-          <View className="flex-1"></View>
+          <View className="flex-1" />
         </View>
         <View className="h-1/4" />
       </View>

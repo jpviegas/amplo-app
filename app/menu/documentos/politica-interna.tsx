@@ -7,11 +7,12 @@ import { View } from "react-native";
 export default function PoliticaInterna() {
   return (
     <ThemedContainer title="Política Interna">
-      <View className="mx-4 h-5/6">
+      <View className="mx-4 h-4/5">
         <ThemedCard
           title="Política Interna"
           icon={require("@/assets/icons/politica.png")}
-          sign={true}
+          sign
+          className="mt-6"
         />
       </View>
       <BackButton />

@@ -6,11 +6,12 @@ import { View } from "react-native";
 export default function ContratoTrabalho() {
   return (
     <ThemedContainer title="Contrato de Trabalho">
-      <View className="mx-4 h-5/6 gap-4">
+      <View className="mx-4 h-4/5 gap-4">
         <ThemedCard
           title="Contrato de Trabalho"
           icon={require("@/assets/icons/documentos.png")}
-          sign={true}
+          sign
+          className="mt-6"
         />
         <ThemedCard
           title="T.R.C.T."

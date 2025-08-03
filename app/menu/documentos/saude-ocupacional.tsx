@@ -18,11 +18,11 @@ export default function SaudeOcupacional() {
 
   return (
     <ThemedContainer title="Saúde Ocupacional">
-      <View className="mx-4 h-5/6 gap-4">
+      <View className="mx-4 h-4/5 gap-4">
         <ScrollView className="h-5/6">
           <View className="gap-4">
             <ThemedCard
-              className="flex-1"
+              className="mt-6 flex-1"
               title="Admissional"
               icon={require("@/assets/icons/saude.png")}
             />
@@ -49,7 +49,7 @@ export default function SaudeOcupacional() {
                     />
                   </CollapsibleTrigger>
                   <CollapsibleContent className="flex-1 gap-4">
-                    <Card className="h-14">
+                    <Card className="mt-4 h-14">
                       <CardContent className="mt-1">
                         <View className="flex-row justify-evenly">
                           <Text className="align-middle">2022</Text>

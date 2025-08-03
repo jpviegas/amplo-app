@@ -48,7 +48,7 @@ export default function MenuPrincipal() {
         </View>
         <View className="h-1/4 flex-row gap-4">
           <ThemedIconCard
-            link={"/menu/documentos"}
+            link={"/menu"}
             icon={require("@/assets/icons/ferias.png")}
             title="Férias"
           />
@@ -57,13 +57,14 @@ export default function MenuPrincipal() {
             icon={require("@/assets/icons/pontoeletronico.png")}
             title="Ponto Eletrônico"
           />
+          <View className="flex-1" />
+        </View>
+        <View className="h-1/4 flex-row gap-4">
           <ThemedIconCard
             link={"/menu/treinamentos"}
             icon={require("@/assets/icons/treinamento.png")}
             title="Área de Treinamento"
           />
-        </View>
-        <View className="h-1/4 flex-row gap-4">
           <ThemedIconCard
             link={"/menu/aviso"}
             icon={require("@/assets/icons/aviso.png")}
@@ -71,10 +72,9 @@ export default function MenuPrincipal() {
           />
           <ThemedIconCard
             link={"/menu/atendimento"}
-            icon={require("@/assets/icons/arquivo.png")}
+            icon={require("@/assets/icons/atendimento.png")}
             title="Atendimento Conecta"
           />
-          <View className="flex-1" />
         </View>
       </View>
       <LogOutButton />

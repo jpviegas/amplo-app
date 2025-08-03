@@ -19,9 +19,9 @@ export default function Diversos() {
 
   return (
     <ThemedContainer title="Diversos">
-      <View className="mx-4 h-5/6">
+      <View className="mx-4 h-4/5">
         <ScrollView>
-          <View className="gap-4">
+          <View className="mt-6 gap-4">
             <ThemedCard
               className="flex-1"
               title="Não Optante V.T."

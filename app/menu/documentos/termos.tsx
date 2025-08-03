@@ -6,11 +6,12 @@ import { View } from "react-native";
 export default function Termos() {
   return (
     <ThemedContainer title="Termos">
-      <View className="mx-4 h-5/6 gap-4">
+      <View className="mx-4 h-4/5 gap-4">
         <ThemedCard
           title="Confidencialidade"
           icon={require("@/assets/icons/documentos.png")}
           sign
+          className="mt-6"
         />
         <ThemedCard
           title="Resp Uso de E.P.I."

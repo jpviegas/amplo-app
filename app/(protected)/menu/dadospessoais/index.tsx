@@ -29,7 +29,7 @@ export default function DadosPessoais() {
   return (
     <ThemedContainer title="Dados Pessoais">
       <View className="mx-4 h-4/5">
-        <View className="h-1/4 flex-row gap-4">
+        <View className="mt-6 h-1/4 flex-row gap-4">
           <ThemedIconCard
             link={"/menu/dadospessoais/perfil"}
             icon={require("@/assets/icons/perfil.png")}

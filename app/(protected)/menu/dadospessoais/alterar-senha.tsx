@@ -19,7 +19,7 @@ export default function AlterarSenha() {
 
   return (
     <ThemedContainer title="Alterar Senha">
-      <View className="h-2/3 justify-around">
+      <View className="mt-6 h-3/4 justify-around">
         <View className="mx-4 flex-1 flex-row gap-4">
           <Card className="w-full">
             <CardContent className="h-full justify-evenly">

@@ -1,41 +1,11 @@
-import { setAndroidNavigationBar } from "@/lib/android-navigation-bar";
-import { useColorScheme } from "@/lib/useColorScheme";
 import { AuthProvider } from "@/utils/authContext";
-import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
-import * as SplashScreen from "expo-splash-screen";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { Platform } from "react-native";
 
 export { ErrorBoundary } from "expo-router";
 
-export default function PerfilLayout() {
-  const [loaded] = useFonts({
-    Quicksand: require("@/assets/fonts/Quicksand-Regular.ttf"),
-  });
-  const hasMounted = useRef(false);
-  const { colorScheme } = useColorScheme();
-  const [isColorSchemeLoaded, setIsColorSchemeLoaded] = useState(false);
-
-  useIsomorphicLayoutEffect(() => {
-    if (hasMounted.current) {
-      return;
-    }
-    if (Platform.OS === "web") {
-      document.documentElement.classList.add("bg-background");
-    }
-    setAndroidNavigationBar(colorScheme);
-    setIsColorSchemeLoaded(true);
-    hasMounted.current = true;
-    if (loaded) {
-      SplashScreen.hide();
-    }
-  }, []);
-
-  if (!isColorSchemeLoaded || !loaded) {
-    return null;
-  }
-
+export default function MenuPrincipalLayout() {
   return (
     <AuthProvider>
       <Stack>

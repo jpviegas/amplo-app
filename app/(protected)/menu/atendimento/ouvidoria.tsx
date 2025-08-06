@@ -4,11 +4,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Text } from "@/components/ui/text";
+import { Link } from "expo-router";
 import { View } from "react-native";
 
-export default function RH() {
+export default function Ouvidoria() {
   return (
-    <ThemedContainer title="Recursos Humanos">
+    <ThemedContainer title="Ouvidoria/Reclamação">
       <View className="mx-4 h-3/4 justify-around gap-4">
         <Card className="mt-6">
           <CardContent className="items-center justify-center">
@@ -22,13 +23,15 @@ export default function RH() {
         </Card>
       </View>
       <View>
-        <Button
-          size={"lg"}
-          variant="outline"
-          className="w-3/5 self-center bg-green-400"
-        >
-          <Text className="font-black">CONFIRMAR</Text>
-        </Button>
+        <Link asChild href={"/menu/atendimento/sucesso"}>
+          <Button
+            size={"lg"}
+            variant="outline"
+            className="w-3/5 self-center bg-green-400"
+          >
+            <Text className="font-black">CONFIRMAR</Text>
+          </Button>
+        </Link>
         <BackButton />
       </View>
     </ThemedContainer>

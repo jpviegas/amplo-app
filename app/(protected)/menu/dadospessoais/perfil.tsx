@@ -36,8 +36,8 @@ export default function Perfil() {
 
   return (
     <ThemedContainer title="Perfil">
-      <View className="h-5/6 justify-around">
-        <ScrollView className="mx-4 flex-1 rounded-xl">
+      <View className="h-4/5 justify-around">
+        <ScrollView className="mx-4 mt-6 flex-1 rounded-xl">
           <Card>
             <CardContent className="mx-4 h-full flex-col gap-8">
               <View className="border-b-2">

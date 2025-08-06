@@ -1,4 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useRouter } from "expo-router";
 import { createContext, PropsWithChildren, useEffect, useState } from "react";
 
 type AuthState = {
@@ -20,6 +21,7 @@ export const AuthContext = createContext<AuthState>({
 export function AuthProvider({ children }: PropsWithChildren) {
   const [isReady, setIsReady] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const router = useRouter();
 
   const storeAuthState = async (newState: { isLoggedIn: boolean }) => {
     try {
@@ -33,12 +35,15 @@ export function AuthProvider({ children }: PropsWithChildren) {
   const logIn = async () => {
     setIsLoggedIn(true);
     await storeAuthState({ isLoggedIn: true });
+    router.push("/menu");
   };
 
   const logOut = async () => {
     setIsLoggedIn(false);
     await storeAuthState({ isLoggedIn: false });
-    await AsyncStorage.clear();
+    router.push("/");
+
+    // await AsyncStorage.clear();
   };
 
   useEffect(() => {

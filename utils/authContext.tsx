@@ -36,14 +36,14 @@ export function AuthProvider({ children }: PropsWithChildren) {
 
   const logIn = async () => {
     setIsLoggedIn(true);
-    await storeAuthState({ isLoggedIn: true });
-    router.push("/menu");
+    storeAuthState({ isLoggedIn: true });
+    router.replace("/menu");
   };
 
   const logOut = async () => {
     setIsLoggedIn(false);
-    await storeAuthState({ isLoggedIn: false });
-    router.push("/");
+    storeAuthState({ isLoggedIn: false });
+    router.replace("/");
 
     // await AsyncStorage.clear();
   };

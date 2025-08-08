@@ -109,9 +109,9 @@ export default function Registrar() {
 
   return (
     <ThemedContainer title="">
-      <Text className="right-4 mt-[-16] text-center text-4xl font-bold">
+      {/* <Text className="right-4 mt-[-16] text-center text-4xl font-bold">
         {currentDate}
-      </Text>
+      </Text> */}
       <View className="h-full w-4/5 flex-1 self-center">
         <MapView
           region={{

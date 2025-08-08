@@ -2,14 +2,13 @@ import LoadingScreen from "@/components/LoadingScreen";
 import { LogOutButton } from "@/components/LogOutButton";
 import ThemedContainer from "@/components/ThemedContainer";
 import ThemedIconCard from "@/components/ThemedIconCard";
-import { useUserStore } from "@/store/userStore";
-import { Redirect } from "expo-router";
-import { useEffect, useState } from "react";
+import { AuthContext, authStorageKey } from "@/utils/authContext";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useContext, useEffect, useState } from "react";
 import { View } from "react-native";
 
 export default function MenuPrincipal() {
   const [isLoading, setIsLoading] = useState(true);
-  const { user } = useUserStore();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -18,12 +17,21 @@ export default function MenuPrincipal() {
     return () => clearTimeout(timer);
   }, []);
 
+  const authContext = useContext(AuthContext);
+  const getAuthFromStorage = async () => {
+    try {
+      const value = await AsyncStorage.getItem(authStorageKey);
+      if (!value) {
+        authContext.logOut();
+      }
+    } catch (error) {
+      console.error("error", error);
+    }
+  };
+  getAuthFromStorage();
+
   if (isLoading) {
     return <LoadingScreen />;
-  }
-
-  if (!user) {
-    return <Redirect href={"/"} />;
   }
 
   return (

@@ -15,7 +15,7 @@ import { Text } from "@/components/ui/text";
 import { solicitarAbonoSchema } from "@/zodSchemas";
 import { Link } from "expo-router";
 import { useState } from "react";
-import { View } from "react-native";
+import { ScrollView, View } from "react-native";
 import Toast from "react-native-toast-message";
 import { z } from "zod";
 import Atestado from "./(components)/Atestado";
@@ -58,29 +58,36 @@ export default function SolicitarAbono() {
 
   return (
     <ThemedContainer title="Nova Solicitação">
-      <View className="mx-4 h-2/3 gap-4">
-        <Select
-          defaultValue={{ value: "selecione", label: "Selecione o Motivo" }}
-          className="mt-6 w-1/2 self-center"
-          onValueChange={(value) => setSelectedReason(value?.value)}
-        >
-          <SelectTrigger>
-            <SelectValue
-              className="native:text-lg text-sm text-foreground"
-              placeholder="Selecione o Motivo"
-            />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectLabel>Selecione o Motivo</SelectLabel>
-              <SelectItem label="Esqueci de Bater" value="esqueci" />
-              <SelectItem label="Atestado Médico" value="atestado" />
-              <SelectItem label="Falta Justificada" value="justificada" />
-              <SelectItem label="Falta Injustificada" value="injustificada" />
-            </SelectGroup>
-          </SelectContent>
-        </Select>
-        {renderComponent()}
+      <View className="mx-4 h-2/3">
+        <ScrollView className="flex-1">
+          <View className="gap-4">
+            <Select
+              defaultValue={{ value: "selecione", label: "Selecione o Motivo" }}
+              className="mt-6 w-1/2 self-center"
+              onValueChange={(value) => setSelectedReason(value?.value)}
+            >
+              <SelectTrigger>
+                <SelectValue
+                  className="native:text-lg text-sm text-foreground"
+                  placeholder="Selecione o Motivo"
+                />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectLabel>Selecione o Motivo</SelectLabel>
+                  <SelectItem label="Esqueci de Bater" value="esqueci" />
+                  <SelectItem label="Atestado Médico" value="atestado" />
+                  <SelectItem label="Falta Justificada" value="justificada" />
+                  <SelectItem
+                    label="Falta Injustificada"
+                    value="injustificada"
+                  />
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+            {renderComponent()}
+          </View>
+        </ScrollView>
       </View>
       <View>
         <Link asChild href={".."}>

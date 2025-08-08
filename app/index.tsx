@@ -15,17 +15,14 @@ export default function HomeScreen() {
     const getAuthFromStorage = async () => {
       try {
         const value = await AsyncStorage.getItem(authStorageKey);
-        // console.log("value:", value);
-
         if (value) {
           const auth = JSON.parse(value);
-          console.log("auth:", auth.isLoggedIn);
           if (auth.isLoggedIn) {
             authContext.logIn();
           }
         }
       } catch (error) {
-        console.log("error", error);
+        console.error("error", error);
       }
     };
     getAuthFromStorage();

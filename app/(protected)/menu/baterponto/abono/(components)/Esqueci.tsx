@@ -25,7 +25,6 @@ export default function Esqueci({
     });
   }, []);
 
-  console.log(observacao);
   return (
     <View className="w-5/6 flex-1 gap-4 self-center">
       {fullWorkin === "no" && (
@@ -61,7 +60,7 @@ export default function Esqueci({
           </RadioGroup>
         </CardContent>
       </Card>
-      <Card className="h-1/2">
+      <Card className="h-32 flex-1">
         <CardContent className="h-full">
           <Input
             className="flex-1 border-0"

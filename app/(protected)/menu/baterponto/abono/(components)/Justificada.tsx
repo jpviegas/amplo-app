@@ -92,7 +92,7 @@ export default function Justificada({
           />
         </CardContent>
       </Card>
-      <Card className="flex-1">
+      <Card className="h-32 flex-1">
         <CardContent className="h-full">
           <Input
             className="flex-1 border-0"

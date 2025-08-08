@@ -1,3 +1,4 @@
+import { AbonoHistorico } from "@/api/pontoeletronico/route";
 import BackButton from "@/components/BackButton";
 import ThemedContainer from "@/components/ThemedContainer";
 import { Button } from "@/components/ui/button";
@@ -11,17 +12,47 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Text } from "@/components/ui/text";
+import { abonoHistoricoSchema } from "@/zodSchemas";
 import { Link } from "expo-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { View } from "react-native";
+import Toast from "react-native-toast-message";
+import { z } from "zod";
 
-export default function AbonoHistorico() {
+export default function HistoricoAbono() {
   const [selectedYear, setSelectedYear] = useState("");
   const [selectedMonth, setSelectedMonth] = useState("");
 
+  async function onSubmit(values: z.infer<typeof abonoHistoricoSchema>) {
+    try {
+      const { message, success } = await AbonoHistorico(values);
+      if (!success) {
+        Toast.show({
+          text1: `${message}`,
+          type: "info",
+        });
+      } else {
+        Toast.show({
+          text1: `${message}`,
+        });
+      }
+    } catch {
+      Toast.show({
+        text1: "Erro ao selecionar Holerite",
+        type: "error",
+      });
+    }
+  }
+
+  useEffect(() => {
+    if (selectedYear) {
+      onSubmit({ ano: selectedYear, mes: selectedMonth });
+    }
+  }, [selectedYear, selectedMonth]);
+
   return (
-    <ThemedContainer title="Holerite">
-      <View className="w-full flex-1 justify-evenly bg-primary dark:bg-black">
+    <ThemedContainer title="Meu Histórico">
+      <View className="h-2/3 w-full justify-evenly bg-primary">
         <View className="mx-4 h-4/5 items-center">
           <View className="mx-4 h-full w-full gap-4">
             <Select
@@ -66,6 +97,8 @@ export default function AbonoHistorico() {
             </Select>
           </View>
         </View>
+      </View>
+      <View>
         <Link
           asChild
           href={{
@@ -78,6 +111,7 @@ export default function AbonoHistorico() {
             variant="outline"
             className="w-3/5 self-center bg-green-400"
             disabled={selectedYear === "" || selectedMonth === ""}
+            onPress={() => onSubmit({ ano: selectedYear, mes: selectedMonth })}
           >
             <Text className="font-black">CONFIRMAR</Text>
           </Button>

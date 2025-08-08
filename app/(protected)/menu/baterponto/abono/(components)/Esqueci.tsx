@@ -3,12 +3,29 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Text } from "@/components/ui/text";
-import { useState } from "react";
+import { SolicitarAbonoType } from "@/zodSchemas";
+import { useEffect, useState } from "react";
 import { View } from "react-native";
 
-export default function Esqueci() {
+export default function Esqueci({
+  onSubmit,
+}: {
+  onSubmit: (values: SolicitarAbonoType) => void;
+}) {
   const [fullWorkin, setFullWorking] = useState("yes");
+  const [observacao, setObservacao] = useState("");
 
+  useEffect(() => {
+    onSubmit({
+      motivo: "Esqueci",
+      dataInicial: "",
+      dataFinal: "",
+      jornadaCompleta: fullWorkin === "yes",
+      observacao,
+    });
+  }, []);
+
+  console.log(observacao);
   return (
     <View className="w-5/6 flex-1 gap-4 self-center">
       {fullWorkin === "no" && (
@@ -49,6 +66,8 @@ export default function Esqueci() {
           <Input
             className="flex-1 border-0"
             placeholder="Observação"
+            value={observacao}
+            onChangeText={setObservacao}
             multiline
           />
         </CardContent>

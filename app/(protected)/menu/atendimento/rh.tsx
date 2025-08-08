@@ -11,7 +11,7 @@ import { View } from "react-native";
 export default function RH() {
   return (
     <ThemedContainer title="Recursos Humanos">
-      <View className="mx-4 h-3/4 justify-around gap-4">
+      <View className="mx-4 h-2/3 justify-around gap-4">
         <Card className="mt-6">
           <CardContent className="items-center justify-center">
             <Input placeholder="ASSUNTO" className="border-0" />

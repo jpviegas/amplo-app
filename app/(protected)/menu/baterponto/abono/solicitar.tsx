@@ -1,3 +1,4 @@
+import { solicitarabono } from "@/api/pontoeletronico/route";
 import BackButton from "@/components/BackButton";
 import ThemedContainer from "@/components/ThemedContainer";
 import { Button } from "@/components/ui/button";
@@ -11,9 +12,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Text } from "@/components/ui/text";
+import { solicitarAbonoSchema } from "@/zodSchemas";
 import { Link } from "expo-router";
 import { useState } from "react";
 import { View } from "react-native";
+import Toast from "react-native-toast-message";
+import { z } from "zod";
 import Atestado from "./(components)/Atestado";
 import Esqueci from "./(components)/Esqueci";
 import Injustificada from "./(components)/Injustificada";
@@ -22,16 +26,31 @@ import Justificada from "./(components)/Justificada";
 export default function SolicitarAbono() {
   const [selectedReason, setSelectedReason] = useState("");
 
+  async function onSubmit(values: z.infer<typeof solicitarAbonoSchema>) {
+    try {
+      const { message, success } = await solicitarabono(values);
+      Toast.show({
+        text1: `${message}`,
+        type: success ? "success" : "info",
+      });
+    } catch {
+      Toast.show({
+        text1: "Erro ao solicitar abono",
+        type: "error",
+      });
+    }
+  }
+
   const renderComponent = () => {
     switch (selectedReason) {
       case "esqueci":
-        return <Esqueci />;
+        return <Esqueci onSubmit={onSubmit} />;
       case "atestado":
-        return <Atestado />;
+        return <Atestado onSubmit={onSubmit} />;
       case "justificada":
-        return <Justificada />;
+        return <Justificada onSubmit={onSubmit} />;
       case "injustificada":
-        return <Injustificada />;
+        return <Injustificada onSubmit={onSubmit} />;
       default:
         return null;
     }
@@ -39,7 +58,7 @@ export default function SolicitarAbono() {
 
   return (
     <ThemedContainer title="Nova Solicitação">
-      <View className="mx-4 h-3/4 gap-4">
+      <View className="mx-4 h-2/3 gap-4">
         <Select
           defaultValue={{ value: "selecione", label: "Selecione o Motivo" }}
           className="mt-6 w-1/2 self-center"

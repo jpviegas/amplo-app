@@ -1,3 +1,4 @@
+import { espelhoponto } from "@/api/pontoeletronico/route";
 import BackButton from "@/components/BackButton";
 import ThemedContainer from "@/components/ThemedContainer";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,13 +13,43 @@ import {
 } from "@/components/ui/select";
 import { Text } from "@/components/ui/text";
 import { styles } from "@/styles/styles";
+import { espelhoPontoSchema } from "@/zodSchemas";
 import { Image } from "expo-image";
 import { Link } from "expo-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ScrollView, View } from "react-native";
+import Toast from "react-native-toast-message";
+import { z } from "zod";
 
 export default function EspelhoPonto() {
   const [selectedYear, setSelectedYear] = useState("");
+
+  async function onSubmit(values: z.infer<typeof espelhoPontoSchema>) {
+    try {
+      const { message, success } = await espelhoponto(values);
+      if (!success) {
+        Toast.show({
+          text1: `${message}`,
+          type: "info",
+        });
+      } else {
+        Toast.show({
+          text1: `${message}`,
+        });
+      }
+    } catch {
+      Toast.show({
+        text1: "Erro ao selecionar Holerite",
+        type: "error",
+      });
+    }
+  }
+
+  useEffect(() => {
+    if (selectedYear) {
+      onSubmit({ ano: selectedYear });
+    }
+  }, [selectedYear]);
 
   return (
     <ThemedContainer title="Espelho de Ponto">

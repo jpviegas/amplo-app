@@ -3,12 +3,27 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Text } from "@/components/ui/text";
 import { styles } from "@/styles/styles";
+import { SolicitarAbonoType } from "@/zodSchemas";
 import { Image } from "expo-image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { View } from "react-native";
 
-export default function Atestado() {
+export default function Atestado({
+  onSubmit,
+}: {
+  onSubmit: (values: SolicitarAbonoType) => void;
+}) {
   const [fullWorkin, setFullWorking] = useState("yes");
+
+  useEffect(() => {
+    onSubmit({
+      motivo: "Atestado",
+      dataInicial: "",
+      dataFinal: "",
+      jornadaCompleta: fullWorkin === "yes",
+      anexo: "",
+    });
+  }, []);
 
   return (
     <View className="w-5/6 flex-1 gap-4 self-center">

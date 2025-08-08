@@ -17,7 +17,7 @@ export default function EspelhoAno() {
 
   return (
     <ThemedContainer title="Espelho de Ponto">
-      <View className="h-5/6 justify-around">
+      <View className="mt-6 h-3/4 justify-around">
         <View className="mx-4 h-full flex-col gap-4">
           <Card className="w-fit self-center">
             <CardHeader>

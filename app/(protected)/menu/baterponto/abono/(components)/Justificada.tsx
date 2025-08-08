@@ -4,12 +4,29 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Text } from "@/components/ui/text";
 import { styles } from "@/styles/styles";
+import { SolicitarAbonoType } from "@/zodSchemas";
 import { Image } from "expo-image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { View } from "react-native";
 
-export default function Justificada() {
+export default function Justificada({
+  onSubmit,
+}: {
+  onSubmit: (values: SolicitarAbonoType) => void;
+}) {
   const [fullWorkin, setFullWorking] = useState("yes");
+  const [observacao, setObservacao] = useState("");
+
+  useEffect(() => {
+    onSubmit({
+      motivo: "Justificada",
+      dataInicial: "",
+      dataFinal: "",
+      jornadaCompleta: fullWorkin === "yes",
+      anexo: "",
+      observacao,
+    });
+  }, []);
 
   return (
     <View className="w-5/6 flex-1 gap-4 self-center">
@@ -80,6 +97,8 @@ export default function Justificada() {
           <Input
             className="flex-1 border-0"
             placeholder="Observação"
+            value={observacao}
+            onChangeText={setObservacao}
             multiline
           />
         </CardContent>

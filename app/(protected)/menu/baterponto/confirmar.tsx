@@ -43,17 +43,20 @@ export default function ConfirmarPonto() {
   }, []);
 
   return (
-    <ThemedContainer title="PONTO REGISTRADO COM SUCESSO">
-      <View className="h-5/6 justify-around">
+    <ThemedContainer title="">
+      <View className="h-4/5 justify-around">
         <View className="items-center">
           <Image
             source={require("@/assets/icons/check.png")}
             className="bg-white"
             style={{ width: 48, height: 48, backgroundColor: "white" }}
           />
+          <Text className="mt-4 text-center text-4xl font-bold">
+            PONTO REGISTRADO COM SUCESSO
+          </Text>
         </View>
         <View className="mx-4 h-5/6 items-center justify-around">
-          <Text>Autentificação: serial</Text>
+          <Text>Autenticação: serial</Text>
           <Text className="mt-4 text-center text-4xl font-bold">
             {currentDate}
           </Text>

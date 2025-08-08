@@ -1,3 +1,4 @@
+import { transporte } from "@/api/pagamentos/route";
 import BackButton from "@/components/BackButton";
 import ThemedContainer from "@/components/ThemedContainer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -11,11 +12,40 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Text } from "@/components/ui/text";
-import { useState } from "react";
+import { transporteSchema } from "@/zodSchemas";
+import { useEffect, useState } from "react";
 import { ScrollView, View } from "react-native";
+import Toast from "react-native-toast-message";
 
 export default function ValeTransporte() {
   const [selectedYear, setSelectedYear] = useState("");
+
+  async function onSubmit(values: z.infer<typeof transporteSchema>) {
+    try {
+      const { message, success } = await transporte(values);
+      if (!success) {
+        Toast.show({
+          text1: `${message}`,
+          type: "info",
+        });
+      } else {
+        Toast.show({
+          text1: `${message}`,
+        });
+      }
+    } catch {
+      Toast.show({
+        text1: "Erro ao selecionar Vale Transporte",
+        type: "error",
+      });
+    }
+  }
+
+  useEffect(() => {
+    if (selectedYear) {
+      onSubmit({ ano: selectedYear });
+    }
+  }, [selectedYear]);
 
   return (
     <ThemedContainer title="Vale Transporte">

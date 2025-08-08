@@ -1,3 +1,4 @@
+import { refeicao } from "@/api/pagamentos/route";
 import BackButton from "@/components/BackButton";
 import ThemedContainer from "@/components/ThemedContainer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -11,11 +12,41 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Text } from "@/components/ui/text";
-import { useState } from "react";
+import { refeicaoSchema } from "@/zodSchemas";
+import { useEffect, useState } from "react";
 import { ScrollView, View } from "react-native";
+import Toast from "react-native-toast-message";
+import { z } from "zod";
 
 export default function ValeRefeicao() {
   const [selectedYear, setSelectedYear] = useState("");
+
+  async function onSubmit(values: z.infer<typeof refeicaoSchema>) {
+    try {
+      const { message, success } = await refeicao(values);
+      if (!success) {
+        Toast.show({
+          text1: `${message}`,
+          type: "info",
+        });
+      } else {
+        Toast.show({
+          text1: `${message}`,
+        });
+      }
+    } catch {
+      Toast.show({
+        text1: "Erro ao selecionar Vale Refeição",
+        type: "error",
+      });
+    }
+  }
+
+  useEffect(() => {
+    if (selectedYear) {
+      onSubmit({ ano: selectedYear });
+    }
+  }, [selectedYear]);
 
   return (
     <ThemedContainer title="Vale Refeição">

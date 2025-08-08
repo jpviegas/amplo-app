@@ -1,3 +1,4 @@
+import { alterarSenha } from "@/api/dadospessoais/route";
 import BackButton from "@/components/BackButton";
 import ThemedContainer from "@/components/ThemedContainer";
 import { Button } from "@/components/ui/button";
@@ -5,10 +6,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Text } from "@/components/ui/text";
 import { useColorScheme } from "@/lib/useColorScheme";
-import { Link } from "expo-router";
+import { passwordSchema } from "@/zodSchemas";
 import { Eye, EyeOff, LockKeyhole } from "lucide-react-native";
 import { useState } from "react";
 import { View } from "react-native";
+import Toast from "react-native-toast-message";
+import { z } from "zod";
 
 export default function AlterarSenha() {
   const { isDarkColorScheme } = useColorScheme();
@@ -17,13 +20,34 @@ export default function AlterarSenha() {
   const [password2, setPassword2] = useState("");
   const [securePass, setSecurePass] = useState(true);
 
+  async function onSubmit(values: z.infer<typeof passwordSchema>) {
+    try {
+      const { message, success } = await alterarSenha(values);
+      if (!success) {
+        Toast.show({
+          text1: `${message}`,
+          type: "info",
+        });
+      } else {
+        Toast.show({
+          text1: `${message}`,
+        });
+      }
+    } catch {
+      Toast.show({
+        text1: "Erro ao alterar senha",
+        type: "error",
+      });
+    }
+  }
+
   return (
     <ThemedContainer title="Alterar Senha">
-      <View className="mt-6 h-3/4 justify-around">
-        <View className="mx-4 flex-1 flex-row gap-4">
+      <View className="h-2/3">
+        <View className="mx-4">
           <Card className="w-full">
             <CardContent className="h-full justify-evenly">
-              <View className="mb-4">
+              <View>
                 <Text>SENHA ATUAL</Text>
                 <View className="mb-2 w-full flex-row items-center gap-2 border-b-[1px] border-secondary-foreground">
                   <LockKeyhole
@@ -55,7 +79,7 @@ export default function AlterarSenha() {
                   )}
                 </View>
               </View>
-              <View className="mb-4">
+              <View>
                 <Text>CRIE UMA NOVA SENHA</Text>
                 <View className="mb-2 w-full flex-row items-center gap-2 border-b-[1px] border-secondary-foreground">
                   <LockKeyhole
@@ -87,7 +111,7 @@ export default function AlterarSenha() {
                   )}
                 </View>
               </View>
-              <View className="mb-4">
+              <View>
                 <Text>CONFIRMAR A SENHA</Text>
                 <View className="mb-2 w-full flex-row items-center gap-2 border-b-[1px] border-secondary-foreground">
                   <LockKeyhole
@@ -124,15 +148,16 @@ export default function AlterarSenha() {
         </View>
       </View>
       <View>
-        <Link asChild href={".."}>
-          <Button
-            size={"lg"}
-            variant="outline"
-            className="w-3/5 self-center bg-green-500"
-          >
-            <Text className="font-black">CONFIRMAR</Text>
-          </Button>
-        </Link>
+        <Button
+          size={"lg"}
+          variant="outline"
+          className="w-3/5 self-center bg-green-500"
+          onPress={() =>
+            onSubmit({ senha: currentPassword, novaSenha: password1 })
+          }
+        >
+          <Text className="font-black">CONFIRMAR</Text>
+        </Button>
         <BackButton />
       </View>
     </ThemedContainer>

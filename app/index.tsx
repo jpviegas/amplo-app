@@ -1,17 +1,35 @@
 import ImageViewer from "@/components/ImageViewer";
 import { Button } from "@/components/ui/button";
 import { Text } from "@/components/ui/text";
-import { useUserStore } from "@/store/userStore";
-import { Link, Redirect } from "expo-router";
+import { AuthContext, authStorageKey } from "@/utils/authContext";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Link } from "expo-router";
+import { useContext, useEffect } from "react";
 import { View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function HomeScreen() {
-  const { user } = useUserStore();
+  const authContext = useContext(AuthContext);
 
-  if (user) {
-    return <Redirect href={"/menu"} />;
-  }
+  useEffect(() => {
+    const getAuthFromStorage = async () => {
+      try {
+        const value = await AsyncStorage.getItem(authStorageKey);
+        // console.log("value:", value);
+
+        if (value) {
+          const auth = JSON.parse(value);
+          console.log("auth:", auth.isLoggedIn);
+          if (auth.isLoggedIn) {
+            authContext.logIn();
+          }
+        }
+      } catch (error) {
+        console.log("error", error);
+      }
+    };
+    getAuthFromStorage();
+  }, []);
 
   return (
     <SafeAreaView className="flex flex-1 items-center justify-center bg-black/5">
